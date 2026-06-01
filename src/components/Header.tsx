@@ -2,134 +2,142 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import { site, nav } from "@/lib/content";
-
-const items = [
-  { label: nav.lavorazioni, href: "/lavorazioni" },
-  { label: nav.cancelli, href: "/cancelli" },
-  { label: nav.inferriate, href: "/inferriate" },
-  { label: nav.recinzioni, href: "/recinzioni" },
-  { label: nav.carport, href: "/carport" },
-  { label: nav.automazione, href: "/automazione" },
-  { label: nav.percheNoi, href: "/perche-noi" },
-  { label: nav.realizzazioni, href: "/realizzazioni" },
-  { label: nav.detrazioni, href: "/detrazioni" },
-  { label: nav.contatti, href: "/contatti" },
-];
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useT } from "./LanguageProvider";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Header() {
+  const { t, site } = useT();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled || open
-          ? "bg-ef-bg/95 backdrop-blur-md border-b border-ef-border-subtle shadow-sm"
-          : "bg-ef-bg/80 backdrop-blur-sm border-b border-transparent"
-      }`}
-    >
-      <div className="container-ef flex h-16 sm:h-20 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={site.name}>
-          <span className="font-serif text-2xl sm:text-3xl font-bold text-ef-surface-dark tracking-tight">
-            Euro<span className="text-ef-accent">fabbro</span>
-          </span>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Navigazione principale">
-          {items.map((it) => {
-            const active = pathname === it.href || pathname?.startsWith(it.href + "/");
-            return (
-              <Link
-                key={it.href}
-                href={it.href}
-                className={`px-3 py-2 text-sm font-medium rounded-full transition-colors ${
-                  active
-                    ? "text-ef-accent bg-ef-accent-subtle"
-                    : "text-ef-text-primary hover:text-ef-accent hover:bg-ef-bg-secondary"
-                }`}
-              >
-                {it.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href={`tel:${site.phoneTel}`}
-            className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-ef-surface-dark hover:text-ef-accent transition-colors"
-          >
-            <Phone className="w-4 h-4 text-ef-accent" />
-            <span>{site.phone}</span>
-          </a>
-          <Link href="/contatti" className="hidden md:inline-flex btn-primary text-xs sm:text-sm">
-            {nav.cta}
+    <>
+      <header
+        className="sticky top-0 z-50 w-full backdrop-blur-md"
+        style={{
+          backgroundColor: "rgba(245, 240, 232, 0.9)",
+          borderBottom: "1px solid var(--color-border-subtle)",
+        }}
+      >
+        <div
+          className="container-ef flex items-center justify-between"
+          style={{ height: 72 }}
+        >
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <span
+              className="text-xl font-display"
+              style={{ color: "var(--color-text-primary)", fontWeight: 500, letterSpacing: "-0.01em" }}
+            >
+              Euro<span style={{ color: "var(--color-accent)" }}>fabbro</span>
+            </span>
+            <span
+              className="hidden md:inline text-caption uppercase tracking-wider"
+              style={{ color: "var(--color-text-muted)", marginLeft: 8, borderLeft: "1px solid var(--color-border)", paddingLeft: 12 }}
+            >
+              Digital Atelier
+            </span>
           </Link>
-          <button
-            type="button"
-            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-ef-border-subtle text-ef-surface-dark hover:bg-ef-bg-secondary transition-colors"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Chiudi menu" : "Apri menu"}
-            aria-expanded={open}
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
 
-      {open && (
-        <div className="lg:hidden border-t border-ef-border-subtle bg-ef-bg max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <nav className="container-ef py-4 flex flex-col gap-1" aria-label="Menu mobile">
-            {items.map((it) => {
-              const active = pathname === it.href || pathname?.startsWith(it.href + "/");
-              return (
+          <nav className="hidden lg:flex items-center gap-7">
+            {t.nav.items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                style={{
+                  fontWeight: isActive(item.href) ? 500 : 400,
+                  color: isActive(item.href) ? "var(--color-accent)" : "var(--color-text-primary)",
+                }}
+              >
+                {t.nav.label[item.key as keyof typeof t.nav.label]}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <LanguageToggle />
+            <Link
+              href="/contatti"
+              className="hidden lg:inline-flex btn btn-primary"
+              style={{ padding: "10px 20px", fontSize: "var(--text-body-sm)" }}
+            >
+              {t.nav.label.cta}
+            </Link>
+            <button
+              className="lg:hidden p-2"
+              onClick={() => setOpen(true)}
+              style={{ color: "var(--color-text-primary)" }}
+              aria-label="Open menu"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed inset-0 z-[200] overflow-auto"
+            style={{
+              backgroundColor: "var(--color-bg)",
+              padding: 24,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div className="flex justify-between items-center" style={{ marginBottom: 40 }}>
+              <Link href="/" onClick={() => setOpen(false)} className="text-xl font-display" style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>
+                Euro<span style={{ color: "var(--color-accent)" }}>fabbro</span>
+              </Link>
+              <button
+                onClick={() => setOpen(false)}
+                style={{ color: "var(--color-text-primary)" }}
+                aria-label="Close menu"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="flex flex-col items-center gap-6 flex-1">
+              {t.nav.items.map((item) => (
                 <Link
-                  key={it.href}
-                  href={it.href}
-                  className={`px-4 py-3 rounded-2xl text-base font-medium ${
-                    active
-                      ? "bg-ef-accent-subtle text-ef-accent"
-                      : "text-ef-text-primary hover:bg-ef-bg-secondary"
-                  }`}
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  style={{
+                    fontSize: "var(--text-h3)",
+                    fontWeight: 500,
+                    color: "var(--color-text-primary)",
+                    textDecoration: "none",
+                  }}
                 >
-                  {it.label}
+                  {t.nav.label[item.key as keyof typeof t.nav.label]}
                 </Link>
-              );
-            })}
-            <div className="pt-3 flex flex-col gap-2">
-              <a href={`tel:${site.phoneTel}`} className="btn-secondary">
-                <Phone className="w-4 h-4" />
-                {site.phone}
-              </a>
-              <Link href="/contatti" className="btn-primary">
-                {nav.cta}
+              ))}
+              <div className="mt-4">
+                <LanguageToggle />
+              </div>
+              <Link
+                href="/contatti"
+                onClick={() => setOpen(false)}
+                className="btn btn-primary"
+                style={{ width: "100%", maxWidth: 320, marginTop: 16 }}
+              >
+                {t.nav.label.cta}
               </Link>
             </div>
-          </nav>
-        </div>
-      )}
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

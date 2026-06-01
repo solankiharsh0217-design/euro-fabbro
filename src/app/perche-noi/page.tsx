@@ -1,100 +1,92 @@
-import Link from "next/link";
-import { Award, ArrowRight, Phone, ShieldCheck } from "lucide-react";
-import { site, percheNoiContent, authority } from "@/lib/content";
-import { Container, Section, Eyebrow, H1, H2 } from "@/components/ui";
-import { Testimonials } from "@/components/Sections";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Perché noi — 49 anni di carpenteria metallica certificata",
-  description:
-    "Ferioli Sergio SRL: 49 anni di esperienza, certificati Istituto Giordano, primi in Italia per cancelli marcati CE. Produzione interna a Crevalcore (BO).",
-};
+"use client";
+import { Award, ShieldCheck, Sparkles } from "lucide-react";
+import { useT } from "@/components/LanguageProvider";
+import { SubpageHero } from "@/components/Subpage";
+import { ContactForm } from "@/components/ContactForm";
 
 export default function PercheNoiPage() {
-  const c = percheNoiContent;
+  const { t } = useT();
+  const c = t.percheNoi;
   return (
     <>
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 bg-gradient-to-b from-ef-bg to-ef-bg-secondary">
-        <Container>
-          <div className="max-w-3xl">
-            <Eyebrow>Chi siamo</Eyebrow>
-            <h1 className="heading-1 mt-4 text-balance">
-              {c.hero.headline}
-              <span className="text-ef-accent italic font-light">{c.hero.headlineAccent}</span>
-              {c.hero.headlinePost}
-            </h1>
-            <p className="lead mt-5 text-pretty">{c.hero.subheadline}</p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link href="/contatti" className="btn-primary text-base">
-                {c.hero.cta} <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href={`tel:${site.phoneTel}`} className="btn-secondary text-base">
-                <Phone className="w-4 h-4" /> {site.phone}
-              </a>
+      <SubpageHero
+        preLabel={t.nav.label.percheNoi}
+        headlinePre={c.hero.headline}
+        headlineAccent={c.hero.headlineAccent}
+        headlinePost={c.hero.headlinePost}
+        subheadline={c.hero.subheadline}
+        cta={c.hero.cta}
+      />
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            <div>
+              <span className="label-eyebrow">Heritage</span>
+              <h2 className="heading-2 mt-3">
+                {c.storyTitle}
+                <span style={{ color: "var(--color-accent)" }}>{c.storyAccent}</span>
+              </h2>
+              <p className="lead mt-5">{c.storyBody}</p>
+            </div>
+            <div
+              className="rounded-2xl"
+              style={{ backgroundColor: "var(--color-surface)", border: "1px solid var(--color-border-subtle)", padding: 32 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Award size={28} style={{ color: "var(--color-accent)" }} />
+                <h3 className="heading-3" style={{ fontWeight: 500 }}>
+                  {c.certTitle}
+                  <span style={{ color: "var(--color-accent)" }}>{c.certAccent}</span>
+                </h3>
+              </div>
+              <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{c.certBody}</p>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
-
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-2 text-balance">
-              {c.storyTitle}
-              <span className="text-ef-accent italic font-light">{c.storyAccent}</span>
-            </h2>
-            <p className="lead mt-5 text-pretty">{c.storyBody}</p>
+      <section style={{ backgroundColor: "var(--color-surface-dark)", color: "var(--color-text-on-dark)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <ShieldCheck size={28} style={{ color: "var(--color-accent)" }} />
+                <h2 className="heading-2" style={{ color: "var(--color-text-on-dark)" }}>
+                  {c.guaranteeTitle}
+                  <span style={{ color: "var(--color-accent)" }}>{c.guaranteeAccent}</span>
+                </h2>
+              </div>
+              <p className="text-body-lg" style={{ color: "rgba(245, 240, 232, 0.85)" }}>{c.guaranteeBody}</p>
+            </div>
+            <ul className="space-y-3">
+              <li className="card flex items-center gap-3" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <Sparkles size={20} style={{ color: "var(--color-accent)" }} />
+                <span style={{ color: "var(--color-text-on-dark)" }}>49 years of artisan experience</span>
+              </li>
+              <li className="card flex items-center gap-3" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <Award size={20} style={{ color: "var(--color-accent)" }} />
+                <span style={{ color: "var(--color-text-on-dark)" }}>First in Italy CE certified (Istituto Giordano)</span>
+              </li>
+              <li className="card flex items-center gap-3" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <ShieldCheck size={20} style={{ color: "var(--color-accent)" }} />
+                <span style={{ color: "var(--color-text-on-dark)" }}>In-house production, direct installation</span>
+              </li>
+            </ul>
           </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface">
-        <Container>
-          <div className="max-w-4xl mx-auto bg-ef-surface-dark text-ef-text-on-dark rounded-3xl p-8 sm:p-12 border border-ef-border-subtle">
-            <div className="flex items-center gap-3 mb-5">
-              <Award className="w-7 h-7 text-ef-accent" />
-              <h2 className="heading-2 text-ef-text-on-dark text-balance">
-                {c.certTitle}
-                <span className="text-ef-accent italic font-light">{c.certAccent}</span>
+        </div>
+      </section>
+      <section style={{ backgroundColor: "var(--color-surface-dark)", color: "var(--color-text-on-dark)", paddingTop: 0, paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
+              <h2 className="heading-2 mt-3" style={{ color: "var(--color-text-on-dark)" }}>
+                Request your <span style={{ color: "var(--color-accent)" }}>free quote</span>
               </h2>
             </div>
-            <p className="text-white/80 leading-relaxed text-base sm:text-lg">{c.certBody}</p>
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-              {authority.stats.map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center"
-                >
-                  <p className="text-2xl sm:text-3xl font-bold text-ef-accent mb-1">{s.number}</p>
-                  <p className="text-xs sm:text-sm text-white/70 leading-snug">{s.label}</p>
-                </div>
-              ))}
-            </div>
+            <ContactForm />
           </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-2 text-balance">
-              {c.guaranteeTitle}
-              <span className="text-ef-accent italic font-light">{c.guaranteeAccent}</span>
-            </h2>
-            <p className="lead mt-5 text-pretty">{c.guaranteeBody}</p>
-            <div className="mt-8 flex items-start gap-3 bg-ef-accent-subtle rounded-2xl p-5 sm:p-6 border border-ef-accent/20">
-              <ShieldCheck className="w-6 h-6 text-ef-accent shrink-0 mt-0.5" />
-              <p className="text-ef-text-primary text-base sm:text-lg">
-                Ogni installazione è accompagnata da documentazione tecnica e certificazione Istituto
-                Giordano.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Testimonials />
+        </div>
+      </section>
     </>
   );
 }

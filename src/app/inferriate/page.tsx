@@ -1,105 +1,88 @@
-import Link from "next/link";
-import { CheckCircle, ArrowRight, Phone, Shield } from "lucide-react";
-import { site, inferriateContent } from "@/lib/content";
-import { Container, Section, Eyebrow, H1, H2 } from "@/components/ui";
+"use client";
+import { CheckCircle } from "lucide-react";
+import { useT } from "@/components/LanguageProvider";
+import { SubpageHero } from "@/components/Subpage";
 import { FAQ } from "@/components/FAQ";
-import { ContactForm, WhatsAppButton } from "@/components/ContactForm";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Inferriate su misura per sicurezza ed estetica",
-  description:
-    "Inferriate in ferro su misura a Bologna, Modena e Ferrara. Fisse, apribili, snodabili, a due ante. Produzione interna, detraibili fiscalmente.",
-};
+import { ContactForm } from "@/components/ContactForm";
 
 export default function InferriatePage() {
-  const c = inferriateContent;
+  const { t } = useT();
+  const c = t.inferriate;
   return (
     <>
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 bg-gradient-to-b from-ef-bg to-ef-bg-secondary">
-        <Container>
-          <div className="max-w-3xl">
-            <Eyebrow>Inferriate · Bologna, Modena, Ferrara</Eyebrow>
-            <h1 className="heading-1 mt-4 text-balance">
-              {c.hero.headline}
-              <span className="text-ef-accent italic font-light">{c.hero.headlineAccent}</span>
-            </h1>
-            <p className="lead mt-5 text-pretty">{c.hero.subheadline}</p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link href="/contatti" className="btn-primary text-base">
-                {c.hero.cta} <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href={`tel:${site.phoneTel}`} className="btn-secondary text-base">
-                <Phone className="w-4 h-4" /> {site.phone}
-              </a>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <SubpageHero
+        preLabel={t.nav.label.inferriate}
+        headlinePre={c.hero.headline}
+        headlineAccent={c.hero.headlineAccent}
+        subheadline={c.hero.subheadline}
+        cta={c.hero.cta}
+      />
 
-      <Section bg="bg-ef-bg">
-        <Container>
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="label-eyebrow">Tipologie</span>
+            <h2 className="heading-2 mt-3">
+              <span style={{ color: "var(--color-accent)" }}>Every type</span> for every opening
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.variants.map((v) => (
               <div key={v.name} className="card">
-                <h3 className="text-xl sm:text-2xl font-bold text-ef-surface-dark mb-3">{v.name}</h3>
-                <p className="text-ef-text-secondary leading-relaxed">{v.desc}</p>
+                <h3 className="text-h4 mb-3" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
+                <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{v.desc}</p>
               </div>
             ))}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      <Section bg="bg-ef-surface">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-            <Eyebrow>Perché sceglierci</Eyebrow>
-            <H2 className="mt-4" pre={c.benefitsTitle} accent={c.benefitsAccent} post={c.benefitsPost} />
+      <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="label-eyebrow">Benefici</span>
+            <h2 className="heading-2 mt-3">
+              {c.benefitsTitle}
+              <span style={{ color: "var(--color-accent)" }}>{c.benefitsAccent}</span>
+              {c.benefitsPost}
+            </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto mt-10">
             {c.benefits.map((b) => (
-              <div
-                key={b}
-                className="flex items-start gap-3 bg-ef-bg rounded-2xl p-5 border border-ef-border-subtle"
-              >
-                <Shield className="w-5 h-5 text-ef-accent shrink-0 mt-0.5" />
-                <span className="text-ef-text-primary font-medium">{b}</span>
-              </div>
+              <li key={b} className="card flex items-start gap-3">
+                <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                <span className="text-body-lg" style={{ color: "var(--color-text-primary)" }}>{b}</span>
+              </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="label-eyebrow">FAQ</span>
+            <h2 className="heading-2 mt-3">Frequently Asked Questions</h2>
           </div>
-        </Container>
-      </Section>
+          <div className="max-w-3xl mx-auto">
+            <FAQ items={c.faq} />
+          </div>
+        </div>
+      </section>
 
-      <Section bg="bg-ef-bg">
-        <Container>
-          <FAQ items={c.faq} />
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface-dark text-ef-text-on-dark">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <section style={{ backgroundColor: "var(--color-surface-dark)", color: "var(--color-text-on-dark)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <Eyebrow>Parla con noi</Eyebrow>
-              <H2 className="mt-4 text-ef-text-on-dark">
-                Richiedi il tuo preventivo <span className="text-ef-accent italic font-light">gratuito</span>
-              </H2>
-              <p className="mt-5 text-white/80 text-lg">
-                Sopralluogo gratuito, preventivo senza impegno. Rispondiamo entro 24 ore.
-              </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <WhatsAppButton phone={site.whatsapp} message="Ciao, vorrei un preventivo per inferriate" />
-                <a href={`tel:${site.phoneTel}`} className="btn-outline-white">
-                  <Phone className="w-4 h-4" /> {site.phone}
-                </a>
-              </div>
+              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
+              <h2 className="heading-2 mt-3" style={{ color: "var(--color-text-on-dark)" }}>
+                Request your <span style={{ color: "var(--color-accent)" }}>free quote</span>
+              </h2>
             </div>
-            <div className="bg-white rounded-3xl p-6 sm:p-8 text-ef-text-primary shadow-xl">
-              <ContactForm />
-            </div>
+            <ContactForm />
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
     </>
   );
 }

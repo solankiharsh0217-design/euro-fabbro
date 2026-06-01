@@ -2,23 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eurofabbro-v1.base44.app"),
   title: {
-    default: `${site.name} — Carpenteria metallica certificata`,
-    template: `%s | ${site.name}`,
+    default: `${site.name} Digital Atelier — Certified metalwork since 1984`,
+    template: `%s | ${site.name} Digital Atelier`,
   },
   description:
-    "Carpenteria metallica certificata a Bologna, Modena e Ferrara. Cancelli, inferriate, recinzioni, carport, scale e automazioni su misura. Produzione interna, marcatura CE.",
+    "Custom metalwork in the Bologna province. In-house production, CE marking, guaranteed quality on every installation. Gates, security bars, fencing, carports, automation.",
   keywords: [
-    "carpenteria metallica",
-    "cancelli su misura",
-    "inferriate",
-    "recinzioni",
-    "carport",
-    "automazione cancelli",
+    "custom metalwork",
+    "iron gates",
+    "security bars",
+    "fencing",
+    "carports",
+    "gate automation",
     "Bologna",
     "Modena",
     "Ferrara",
@@ -29,18 +30,17 @@ export const metadata: Metadata = {
   authors: [{ name: site.company }],
   openGraph: {
     type: "website",
-    locale: "it_IT",
-    siteName: site.name,
-    title: `${site.name} — Carpenteria metallica certificata`,
+    locale: "en_US",
+    siteName: `${site.name} Digital Atelier`,
+    title: `${site.name} Digital Atelier — Certified metalwork since 1984`,
     description:
-      "Cancelli, inferriate, recinzioni, carport, scale e automazioni su misura. Produzione interna, marcatura CE, garanzia su ogni installazione.",
+      "Custom metalwork in the Bologna province. In-house production, CE marking, guaranteed quality on every installation.",
     images: [{ url: site.logo, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Carpenteria metallica certificata`,
-    description:
-      "Carpenteria metallica certificata a Bologna, Modena e Ferrara. Produzione interna, marcatura CE.",
+    title: `${site.name} Digital Atelier`,
+    description: "Custom metalwork in the Bologna province.",
     images: [site.logo],
   },
   robots: { index: true, follow: true },
@@ -50,19 +50,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         />
       </head>
-      <body className="min-h-screen bg-ef-bg text-ef-text-primary antialiased font-sans">
-        <Header />
-        <main className="min-h-[60vh]">{children}</main>
-        <Footer />
+      <body className="min-h-screen antialiased">
+        <LanguageProvider>
+          <Header />
+          <main className="min-h-[60vh]">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

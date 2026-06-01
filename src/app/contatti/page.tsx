@@ -1,174 +1,109 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
-import { site, contattiContent, footer } from "@/lib/content";
-import { Container, Section, Eyebrow, H1, H2 } from "@/components/ui";
-import { ContactForm, WhatsAppButton } from "@/components/ContactForm";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contatti — Parla con noi",
-  description:
-    "Contatta Ferioli Sergio SRL. Telefono, email, WhatsApp. Sopralluogo gratuito, preventivo entro 24 ore. Via Galileo Galilei 140, Palata Pepoli di Crevalcore (BO).",
-};
+"use client";
+import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight, CheckCircle } from "lucide-react";
+import { useT } from "@/components/LanguageProvider";
+import { ContactForm } from "@/components/ContactForm";
 
 export default function ContattiPage() {
-  const c = contattiContent;
+  const { t, site } = useT();
+  const c = t.contatti;
   return (
     <>
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 bg-gradient-to-b from-ef-bg to-ef-bg-secondary">
-        <Container>
+      <section
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          color: "var(--color-text-on-dark)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
           <div className="max-w-3xl">
-            <Eyebrow>Contatti · Bologna, Modena, Ferrara</Eyebrow>
-            <h1 className="heading-1 mt-4 text-balance">
+            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
+            <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
               {c.headlinePre}
-              <span className="text-ef-accent italic font-light">{c.headlineAccent}</span>
+              <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{c.headlineAccent}</span>
               {c.headlinePost}
             </h1>
-            <p className="lead mt-5 text-pretty">
-              Scrivici, chiamaci o compila il form: ti rispondiamo entro 24 ore con un preventivo
-              gratuito e senza impegno.
-            </p>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <div>
-              <h2 className="heading-2 mb-6 sm:mb-8">{c.processTitle}</h2>
-              <ol className="space-y-4 sm:space-y-5">
-                {c.processSteps.map((s, i) => (
-                  <li key={s} className="flex items-start gap-4">
-                    <span className="w-10 h-10 rounded-full bg-ef-accent text-white font-bold flex items-center justify-center shrink-0">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <p className="font-semibold text-ef-surface-dark text-base sm:text-lg">{s}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <ContactCard
-                icon={Phone}
-                title="Telefono"
-                primary={footer.phone}
-                href={`tel:${site.phoneTel}`}
-                secondary={footer.mobile}
-                secondaryHref={`tel:${site.mobileTel}`}
-              />
-              <ContactCard
-                icon={MessageCircle}
-                title="WhatsApp"
-                primary={footer.mobile}
-                href={`https://wa.me/${site.whatsapp}`}
-                external
-                accent
-              />
-              <ContactCard
-                icon={Mail}
-                title="Email"
-                primary={footer.email}
-                href={`mailto:${footer.email}`}
-              />
-              <ContactCard
-                icon={MapPin}
-                title="Sede"
-                primary="Palata Pepoli"
-                secondary={footer.address}
-              />
-            </div>
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="label-eyebrow">Process</span>
+            <h2 className="heading-2 mt-3">{c.processTitle}</h2>
           </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            <div>
-              <h2 className="heading-2">
-                Vieni a trovarci <span className="text-ef-accent italic font-light">nella nostra sede</span>
-              </h2>
-              <p className="lead mt-5 text-pretty">
-                Mostriamo la gamma di cancelli in pronta consegna e i nostri lavori nel nostro
-                laboratorio a Palata Pepoli di Crevalcore (BO).
-              </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(footer.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
+            {c.processSteps.map((s, i) => (
+              <div key={s} className="card text-center">
+                <div
+                  className="mx-auto mb-3 inline-flex items-center justify-center"
+                  style={{ width: 40, height: 40, borderRadius: "var(--radius-md)", backgroundColor: "var(--color-accent-subtle)" }}
                 >
-                  <MapPin className="w-4 h-4" /> Apri in Google Maps
-                </a>
-                <WhatsAppButton phone={site.whatsapp} message="Ciao, vorrei venire a trovarvi" />
+                  <span style={{ color: "var(--color-accent)", fontWeight: 600 }}>{i + 1}</span>
+                </div>
+                <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{s}</p>
               </div>
-              <div className="mt-8 aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden bg-ef-bg-secondary border border-ef-border-subtle">
-                <iframe
-                  title="Mappa sede Eurofabbro"
-                  className="w-full h-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(footer.address)}&output=embed`}
-                />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div>
+              <span className="label-eyebrow">Reach us</span>
+              <h2 className="heading-2 mt-3">Our details</h2>
+              <div className="mt-6 space-y-4">
+                <a href={`tel:${site.phoneTel}`} className="card flex items-center gap-3 hover:shadow-md">
+                  <Phone size={20} style={{ color: "var(--color-accent)" }} />
+                  <div>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Phone</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.phone}</p>
+                  </div>
+                </a>
+                <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="card flex items-center gap-3 hover:shadow-md">
+                  <MessageCircle size={20} style={{ color: "var(--color-accent)" }} />
+                  <div>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>WhatsApp</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.whatsappDisplay}</p>
+                  </div>
+                </a>
+                <a href={`mailto:${site.email}`} className="card flex items-center gap-3 hover:shadow-md">
+                  <Mail size={20} style={{ color: "var(--color-accent)" }} />
+                  <div>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Email</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.email}</p>
+                  </div>
+                </a>
+                <div className="card flex items-start gap-3">
+                  <MapPin size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Address</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.address}</p>
+                  </div>
+                </div>
+                <div className="card flex items-center gap-3">
+                  <Clock size={20} style={{ color: "var(--color-accent)" }} />
+                  <div>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Hours</p>
+                    <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.hours}</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div>
-              <h2 className="heading-2 mb-6">
-                Scrivici <span className="text-ef-accent italic font-light">ora</span>
-              </h2>
-              <div className="bg-ef-bg rounded-3xl p-6 sm:p-8 border border-ef-border-subtle">
+              <span className="label-eyebrow">Write us</span>
+              <h2 className="heading-2 mt-3">Send a request</h2>
+              <div className="mt-6">
                 <ContactForm />
               </div>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
     </>
-  );
-}
-
-function ContactCard({
-  icon: Icon,
-  title,
-  primary,
-  href,
-  secondary,
-  secondaryHref,
-  external,
-  accent,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  primary: string;
-  href?: string;
-  secondary?: string;
-  secondaryHref?: string;
-  external?: boolean;
-  accent?: boolean;
-}) {
-  const cardClass = `block card hover:shadow-md transition-shadow ${accent ? "bg-[#25D366]/10 border-[#25D366]/30" : ""}`;
-  const content = (
-    <>
-      <div className={`w-10 h-10 rounded-xl ${accent ? "bg-[#25D366] text-white" : "bg-ef-accent-subtle text-ef-accent"} flex items-center justify-center mb-3`}>
-        <Icon className="w-5 h-5" />
-      </div>
-      <p className="text-xs uppercase tracking-wider text-ef-text-muted font-semibold mb-1">{title}</p>
-      <p className="font-bold text-ef-surface-dark break-words">{primary}</p>
-      {secondary && <p className="text-sm text-ef-text-secondary mt-1">{secondary}</p>}
-    </>
-  );
-  if (!href) return <div className={cardClass}>{content}</div>;
-  return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className={cardClass}
-    >
-      {content}
-    </a>
   );
 }

@@ -1,194 +1,112 @@
 "use client";
-
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import { ArrowRight, Phone, CheckCircle, Calculator } from "lucide-react";
-import { site, detrazioniContent } from "@/lib/content";
-import { Container, Section, Eyebrow, H2 } from "@/components/ui";
+import { useState } from "react";
+import { Calculator, CheckCircle, ArrowRight } from "lucide-react";
+import { useT } from "@/components/LanguageProvider";
+import { SubpageHero } from "@/components/Subpage";
 import { FAQ } from "@/components/FAQ";
-import { ContactForm, WhatsAppButton } from "@/components/ContactForm";
 
 export default function DetrazioniPage() {
-  const c = detrazioniContent;
-  const [amount, setAmount] = useState<number>(5000);
-  const [percentage, setPercentage] = useState<36 | 50>(50);
-
-  const savings = useMemo(() => (amount * percentage) / 100, [amount, percentage]);
-
+  const { t } = useT();
+  const c = t.detrazioni;
+  const [value, setValue] = useState<number | "">("");
+  const num = typeof value === "number" ? value : 0;
+  const save36 = num * 0.36;
+  const save50 = num * 0.50;
   return (
     <>
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 bg-gradient-to-b from-ef-bg to-ef-bg-secondary">
-        <Container>
-          <div className="max-w-3xl">
-            <Eyebrow>Detrazioni fiscali · 2026</Eyebrow>
-            <h1 className="heading-1 mt-4 text-balance">
-              {c.hero.headline}
-              <span className="text-ef-accent italic font-light">{c.hero.headlineAccent}</span>
-              {c.hero.headlinePost}
-            </h1>
-            <p className="lead mt-5 text-pretty">{c.hero.subheadline}</p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link href="/contatti" className="btn-primary text-base">
-                {c.hero.cta} <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href={`tel:${site.phoneTel}`} className="btn-secondary text-base">
-                <Phone className="w-4 h-4" /> {site.phone}
-              </a>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <SubpageHero
+        preLabel={t.nav.label.detrazioni}
+        headlinePre={c.hero.headline}
+        headlineAccent={c.hero.headlineAccent}
+        headlinePost={c.hero.headlinePost}
+        subheadline={c.hero.subheadline}
+        cta={c.hero.cta}
+      />
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
-              <h2 className="heading-2 text-balance">
+              <span className="label-eyebrow">Bonus</span>
+              <h2 className="heading-2 mt-3">
                 {c.bonusTitle}
-                <span className="text-ef-accent italic font-light">{c.bonusAccent}</span>
+                <span style={{ color: "var(--color-accent)" }}>{c.bonusAccent}</span>
               </h2>
-              <p className="lead mt-5 text-pretty">{c.bonusBody}</p>
+              <p className="lead mt-5">{c.bonusBody}</p>
             </div>
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-ef-surface-dark mb-4">
-                {c.eligibleTitle}
-                <span className="text-ef-accent italic">{c.eligibleAccent}</span>
-              </h3>
-              <ul className="space-y-3">
-                {c.eligible.map((e) => (
-                  <li key={e} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-ef-accent shrink-0 mt-0.5" />
-                    <span className="text-ef-text-primary">{e}</span>
+              <span className="label-eyebrow">Eligible</span>
+              <h2 className="heading-2 mt-3">
+                Which work may be <span style={{ color: "var(--color-accent)" }}>deductible</span>
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {c.eligible.map((b) => (
+                  <li key={b} className="flex items-start gap-3">
+                    <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                    <span className="text-body-lg" style={{ color: "var(--color-text-primary)" }}>{b}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-2 text-balance">
-              {c.calcTitle}
-              <span className="text-ef-accent italic font-light">{c.calcAccent}</span>
-            </h2>
-            <div className="mt-8 card bg-ef-bg">
-              <label htmlFor="det-amt" className="label-ef block mb-2">
-                {c.calcLabel}
-              </label>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  id="det-amt"
-                  type="number"
-                  min={0}
-                  step={500}
-                  value={amount}
-                  onChange={(e) => setAmount(Math.max(0, Number(e.target.value) || 0))}
-                  className="input-ef flex-1"
-                  placeholder={c.calcPlaceholder}
-                />
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setPercentage(36)}
-                    className={`px-4 py-3 rounded-full text-sm font-semibold transition-colors ${
-                      percentage === 36
-                        ? "bg-ef-accent text-white"
-                        : "bg-ef-surface border border-ef-border-subtle text-ef-text-primary"
-                    }`}
-                  >
-                    36%
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPercentage(50)}
-                    className={`px-4 py-3 rounded-full text-sm font-semibold transition-colors ${
-                      percentage === 50
-                        ? "bg-ef-accent text-white"
-                        : "bg-ef-surface border border-ef-border-subtle text-ef-text-primary"
-                    }`}
-                  >
-                    50%
-                  </button>
-                </div>
-              </div>
-              <div className="mt-6 p-5 sm:p-6 rounded-2xl bg-ef-accent-subtle border border-ef-accent/20">
-                <div className="flex items-center gap-2 text-sm text-ef-text-primary mb-2">
-                  <Calculator className="w-4 h-4 text-ef-accent" />
-                  {percentage === 36 ? c.calcResult36 : c.calcResult50}
-                </div>
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                  <p className="text-3xl sm:text-4xl font-bold text-ef-accent">
-                    € {savings.toLocaleString("it-IT", { maximumFractionDigits: 0 })}
-                  </p>
-                  <p className="text-sm text-ef-text-secondary">
-                    {c.calcSave} {percentage}% su € {amount.toLocaleString("it-IT")}
-                  </p>
-                </div>
-              </div>
-              <p className="mt-4 text-xs text-ef-text-muted">
-                *Calcolo indicativo. Per una consulenza personalizzata contattaci: le detrazioni
-                effettive dipendono dalla situazione fiscale e dalle normative vigenti.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-2 text-balance">
-              {c.compassTitle}
-              <span className="text-ef-accent italic font-light">{c.compassAccent}</span>
-            </h2>
-            <p className="lead mt-5 text-pretty">{c.compassBody}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {["24 mesi", "36 mesi", "48 mesi"].map((m) => (
-                <span
-                  key={m}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-ef-surface border border-ef-border-subtle text-sm font-semibold"
-                >
-                  Compass {m}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface">
-        <Container>
-          <FAQ items={c.faq} />
-        </Container>
-      </Section>
-
-      <Section bg="bg-ef-surface-dark text-ef-text-on-dark">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        </div>
+      </section>
+      <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <Eyebrow>Parla con noi</Eyebrow>
-              <H2 className="mt-4 text-ef-text-on-dark">
-                Richiedi informazioni <span className="text-ef-accent italic font-light">gratuite</span>
-              </H2>
-              <p className="mt-5 text-white/80 text-lg">
-                Ti guidiamo nella scelta della soluzione migliore e sulle detrazioni fiscali applicabili.
-              </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <WhatsAppButton phone={site.whatsapp} message="Ciao, vorrei informazioni sulle detrazioni fiscali" />
-                <a href={`tel:${site.phoneTel}`} className="btn-outline-white">
-                  <Phone className="w-4 h-4" /> {site.phone}
-                </a>
+              <span className="label-eyebrow">Financing</span>
+              <h2 className="heading-2 mt-3">
+                {c.compassTitle}
+                <span style={{ color: "var(--color-accent)" }}>{c.compassAccent}</span>
+              </h2>
+              <p className="lead mt-5">{c.compassBody}</p>
+            </div>
+            <div
+              className="rounded-2xl"
+              style={{ backgroundColor: "var(--color-accent-subtle)", border: "1px solid var(--color-border-subtle)", padding: 32 }}
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <Calculator size={28} style={{ color: "var(--color-accent)" }} />
+                <h3 className="heading-3" style={{ fontWeight: 500 }}>
+                  {c.calcTitle}
+                  <span style={{ color: "var(--color-accent)" }}>{c.calcAccent}</span>
+                </h3>
+              </div>
+              <label className="label-ef">{c.calcLabel}</label>
+              <input
+                type="number"
+                inputMode="numeric"
+                placeholder={c.calcPlaceholder}
+                value={value}
+                onChange={(e) => setValue(e.target.value === "" ? "" : Number(e.target.value))}
+                className="input-ef mb-5"
+                min={0}
+              />
+              <div className="space-y-3">
+                <div className="flex justify-between items-center" style={{ padding: "12px 16px", backgroundColor: "var(--color-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-subtle)" }}>
+                  <span className="text-body" style={{ color: "var(--color-text-secondary)" }}>{c.calcResult36}</span>
+                  <span className="font-semibold" style={{ color: "var(--color-accent)" }}>− € {save36.toLocaleString("it-IT", { maximumFractionDigits: 0 })}</span>
+                </div>
+                <div className="flex justify-between items-center" style={{ padding: "12px 16px", backgroundColor: "var(--color-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-subtle)" }}>
+                  <span className="text-body" style={{ color: "var(--color-text-secondary)" }}>{c.calcResult50}</span>
+                  <span className="font-semibold" style={{ color: "var(--color-accent)" }}>− € {save50.toLocaleString("it-IT", { maximumFractionDigits: 0 })}</span>
+                </div>
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-6 sm:p-8 text-ef-text-primary shadow-xl">
-              <ContactForm />
-            </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="label-eyebrow">FAQ</span>
+            <h2 className="heading-2 mt-3">Frequently Asked Questions</h2>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <FAQ items={c.faq} />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

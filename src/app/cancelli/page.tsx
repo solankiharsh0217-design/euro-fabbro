@@ -1,118 +1,141 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircle, ArrowRight, Award, Phone } from "lucide-react";
-import { site, cancelliContent } from "@/lib/content";
-import { Container, Section, Eyebrow, H1, H2 } from "@/components/ui";
+import { CheckCircle, ArrowRight, Award } from "lucide-react";
+import { useT } from "@/components/LanguageProvider";
+import { SubpageHero } from "@/components/Subpage";
 import { FAQ } from "@/components/FAQ";
-import { ContactForm, WhatsAppButton } from "@/components/ContactForm";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Cancelli su misura e pronta consegna — Carpenteria certificata",
-  description:
-    "Cancelli in ferro su misura a Bologna, Modena e Ferrara. Scorrevoli, a battente, pedonali, autoportanti. Produzione interna, marcatura CE, pronta consegna.",
-};
+import { ContactForm } from "@/components/ContactForm";
 
 export default function CancelliPage() {
-  const c = cancelliContent;
+  const { t } = useT();
+  const c = t.cancelli;
   return (
     <>
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 px-4 bg-gradient-to-b from-ef-bg to-ef-bg-secondary">
-        <Container>
-          <div className="max-w-3xl">
-            <Eyebrow>Cancelli · Bologna, Modena, Ferrara</Eyebrow>
-            <h1 className="heading-1 mt-4 text-balance">
-              {c.hero.headline}
-              <span className="text-ef-accent italic font-light">{c.hero.headlineAccent}</span>
-            </h1>
-            <p className="lead mt-5 text-pretty">{c.hero.subheadline}</p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link href="/contatti" className="btn-primary text-base">
-                {c.hero.cta} <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a href={`tel:${site.phoneTel}`} className="btn-secondary text-base">
-                <Phone className="w-4 h-4" /> {site.phone}
-              </a>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <SubpageHero
+        preLabel={`${t.nav.label.cancelli} · Bologna, Modena, Ferrara`}
+        headlinePre={c.hero.headline}
+        headlineAccent={c.hero.headlineAccent}
+        subheadline={c.hero.subheadline}
+        cta={c.hero.cta}
+      />
 
-      <Section bg="bg-ef-bg">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <H2 pre={c.variantsTitle} accent={c.variantsTitleAccent} post={c.variantsTitlePost} />
+      <section
+        style={{
+          backgroundColor: "var(--color-bg)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+            <span className="label-eyebrow">{c.variantsTitle}</span>
+            <h2 className="heading-2 mt-3">
+              {c.variantsTitle.replace(/\.$/, "")}
+              <span style={{ color: "var(--color-accent)" }}>{c.variantsTitleAccent}</span>
+              {c.variantsTitlePost}
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.variants.map((v) => (
               <div key={v.name} className="card">
-                <h3 className="text-xl sm:text-2xl font-bold text-ef-surface-dark mb-3">{v.name}</h3>
-                <p className="text-ef-text-secondary leading-relaxed">{v.desc}</p>
+                <div className="flex items-start gap-3 mb-3">
+                  <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                  <h3 className="text-h4" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
+                </div>
+                <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{v.desc}</p>
               </div>
             ))}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      <Section bg="bg-ef-surface">
-        <Container>
+      <section
+        style={{
+          backgroundColor: "var(--color-surface)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <Eyebrow>Vantaggi</Eyebrow>
-              <H2 className="mt-4" pre={c.whyIronTitle} accent={c.whyIronAccent} />
-              <ul className="mt-6 space-y-3 sm:space-y-4">
+              <span className="label-eyebrow">Vantaggi</span>
+              <h2 className="heading-2 mt-3">
+                {c.whyIronTitle}
+                <span style={{ color: "var(--color-accent)" }}>{c.whyIronAccent}</span>
+              </h2>
+              <ul className="mt-6 space-y-3">
                 {c.whyIronBenefits.map((b) => (
                   <li key={b} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-ef-accent shrink-0 mt-0.5" />
-                    <span className="text-ef-text-primary text-base sm:text-lg">{b}</span>
+                    <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                    <span className="text-body-lg" style={{ color: "var(--color-text-primary)" }}>{b}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-3xl bg-ef-accent-subtle p-6 sm:p-10 border border-ef-border-subtle">
+            <div
+              className="rounded-2xl"
+              style={{
+                backgroundColor: "var(--color-accent-subtle)",
+                padding: "32px",
+                border: "1px solid var(--color-border-subtle)",
+              }}
+            >
               <div className="flex items-center gap-3 mb-4">
-                <Award className="w-7 h-7 text-ef-accent" />
-                <h3 className="text-xl sm:text-2xl font-bold text-ef-surface-dark">
+                <Award size={28} style={{ color: "var(--color-accent)" }} />
+                <h3 className="heading-3" style={{ fontWeight: 500 }}>
                   {c.prontaConsegnaTitle}
-                  <span className="text-ef-accent italic">{c.prontaConsegnaAccent}</span>
+                  <span style={{ color: "var(--color-accent)" }}>{c.prontaConsegnaAccent}</span>
                 </h3>
               </div>
-              <p className="text-ef-text-primary leading-relaxed">{c.prontaConsegnaBody}</p>
+              <p className="text-body" style={{ color: "var(--color-text-primary)" }}>{c.prontaConsegnaBody}</p>
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      <Section bg="bg-ef-bg">
-        <Container>
-          <FAQ items={c.faq} />
-        </Container>
-      </Section>
+      <section
+        style={{
+          backgroundColor: "var(--color-bg)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="label-eyebrow">FAQ</span>
+            <h2 className="heading-2 mt-3">Frequently Asked Questions</h2>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <FAQ items={c.faq} />
+          </div>
+        </div>
+      </section>
 
-      <Section bg="bg-ef-surface-dark text-ef-text-on-dark">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <section
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          color: "var(--color-text-on-dark)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <Eyebrow>Parla con noi</Eyebrow>
-              <H2 className="mt-4 text-ef-text-on-dark">
-                Richiedi il tuo preventivo <span className="text-ef-accent italic font-light">gratuito</span>
-              </H2>
-              <p className="mt-5 text-white/80 text-lg">
-                Sopralluogo gratuito, preventivo senza impegno. Rispondiamo entro 24 ore.
+              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
+              <h2 className="heading-2 mt-3" style={{ color: "var(--color-text-on-dark)" }}>
+                Request your <span style={{ color: "var(--color-accent)" }}>free quote</span>
+              </h2>
+              <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.8)" }}>
+                Free site visit, no-obligation quote. We respond within 24 hours.
               </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <WhatsAppButton phone={site.whatsapp} message="Ciao, vorrei un preventivo per un cancello" />
-                <a href={`tel:${site.phoneTel}`} className="btn-outline-white">
-                  <Phone className="w-4 h-4" /> {site.phone}
-                </a>
-              </div>
             </div>
-            <div className="bg-white rounded-3xl p-6 sm:p-8 text-ef-text-primary shadow-xl">
-              <ContactForm />
-            </div>
+            <ContactForm />
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
     </>
   );
 }

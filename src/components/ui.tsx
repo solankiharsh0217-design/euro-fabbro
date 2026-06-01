@@ -1,51 +1,51 @@
-import type { ReactNode } from "react";
+import { ReactNode } from "react";
 
-export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`container-ef ${className}`}>{children}</div>;
+export function Container({ children, className = "", as: As = "div" }: { children: ReactNode; className?: string; as?: any }) {
+  return <As className={`container-ef ${className}`}>{children}</As>;
 }
 
 export function Section({
   children,
+  bg = "var(--color-bg)",
   className = "",
-  bg = "bg-ef-bg",
+  id,
 }: {
   children: ReactNode;
-  className?: string;
   bg?: string;
+  className?: string;
+  id?: string;
 }) {
-  return <section className={`section ${bg} ${className}`}>{children}</section>;
+  return (
+    <section
+      id={id}
+      className={className}
+      style={{
+        backgroundColor: bg,
+        paddingTop: "var(--section-padding-y)",
+        paddingBottom: "var(--section-padding-y)",
+      }}
+    >
+      <div className="container-ef">{children}</div>
+    </section>
+  );
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return <span className="eyebrow">{children}</span>;
+  return <span className="label-eyebrow">{children}</span>;
 }
 
-export function H1({ children, accent, className = "" }: { children: ReactNode; accent?: ReactNode; className?: string }) {
-  return (
-    <h1 className={`heading-1 text-balance ${className}`}>
-      {children}
-      {accent ? (
-        <>
-          {" "}
-          <span className="text-ef-accent italic font-light">{accent}</span>
-        </>
-      ) : null}
-    </h1>
-  );
+export function H1({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <h1 className={`heading-1 ${className}`}>{children}</h1>;
 }
 
-export function H2({ children, accent, post, pre, className = "" }: { children?: ReactNode; accent?: ReactNode; pre?: ReactNode; post?: ReactNode; className?: string }) {
-  return (
-    <h2 className={`heading-2 text-balance ${className}`}>
-      {pre}
-      {children}
-      {accent ? (
-        <>
-          {" "}
-          <span className="text-ef-accent italic font-light">{accent}</span>
-        </>
-      ) : null}
-      {post}
-    </h2>
-  );
+export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <h2 className={`heading-2 ${className}`}>{children}</h2>;
+}
+
+export function H3({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <h3 className={`heading-3 ${className}`}>{children}</h3>;
+}
+
+export function Lead({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <p className={`lead ${className}`}>{children}</p>;
 }

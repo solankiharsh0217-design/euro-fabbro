@@ -1,40 +1,56 @@
 "use client";
-
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useT } from "./LanguageProvider";
 
-export type FAQItem = { q: string; a: string };
-
-export function FAQ({ items, title = "Domande frequenti" }: { items: FAQItem[]; title?: string }) {
+export function FAQ({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
+  const { t } = useT();
   return (
-    <div className="max-w-3xl mx-auto">
-      <h2 className="heading-2 text-center mb-8 sm:mb-12">{title}</h2>
-      <div className="bg-ef-surface rounded-2xl border border-ef-border-subtle overflow-hidden divide-y divide-ef-border-subtle">
-        {items.map((it, i) => {
-          const isOpen = open === i;
-          return (
-            <div key={i}>
-              <button
-                type="button"
-                onClick={() => setOpen(isOpen ? null : i)}
-                className="w-full text-left flex items-center justify-between gap-4 px-4 sm:px-6 py-4 sm:py-5 hover:bg-ef-bg-secondary/50 transition-colors"
-                aria-expanded={isOpen}
+    <div className="space-y-3">
+      {items.map((it, i) => {
+        const isOpen = open === i;
+        return (
+          <div
+            key={i}
+            className="card"
+            style={{ padding: 0, overflow: "hidden" }}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="w-full text-left flex items-center justify-between gap-4"
+              style={{ padding: "20px 24px" }}
+              aria-expanded={isOpen}
+            >
+              <span className="font-medium" style={{ color: "var(--color-text-primary)", fontSize: "var(--text-h4)" }}>
+                {it.q}
+              </span>
+              <ChevronDown
+                size={20}
+                style={{
+                  color: "var(--color-accent)",
+                  flexShrink: 0,
+                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform var(--duration-base) var(--ease-out)",
+                }}
+              />
+            </button>
+            {isOpen && (
+              <div
+                style={{
+                  padding: "0 24px 20px 24px",
+                  color: "var(--color-text-secondary)",
+                  fontSize: "var(--text-body)",
+                  lineHeight: "var(--leading-body)",
+                }}
               >
-                <span className="text-base sm:text-lg font-semibold text-ef-surface-dark">{it.q}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-ef-accent shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {isOpen && (
-                <div className="px-4 sm:px-6 pb-4 sm:pb-5 text-ef-text-secondary leading-relaxed">{it.a}</div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+                {it.a}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
