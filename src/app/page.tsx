@@ -384,9 +384,9 @@ function TurnkeySection() {
           <p className="lead mt-4">{t.turnkey.subheadline}</p>
         </div>
       </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6" stagger={0.12}>
+      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch" stagger={0.12}>
         {t.turnkey.cards.map((c, idx) => (
-          <div key={c.title} className="card-hover p-0 overflow-hidden group">
+          <div key={c.title} className="card-hover p-0 overflow-hidden group h-full flex flex-col">
             <div
               className="relative aspect-[4/3] overflow-hidden"
               style={{ backgroundColor: "var(--color-bg-secondary)" }}
@@ -505,13 +505,13 @@ function ProcessSection() {
           </h2>
         </div>
       </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6" stagger={0.12}>
+      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch" stagger={0.12}>
         {t.process.steps.map((s, i) => {
           const Icon = processIcons[s.icon] ?? CheckCircle;
           return (
             <div
               key={i}
-              className="card group transition-all duration-300 hover:shadow-md"
+              className="card group transition-all duration-300 hover:shadow-md h-full flex flex-col"
               style={{ position: "relative" }}
             >
               <div
@@ -685,11 +685,11 @@ function TestimonialsSection() {
           </h2>
         </div>
       </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" stagger={0.12}>
+      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch" stagger={0.12}>
         {t.testimonials.items.map((tm, i) => (
           <div
             key={i}
-            className="card relative transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+            className="card relative transition-all duration-300 hover:-translate-y-1 hover:shadow-md h-full flex flex-col"
           >
             <Quote
               className="absolute"
