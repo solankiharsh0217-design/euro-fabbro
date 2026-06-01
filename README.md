@@ -39,10 +39,12 @@ npm run dev          # http://localhost:3000
 ## Production build
 
 ```bash
-npm run build        # outputs static files to ./out
+npm run build
 ```
 
-The `out/` directory is the deployable artifact — pure HTML/CSS/JS, no server needed.
+On Vercel: just push to GitHub, Vercel auto-detects Next.js and runs the build.
+
+For self-hosting as static HTML (e.g. Netlify, GitHub Pages, S3), add `output: 'export'` to `next.config.mjs` and the build will emit to `out/`.
 
 ## Deploy to Vercel
 
@@ -50,8 +52,6 @@ The `out/` directory is the deployable artifact — pure HTML/CSS/JS, no server 
 2. Import the repo in Vercel (https://vercel.com/new)
 3. Vercel auto-detects Next.js — no config needed
 4. Custom domain: add in Vercel dashboard → Settings → Domains
-
-The included `vercel.json` is pre-configured for static export.
 
 ## Configuration
 
