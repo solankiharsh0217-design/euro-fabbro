@@ -62,10 +62,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen antialiased">
         <LanguageProvider>
           <Header />
-          <main className="min-h-[60vh]">{children}</main>
+          <MainWrapper>{children}</MainWrapper>
           <Footer />
         </LanguageProvider>
       </body>
     </html>
   );
 }
+
+import { MainWrapper } from "@/components/MainWrapper";

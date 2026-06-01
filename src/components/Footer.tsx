@@ -75,19 +75,15 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-4">
-            <Link href="/" className="flex items-center gap-3 mb-5">
-              <Image src={site.logo} alt={`${site.name} logo`} width={44} height={44} className="w-11 h-11" />
-              <div className="flex flex-col leading-none">
-                <span className="text-2xl font-display" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>
-                  Euro<span style={{ color: "var(--color-accent)" }}>fabbro</span>
-                </span>
-                <span
-                  className="text-[10px] uppercase"
-                  style={{ color: "rgba(245, 240, 232, 0.5)", letterSpacing: "0.22em", marginTop: 4 }}
-                >
-                  Digital Atelier
-                </span>
-              </div>
+            <Link href="/" className="flex items-center mb-5">
+              <Image
+                src={site.logo}
+                alt={`${site.name} logo`}
+                width={160}
+                height={80}
+                className="w-[140px] md:w-[160px] h-auto"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
             </Link>
             <p className="text-body-sm" style={{ color: "rgba(245, 240, 232, 0.7)", lineHeight: 1.7, marginBottom: 24, maxWidth: 320 }}>
               {t.footer.tagline}

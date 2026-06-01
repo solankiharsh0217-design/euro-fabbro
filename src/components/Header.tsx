@@ -4,7 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ArrowRight, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { useT } from "./LanguageProvider";
 import LanguageToggle from "./LanguageToggle";
 import { useScrollPosition } from "@/lib/useScrollPosition";
@@ -56,7 +56,7 @@ export default function Header() {
         data-transparent={transparent ? "true" : "false"}
         data-scrolled={scrolled ? "true" : "false"}
         style={{
-          position: "sticky",
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
@@ -79,45 +79,25 @@ export default function Header() {
         <div
           className="container-ef flex items-center justify-between gap-4 h-full"
         >
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <Link href="/" className="flex items-center shrink-0 group">
             <motion.span
-              whileHover={{ rotate: -6, scale: 1.05 }}
+              whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.4, ease }}
               className="inline-flex"
+              style={{
+                filter: transparent ? "brightness(0) invert(1)" : "none",
+                transition: "filter 300ms cubic-bezier(.25,.46,.45,.94)",
+              }}
             >
               <Image
                 src={site.logo}
                 alt={`${site.name} logo`}
-                width={44}
-                height={44}
-                className="w-9 h-9 sm:w-11 sm:h-11"
+                width={140}
+                height={70}
+                className="w-[100px] sm:w-[120px] md:w-[140px] h-auto"
                 priority
               />
             </motion.span>
-            <div className="flex flex-col leading-none">
-              <span
-                className="text-lg sm:text-xl font-display"
-                style={{
-                  color: headerText,
-                  fontWeight: 500,
-                  letterSpacing: "-0.015em",
-                  transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
-                }}
-              >
-                Euro<span style={{ color: accent }}>fabbro</span>
-              </span>
-              <span
-                className="hidden md:inline text-[10px] uppercase"
-                style={{
-                  color: headerTextMuted,
-                  letterSpacing: "0.22em",
-                  marginTop: 4,
-                  transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
-                }}
-              >
-                Digital Atelier
-              </span>
-            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -287,16 +267,6 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={`tel:${site.phoneTel}`}
-              className="hidden xl:inline-flex items-center gap-2 text-body-sm"
-              style={{
-                color: transparent ? "rgba(255, 255, 255, 0.85)" : "var(--color-text-secondary)",
-                transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
-              }}
-            >
-              <Phone size={14} style={{ color: accent }} /> {site.phone}
-            </a>
             <LanguageToggle transparent={transparent} />
             <Link
               href="/contatti"

@@ -14,7 +14,7 @@ export const site = {
   address: "Via Galileo Galilei 140, 40014 Palata Pepoli di Crevalcore (BO)",
   hours: "Mon–Fri 8:00–18:00 · Sat by appointment",
   founded: 1977,
-  logo: "/images/logo.png",
+  logo: "/images/logo-landing.png",
   logoLanding: "/images/logo-landing.png",
   social: {
     facebook: "https://www.facebook.com/EUROFABBRO/",
