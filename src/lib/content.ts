@@ -14,7 +14,7 @@ export const site = {
   address: "Via Galileo Galilei 140, 40014 Palata Pepoli di Crevalcore (BO)",
   hours: "Mon–Fri 8:00–18:00 · Sat by appointment",
   founded: 1977,
-  logo: "/images/323043202_logo.png",
+  logo: "/images/logo.png",
   logoLanding: "/images/logo-landing.png",
   social: {
     facebook: "https://www.facebook.com/EUROFABBRO/",
@@ -22,18 +22,23 @@ export const site = {
   },
 } as const;
 
-// Navigation items shared between languages
+// Top-level navigation items shared between languages
 const navBase = [
-  { key: "lavorazioni", href: "/lavorazioni" },
-  { key: "cancelli", href: "/cancelli" },
-  { key: "inferriate", href: "/inferriate" },
-  { key: "recinzioni", href: "/recinzioni" },
-  { key: "carport", href: "/carport" },
-  { key: "automazione", href: "/automazione" },
+  { key: "servizi", href: "/lavorazioni" },
   { key: "percheNoi", href: "/perche-noi" },
   { key: "realizzazioni", href: "/realizzazioni" },
   { key: "detrazioni", href: "/detrazioni" },
   { key: "contatti", href: "/contatti" },
+] as const;
+
+// Sub-items shown under the "Servizi / Services" menu
+const servicesBase = [
+  { key: "lavorazioni", href: "/lavorazioni", descKey: "lavorazioniDesc" },
+  { key: "cancelli", href: "/cancelli", descKey: "cancelliDesc" },
+  { key: "inferriate", href: "/inferriate", descKey: "inferriateDesc" },
+  { key: "recinzioni", href: "/recinzioni", descKey: "recinzioniDesc" },
+  { key: "carport", href: "/carport", descKey: "carportDesc" },
+  { key: "automazione", href: "/automazione", descKey: "automazioneDesc" },
 ] as const;
 
 export const translations = {
@@ -41,7 +46,9 @@ export const translations = {
     lang: "en" as const,
     nav: {
       items: navBase,
+      services: servicesBase,
       label: {
+        servizi: "Services",
         lavorazioni: "Products",
         cancelli: "Gates",
         inferriate: "Security Bars",
@@ -54,6 +61,13 @@ export const translations = {
         detrazioni: "Tax Deductions",
         contatti: "Contact",
         cta: "Request a Quote",
+        lavorazioniDesc: "Stairs, balustrades, furniture and more",
+        cancelliDesc: "Sliding, swing, pedestrian and automated",
+        inferriateDesc: "Custom security bars for every opening",
+        recinzioniDesc: "Wrought iron and modular fencing",
+        carportDesc: "Custom canopies for vehicles and outdoors",
+        automazioneDesc: "Smart motors for every gate type",
+        viewAllServices: "View all services",
       },
     },
     hero: {
@@ -440,7 +454,9 @@ export const translations = {
     lang: "it" as const,
     nav: {
       items: navBase,
+      services: servicesBase,
       label: {
+        servizi: "Servizi",
         lavorazioni: "Lavorazioni",
         cancelli: "Cancelli",
         inferriate: "Inferriate",
@@ -453,6 +469,13 @@ export const translations = {
         detrazioni: "Detrazioni",
         contatti: "Contatti",
         cta: "Richiedi preventivo",
+        lavorazioniDesc: "Scale, balaustre, arredi e molto altro",
+        cancelliDesc: "Scorrevoli, a battente, pedonali e automatizzati",
+        inferriateDesc: "Grate su misura per ogni apertura",
+        recinzioniDesc: "Ferro battuto e doghe modulari",
+        carportDesc: "Coperture su misura per auto ed esterni",
+        automazioneDesc: "Motori smart per ogni tipo di cancello",
+        viewAllServices: "Vedi tutti i servizi",
       },
     },
     hero: {

@@ -67,82 +67,120 @@ function Hero() {
       style={{
         backgroundColor: "var(--color-surface-dark)",
         color: "var(--color-text-on-dark)",
-        paddingTop: "var(--section-padding-y)",
-        paddingBottom: "var(--section-padding-y)",
+        minHeight: "min(720px, 90vh)",
+        display: "flex",
+        alignItems: "center",
       }}
     >
+      <Image
+        src="/images/hero-welding.jpg"
+        alt="Artisan welder crafting custom ironwork in the Ferioli Sergio workshop"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={85}
+        className="object-cover"
+        style={{ objectPosition: "center 30%" }}
+      />
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `url(https://media.base44.com/images/public/69baf22d9cc002736b6b7248/cfd8c4396_generated_image.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.3,
+          background:
+            "linear-gradient(105deg, rgba(28,23,18,0.95) 0%, rgba(28,23,18,0.78) 38%, rgba(62,40,18,0.55) 70%, rgba(184,149,106,0.25) 100%)",
         }}
       />
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0"
         style={{
-          background: "linear-gradient(to bottom, rgba(28, 23, 18, 0.7), rgba(28, 23, 18, 0.95))",
+          background:
+            "linear-gradient(to bottom, rgba(28,23,18,0.35) 0%, transparent 25%, transparent 70%, rgba(28,23,18,0.85) 100%)",
         }}
       />
-      <div className="container-ef">
-        <div className="max-w-3xl">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-body-sm"
-            style={{
-              backgroundColor: "rgba(184, 149, 106, 0.15)",
-              color: "var(--color-accent)",
-              fontWeight: 500,
-              marginBottom: 24,
-            }}
-          >
-            <Award size={14} /> {t.hero.badge}
+      <div className="container-ef relative w-full" style={{ paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-body-sm"
+              style={{
+                backgroundColor: "rgba(184, 149, 106, 0.18)",
+                color: "var(--color-accent)",
+                fontWeight: 500,
+                border: "1px solid rgba(184, 149, 106, 0.35)",
+                marginBottom: 24,
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <Award size={14} /> {t.hero.badge}
+            </div>
+            <h1
+              className="text-hero"
+              style={{
+                color: "#FFFFFF",
+                fontWeight: 300,
+                marginBottom: 24,
+                textShadow: "0 2px 24px rgba(0,0,0,0.35)",
+              }}
+            >
+              {t.hero.headlineLine1}
+              <br />
+              {t.hero.headlineLine2Pre}
+              <span style={{ color: "var(--color-accent)", fontStyle: "italic", fontWeight: 400 }}>{t.hero.headlineLine2Accent}</span>
+              {t.hero.headlineLine2Post}
+            </h1>
+            <p
+              className="text-body-lg"
+              style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 520, marginBottom: 36, textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+            >
+              {t.hero.subheadline}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/contatti" className="btn btn-primary">
+                {t.hero.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link href="#lavorazioni" className="btn btn-secondary-dark">
+                {t.hero.ctaSecondary}
+              </Link>
+            </div>
           </div>
-          <h1
-            className="text-hero"
-            style={{
-              color: "#FFFFFF",
-              fontWeight: 300,
-              marginBottom: 20,
-            }}
-          >
-            {t.hero.headlineLine1}
-            <br />
-            {t.hero.headlineLine2Pre}
-            <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{t.hero.headlineLine2Accent}</span>
-            {t.hero.headlineLine2Post}
-          </h1>
-          <p
-            className="text-body-lg"
-            style={{ color: "rgba(245, 240, 232, 0.82)", maxWidth: 480, marginBottom: 36 }}
-          >
-            {t.hero.subheadline}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/contatti" className="btn btn-primary">
-              {t.hero.ctaPrimary} <ArrowRight size={16} />
-            </Link>
-            <Link href="#lavorazioni" className="btn btn-secondary-dark">
-              {t.hero.ctaSecondary}
-            </Link>
-          </div>
-          <div className="flex flex-wrap gap-3 mt-10">
-            {[t.hero.stat1, t.hero.stat2, t.hero.stat3].map((s, i) => (
-              <span
-                key={i}
-                className="px-4 py-2 text-body-sm"
-                style={{
-                  borderRadius: "var(--radius-full)",
-                  backgroundColor: "rgba(28, 23, 18, 0.5)",
-                  color: "var(--color-text-on-dark)",
-                  backdropFilter: "blur(4px)",
-                }}
+          <div className="lg:col-span-4">
+            <div
+              className="rounded-2xl p-5 sm:p-6"
+              style={{
+                backgroundColor: "rgba(245, 240, 232, 0.08)",
+                border: "1px solid rgba(245, 240, 232, 0.18)",
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 8px 40px rgba(0,0,0,0.25)",
+              }}
+            >
+              <p
+                className="text-body-sm"
+                style={{ color: "var(--color-accent)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}
               >
-                {s}
-              </span>
-            ))}
+                Ferioli Sergio · since 1977
+              </p>
+              <p className="text-body" style={{ color: "rgba(245, 240, 232, 0.9)" }}>
+                Every gate, bar and fence is handcrafted in our workshop near Bologna and installed by our own team — from the first spark to the final bolt.
+              </p>
+            </div>
           </div>
+        </div>
+        <div className="flex flex-wrap gap-3 mt-10 lg:mt-14">
+          {[t.hero.stat1, t.hero.stat2, t.hero.stat3].map((s, i) => (
+            <span
+              key={i}
+              className="px-4 py-2 text-body-sm"
+              style={{
+                borderRadius: "var(--radius-full)",
+                backgroundColor: "rgba(28, 23, 18, 0.55)",
+                color: "var(--color-text-on-dark)",
+                border: "1px solid rgba(245, 240, 232, 0.15)",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              {s}
+            </span>
+          ))}
         </div>
       </div>
     </section>
