@@ -1,11 +1,9 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { CheckCircle, ArrowRight, Award } from "lucide-react";
+import { CheckCircle, Award } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
-import { FAQ } from "@/components/FAQ";
-import { ContactForm } from "@/components/ContactForm";
+import { FaqSection } from "@/components/FaqSection";
+import { ContactCta } from "@/components/ContactCta";
 
 export default function CancelliPage() {
   const { t } = useT();
@@ -95,47 +93,11 @@ export default function CancelliPage() {
         </div>
       </section>
 
-      <section
-        style={{
-          backgroundColor: "var(--color-bg)",
-          paddingTop: "var(--section-padding-y)",
-          paddingBottom: "var(--section-padding-y)",
-        }}
-      >
-        <div className="container-ef">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="label-eyebrow">FAQ</span>
-            <h2 className="heading-2 mt-3">Frequently Asked Questions</h2>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <FAQ items={c.faq} />
-          </div>
-        </div>
-      </section>
-
-      <section
-        style={{
-          backgroundColor: "var(--color-surface-dark)",
-          color: "var(--color-text-on-dark)",
-          paddingTop: "var(--section-padding-y)",
-          paddingBottom: "var(--section-padding-y)",
-        }}
-      >
-        <div className="container-ef">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            <div>
-              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
-              <h2 className="heading-2 mt-3" style={{ color: "var(--color-text-on-dark)" }}>
-                Request your <span style={{ color: "var(--color-accent)" }}>free quote</span>
-              </h2>
-              <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.8)" }}>
-                Free site visit, no-obligation quote. We respond within 24 hours.
-              </p>
-            </div>
-            <ContactForm />
-          </div>
-        </div>
-      </section>
+      <FaqSection items={c.faq} />
+      <ContactCta
+        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        subtitle="Free site visit, no-obligation quote. We respond within 24 hours."
+      />
     </>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Calculator, CheckCircle, ArrowRight } from "lucide-react";
+import { Calculator, CheckCircle } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
-import { FAQ } from "@/components/FAQ";
+import { FaqSection } from "@/components/FaqSection";
 
 export default function DetrazioniPage() {
   const { t } = useT();
@@ -96,17 +96,7 @@ export default function DetrazioniPage() {
           </div>
         </div>
       </section>
-      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
-        <div className="container-ef">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="label-eyebrow">FAQ</span>
-            <h2 className="heading-2 mt-3">Frequently Asked Questions</h2>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <FAQ items={c.faq} />
-          </div>
-        </div>
-      </section>
+      <FaqSection items={c.faq} />
     </>
   );
 }

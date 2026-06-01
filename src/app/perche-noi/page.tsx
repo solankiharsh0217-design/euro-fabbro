@@ -2,7 +2,7 @@
 import { Award, ShieldCheck, Sparkles } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactCta } from "@/components/ContactCta";
 
 export default function PercheNoiPage() {
   const { t } = useT();
@@ -74,19 +74,9 @@ export default function PercheNoiPage() {
           </div>
         </div>
       </section>
-      <section style={{ backgroundColor: "var(--color-surface-dark)", color: "var(--color-text-on-dark)", paddingTop: 0, paddingBottom: "var(--section-padding-y)" }}>
-        <div className="container-ef">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            <div>
-              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
-              <h2 className="heading-2 mt-3" style={{ color: "var(--color-text-on-dark)" }}>
-                Request your <span style={{ color: "var(--color-accent)" }}>free quote</span>
-              </h2>
-            </div>
-            <ContactForm />
-          </div>
-        </div>
-      </section>
+      <ContactCta
+        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+      />
     </>
   );
 }

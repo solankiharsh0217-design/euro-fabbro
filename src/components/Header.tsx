@@ -11,6 +11,7 @@ import { useScrollPosition } from "@/lib/useScrollPosition";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const THRESHOLD = 32;
+const TRANSPARENT_PATHS = new Set<string>(["/", "/contatti"]);
 
 export default function Header() {
   const { t, site } = useT();
@@ -20,9 +21,14 @@ export default function Header() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scrolled = useScrollPosition() > THRESHOLD;
-  const onHero = pathname === "/";
+  const cleanPath = pathname.replace(/\/$/, "") || "/";
+  const canBeTransparent = TRANSPARENT_PATHS.has(cleanPath);
+  const transparent = canBeTransparent && !scrolled;
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const isActive = (href: string) => {
+    const h = href.replace(/\/$/, "") || "/";
+    return cleanPath === h || cleanPath.startsWith(h + "/");
+  };
   const isServicesActive = t.nav.services.some((s) => isActive(s.href));
 
   useEffect(() => {
@@ -40,30 +46,35 @@ export default function Header() {
     closeTimer.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
-  const transparent = onHero && !scrolled;
-  const headerBg = transparent
-    ? "transparent"
-    : "rgba(245, 240, 232, 0.85)";
-  const headerBorder = transparent ? "transparent" : "var(--color-border-subtle)";
+  const accent = "var(--color-accent)";
   const headerText = transparent ? "#FFFFFF" : "var(--color-text-primary)";
   const headerTextMuted = transparent ? "rgba(245, 240, 232, 0.75)" : "var(--color-text-muted)";
-  const accent = "var(--color-accent)";
 
   return (
     <>
-      <motion.header
-        initial={false}
-        animate={{
-          backgroundColor: headerBg,
-          borderBottomColor: headerBorder,
+      <header
+        data-transparent={transparent ? "true" : "false"}
+        data-scrolled={scrolled ? "true" : "false"}
+        style={{
+          position: "sticky",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          width: "100%",
           height: scrolled ? 64 : 76,
+          backgroundColor: transparent ? "transparent" : "rgba(245, 240, 232, 0.88)",
+          borderBottom: transparent
+            ? "1px solid transparent"
+            : "1px solid var(--color-border-subtle)",
           boxShadow: scrolled
             ? "0 4px 24px rgba(28, 23, 18, 0.06)"
             : "0 0 0 rgba(0, 0, 0, 0)",
+          backdropFilter: transparent ? "none" : "blur(12px)",
+          WebkitBackdropFilter: transparent ? "none" : "blur(12px)",
+          transition:
+            "background-color 300ms cubic-bezier(.25,.46,.45,.94), border-color 300ms cubic-bezier(.25,.46,.45,.94), box-shadow 300ms cubic-bezier(.25,.46,.45,.94), height 300ms cubic-bezier(.25,.46,.45,.94), backdrop-filter 300ms cubic-bezier(.25,.46,.45,.94)",
         }}
-        transition={{ duration: 0.3, ease }}
-        className="sticky top-0 z-50 w-full backdrop-blur-md"
-        style={{ borderBottomWidth: 1, borderBottomStyle: "solid" }}
       >
         <div
           className="container-ef flex items-center justify-between gap-4 h-full"
@@ -90,7 +101,7 @@ export default function Header() {
                   color: headerText,
                   fontWeight: 500,
                   letterSpacing: "-0.015em",
-                  transition: "color var(--duration-base) var(--ease-out)",
+                  transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
                 }}
               >
                 Euro<span style={{ color: accent }}>fabbro</span>
@@ -101,7 +112,7 @@ export default function Header() {
                   color: headerTextMuted,
                   letterSpacing: "0.22em",
                   marginTop: 4,
-                  transition: "color var(--duration-base) var(--ease-out)",
+                  transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
                 }}
               >
                 Digital Atelier
@@ -109,7 +120,7 @@ export default function Header() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-1">
             {t.nav.items.map((item) => {
               if (item.key === "servizi") {
                 return (
@@ -122,12 +133,12 @@ export default function Header() {
                     <button
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
-                      className="nav-link relative inline-flex items-center gap-1.5 px-3 py-2"
+                      className="relative inline-flex items-center gap-1.5 px-3 py-2"
                       style={{
                         fontWeight: isServicesActive || servicesOpen ? 500 : 400,
                         color: isServicesActive || servicesOpen ? accent : headerText,
                         fontSize: "var(--text-body-sm)",
-                        transition: "color var(--duration-base) var(--ease-out)",
+                        transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
                       }}
                       aria-expanded={servicesOpen}
                       aria-haspopup="true"
@@ -136,7 +147,7 @@ export default function Header() {
                       <ChevronDown
                         size={13}
                         style={{
-                          transition: "transform var(--duration-base) var(--ease-out)",
+                          transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
                           transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)",
                         }}
                       />
@@ -146,7 +157,7 @@ export default function Header() {
                           backgroundColor: accent,
                           transform: servicesOpen || isServicesActive ? "scaleX(1)" : "scaleX(0)",
                           transformOrigin: "left center",
-                          transition: "transform var(--duration-base) var(--ease-out)",
+                          transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
                         }}
                       />
                     </button>
@@ -252,12 +263,12 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="nav-link relative px-3 py-2"
+                  className="relative px-3 py-2"
                   style={{
                     fontWeight: isActive(item.href) ? 500 : 400,
                     color: isActive(item.href) ? accent : headerText,
                     fontSize: "var(--text-body-sm)",
-                    transition: "color var(--duration-base) var(--ease-out)",
+                    transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
                   }}
                 >
                   {t.nav.label[item.key as keyof typeof t.nav.label]}
@@ -267,7 +278,7 @@ export default function Header() {
                       backgroundColor: accent,
                       transform: isActive(item.href) ? "scaleX(1)" : "scaleX(0)",
                       transformOrigin: "left center",
-                      transition: "transform var(--duration-base) var(--ease-out)",
+                      transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
                     }}
                   />
                 </Link>
@@ -281,12 +292,12 @@ export default function Header() {
               className="hidden xl:inline-flex items-center gap-2 text-body-sm"
               style={{
                 color: transparent ? "rgba(255, 255, 255, 0.85)" : "var(--color-text-secondary)",
-                transition: "color var(--duration-base) var(--ease-out)",
+                transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
               }}
             >
               <Phone size={14} style={{ color: accent }} /> {site.phone}
             </a>
-            <LanguageToggle />
+            <LanguageToggle transparent={transparent} />
             <Link
               href="/contatti"
               className="hidden lg:inline-flex btn btn-primary"
@@ -297,14 +308,14 @@ export default function Header() {
             <button
               className="lg:hidden p-2"
               onClick={() => setOpen(true)}
-              style={{ color: headerText, transition: "color var(--duration-base) var(--ease-out)" }}
+              style={{ color: headerText, transition: "color 300ms cubic-bezier(.25,.46,.45,.94)" }}
               aria-label="Open menu"
             >
               <Menu size={24} />
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open && (
@@ -351,7 +362,7 @@ export default function Header() {
                 <ChevronDown
                   size={20}
                   style={{
-                    transition: "transform var(--duration-base) var(--ease-out)",
+                    transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
                     transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
                   }}
                 />
