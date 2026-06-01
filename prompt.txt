@@ -1,0 +1,24 @@
+## Target
+- **URL:** https://eurofabbro-v1.base44.app
+- **Local folder:** current directory
+- **GitHub repo:** https://github.com/solankiharsh0217-design/euro-fabbro
+## What to do
+1. **Fetch the target site** and extract everything: navigation, all pages, headings, body copy, team members with bios, services, client logos, contact details (phone, email, WhatsApp, address, VAT/tax ID), social links, and any other real content.
+2. **Download all real images** from the site (logos, team photos, client logos, favicon) to `public/images/`. If the hero needs a background image, pick a free one from Unsplash that matches the site's industry.
+3. **Set up a Next.js project** in the local folder with static export, Tailwind CSS, Framer Motion, and lucide-react icons. Pin Node 22 via `.nvmrc`.
+4. **Build all pages** as static routes, one per page on the original site. Keep the original language and slugs exactly. Include a 404 page.
+5. **Make it fully mobile responsive** — every section, grid, and component must work cleanly on phone, tablet, and desktop. Stacked layouts on mobile, multi-column on larger screens, touch-friendly buttons, readable font sizes, no horizontal scroll.
+6. **Build the site** and verify the output: all pages load, all images load, all links work, all copy is correctly encoded (UTF-8 accents/ñ/etc.).
+7. **Initialize git** in the local folder (separate repo from any parent), commit, and push to the GitHub repo.
+8. **Prepare for Vercel deployment** by adding a `vercel.json`, `.nvmrc`, and a README with deploy instructions. The user will click "Deploy" on Vercel themselves.
+## Output
+- A working Next.js static site in the local folder
+- All code pushed to the GitHub repo
+- `out/` folder built and ready
+- A short summary of what was built, what was skipped, and what needs the user's input
+## Constraints
+- Do NOT use any platform-specific skills (like base44, Webflow, etc.) — build it from scratch with Next.js
+- Do NOT use placeholder copy — extract everything from the real site
+- Do NOT commit `node_modules`, `.next`, or `out/` to git
+- Do NOT add code comments unless I ask
+- Use the real phone numbers, emails, WhatsApp links, and addresses from the original site
