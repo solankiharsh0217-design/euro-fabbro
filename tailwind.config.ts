@@ -5,20 +5,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Original site palette (Digital Atelier)
-        'color-bg': 'var(--color-bg)',
-        'color-bg-secondary': 'var(--color-bg-secondary)',
-        'color-surface': 'var(--color-surface)',
-        'color-surface-dark': 'var(--color-surface-dark)',
-        'color-text-primary': 'var(--color-text-primary)',
-        'color-text-secondary': 'var(--color-text-secondary)',
-        'color-text-muted': 'var(--color-text-muted)',
-        'color-text-on-dark': 'var(--color-text-on-dark)',
-        'color-accent': 'var(--color-accent)',
-        'color-accent-hover': 'var(--color-accent-hover)',
-        'color-accent-subtle': 'var(--color-accent-subtle)',
-        'color-border': 'var(--color-border)',
-        'color-border-subtle': 'var(--color-border-subtle)',
+        ef: {
+          bg: 'var(--color-bg)',
+          'bg-secondary': 'var(--color-bg-secondary)',
+          surface: 'var(--color-surface)',
+          'surface-dark': 'var(--color-surface-dark)',
+          text: 'var(--color-text-primary)',
+          'text-secondary': 'var(--color-text-secondary)',
+          'text-muted': 'var(--color-text-muted)',
+          'text-on-dark': 'var(--color-text-on-dark)',
+          accent: 'var(--color-accent)',
+          'accent-hover': 'var(--color-accent-hover)',
+          'accent-subtle': 'var(--color-accent-subtle)',
+          border: 'var(--color-border)',
+          'border-subtle': 'var(--color-border-subtle)',
+        },
       },
       fontFamily: {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],

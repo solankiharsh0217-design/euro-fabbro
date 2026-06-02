@@ -30,6 +30,27 @@ export function Section({
   );
 }
 
+export function SectionEyebrow({ children, onDark = false }: { children: ReactNode; onDark?: boolean }) {
+  return (
+    <div
+      className="inline-flex items-center gap-2 mb-4"
+      style={{
+        padding: "6px 14px",
+        borderRadius: 999,
+        backgroundColor: onDark ? "rgba(184, 149, 106, 0.18)" : "var(--color-accent-subtle)",
+        color: "var(--color-accent)",
+        fontSize: 11,
+        fontWeight: 600,
+        letterSpacing: "0.18em",
+        textTransform: "uppercase",
+        border: onDark ? "1px solid rgba(184, 149, 106, 0.3)" : "1px solid transparent",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function Eyebrow({ children }: { children: ReactNode }) {
   return <span className="label-eyebrow">{children}</span>;
 }

@@ -1,18 +1,19 @@
 "use client";
-import { CheckCircle, Award } from "lucide-react";
+import { CheckCircle, Award, Shield } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
-import { SubpageHero } from "@/components/Subpage";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCta } from "@/components/ContactCta";
+import { SubpageHero } from "@/components/Subpage";
+import { SectionEyebrow } from "@/components/ui";
 
 export default function CancelliPage() {
-  const { t } = useT();
+  const { t, site } = useT();
   const c = t.cancelli;
   return (
     <>
       <SubpageHero
         preLabel={`${t.nav.label.cancelli} · Bologna, Modena, Ferrara`}
-        headlinePre={c.hero.headline}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -20,16 +21,16 @@ export default function CancelliPage() {
 
       <section
         style={{
-          backgroundColor: "var(--color-bg)",
+          backgroundColor: "var(--color-bg-secondary)",
           paddingTop: "var(--section-padding-y)",
           paddingBottom: "var(--section-padding-y)",
         }}
       >
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-            <span className="label-eyebrow">{c.variantsTitle}</span>
+            <SectionEyebrow>Tipologie</SectionEyebrow>
             <h2 className="heading-2 mt-3">
-              {c.variantsTitle.replace(/\.$/, "")}
+              {c.variantsTitlePre}
               <span style={{ color: "var(--color-accent)" }}>{c.variantsTitleAccent}</span>
               {c.variantsTitlePost}
             </h2>
@@ -50,7 +51,7 @@ export default function CancelliPage() {
 
       <section
         style={{
-          backgroundColor: "var(--color-surface)",
+          backgroundColor: "var(--color-bg)",
           paddingTop: "var(--section-padding-y)",
           paddingBottom: "var(--section-padding-y)",
         }}
@@ -58,13 +59,13 @@ export default function CancelliPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <span className="label-eyebrow">Vantaggi</span>
+              <SectionEyebrow>Vantaggi</SectionEyebrow>
               <h2 className="heading-2 mt-3">
-                {c.whyIronTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.whyIronAccent}</span>
+                {c.whyTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.whyTitleAccent}</span>
               </h2>
               <ul className="mt-6 space-y-3">
-                {c.whyIronBenefits.map((b) => (
+                {c.whyBenefits.map((b) => (
                   <li key={b} className="flex items-start gap-3">
                     <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                     <span className="text-body-lg" style={{ color: "var(--color-text-primary)" }}>{b}</span>
@@ -83,20 +84,55 @@ export default function CancelliPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Award size={28} style={{ color: "var(--color-accent)" }} />
                 <h3 className="heading-3" style={{ fontWeight: 500 }}>
-                  {c.prontaConsegnaTitle}
-                  <span style={{ color: "var(--color-accent)" }}>{c.prontaConsegnaAccent}</span>
+                  {c.prontaTitlePre}
+                  <span style={{ color: "var(--color-accent)" }}>{c.prontaTitleAccent}</span>
                 </h3>
               </div>
-              <p className="text-body" style={{ color: "var(--color-text-primary)" }}>{c.prontaConsegnaBody}</p>
+              <p className="text-body" style={{ color: "var(--color-text-primary)" }}>{c.prontaBody}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div
+            className="rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6"
+            style={{
+              background: "linear-gradient(135deg, rgba(184, 149, 106, 0.16) 0%, rgba(184, 149, 106, 0.05) 100%)",
+              border: "1px solid rgba(184, 149, 106, 0.25)",
+            }}
+          >
+            <div
+              className="inline-flex items-center justify-center shrink-0"
+              style={{
+                width: 64, height: 64, borderRadius: "var(--radius-full)",
+                backgroundColor: "var(--color-accent-subtle)",
+              }}
+            >
+              <Shield size={28} style={{ color: "var(--color-accent)" }} />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-h4" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>Certificati Istituto Giordano</h3>
+              <p className="text-body mt-1" style={{ color: "rgba(245, 240, 232, 0.7)" }}>
+                Marcatura CE · Testati 60.000 aperture
+              </p>
+            </div>
+            <a href={`tel:${site.phoneTel}`} className="btn btn-primary">Chiama {site.phone}</a>
           </div>
         </div>
       </section>
 
       <FaqSection items={c.faq} />
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
-        subtitle="Free site visit, no-obligation quote. We respond within 24 hours."
+        title={<>Richiedi il tuo <span style={{ color: "var(--color-accent)" }}>preventivo</span></>}
+        subtitle="Sopralluogo gratuito, preventivo senza impegno. Rispondiamo entro 24 ore."
       />
     </>
   );

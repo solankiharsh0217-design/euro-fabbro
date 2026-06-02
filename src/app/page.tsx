@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { ScrollReveal, ScrollRevealStagger } from "@/components/ScrollReveal";
+import { SectionEyebrow } from "@/components/ui";
 
 const productIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   DoorOpen,
@@ -75,27 +76,6 @@ function Section({
     >
       <div className="container-ef">{children}</div>
     </section>
-  );
-}
-
-function SectionEyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="inline-flex items-center gap-2 mb-4"
-      style={{
-        padding: "6px 14px",
-        borderRadius: 999,
-        backgroundColor: "var(--color-accent-subtle)",
-        color: "var(--color-accent)",
-        fontSize: "11px",
-        fontWeight: 600,
-        letterSpacing: "0.18em",
-        textTransform: "uppercase",
-      }}
-    >
-      <Sparkles size={12} />
-      {children}
-    </div>
   );
 }
 

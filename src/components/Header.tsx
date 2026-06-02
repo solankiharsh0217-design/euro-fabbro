@@ -17,8 +17,8 @@ export default function Header() {
   const { t, site } = useT();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [lavorazioniOpen, setLavorazioniOpen] = useState(false);
+  const [mobileLavorazioniOpen, setMobileLavorazioniOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const scrolled = useScrollPosition() > THRESHOLD;
   const cleanPath = pathname.replace(/\/$/, "") || "/";
@@ -29,7 +29,7 @@ export default function Header() {
     const h = href.replace(/\/$/, "") || "/";
     return cleanPath === h || cleanPath.startsWith(h + "/");
   };
-  const isServicesActive = t.nav.services.some((s) => isActive(s.href));
+  const isLavorazioniActive = t.nav.services.some((s) => isActive(s.href));
 
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -37,18 +37,17 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const openServices = () => {
+  const openLavorazioni = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setServicesOpen(true);
+    setLavorazioniOpen(true);
   };
   const scheduleClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 150);
+    closeTimer.current = setTimeout(() => setLavorazioniOpen(false), 150);
   };
 
   const accent = "var(--color-accent)";
   const headerText = transparent ? "#FFFFFF" : "var(--color-text-primary)";
-  const headerTextMuted = transparent ? "rgba(245, 240, 232, 0.75)" : "var(--color-text-muted)";
 
   return (
     <>
@@ -76,9 +75,7 @@ export default function Header() {
             "background-color 300ms cubic-bezier(.25,.46,.45,.94), border-color 300ms cubic-bezier(.25,.46,.45,.94), box-shadow 300ms cubic-bezier(.25,.46,.45,.94), height 300ms cubic-bezier(.25,.46,.45,.94), backdrop-filter 300ms cubic-bezier(.25,.46,.45,.94)",
         }}
       >
-        <div
-          className="container-ef flex items-center justify-between gap-4 h-full"
-        >
+        <div className="container-ef flex items-center justify-between gap-4 h-full">
           <Link href="/" className="flex items-center shrink-0 group">
             <motion.span
               whileHover={{ scale: 1.04 }}
@@ -102,58 +99,58 @@ export default function Header() {
 
           <nav className="hidden lg:flex items-center gap-1">
             {t.nav.items.map((item) => {
-              if (item.key === "servizi") {
+              if (item.key === "lavorazioni") {
                 return (
                   <div
                     key={item.href}
                     className="relative"
-                    onMouseEnter={openServices}
+                    onMouseEnter={openLavorazioni}
                     onMouseLeave={scheduleClose}
                   >
                     <button
                       type="button"
-                      onClick={() => setServicesOpen((v) => !v)}
+                      onClick={() => setLavorazioniOpen((v) => !v)}
                       className="relative inline-flex items-center gap-1.5 px-3 py-2"
                       style={{
-                        fontWeight: isServicesActive || servicesOpen ? 500 : 400,
-                        color: isServicesActive || servicesOpen ? accent : headerText,
+                        fontWeight: isLavorazioniActive || lavorazioniOpen ? 500 : 400,
+                        color: isLavorazioniActive || lavorazioniOpen ? accent : headerText,
                         fontSize: "var(--text-body-sm)",
                         transition: "color 300ms cubic-bezier(.25,.46,.45,.94)",
                       }}
-                      aria-expanded={servicesOpen}
+                      aria-expanded={lavorazioniOpen}
                       aria-haspopup="true"
                     >
-                      {t.nav.label.servizi}
+                      {t.nav.label.lavorazioni}
                       <ChevronDown
                         size={13}
                         style={{
                           transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
-                          transform: servicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          transform: lavorazioniOpen ? "rotate(180deg)" : "rotate(0deg)",
                         }}
                       />
                       <span
                         className="absolute left-3 right-3 bottom-1 h-px"
                         style={{
                           backgroundColor: accent,
-                          transform: servicesOpen || isServicesActive ? "scaleX(1)" : "scaleX(0)",
+                          transform: lavorazioniOpen || isLavorazioniActive ? "scaleX(1)" : "scaleX(0)",
                           transformOrigin: "left center",
                           transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
                         }}
                       />
                     </button>
                     <AnimatePresence>
-                      {servicesOpen && (
+                      {lavorazioniOpen && (
                         <motion.div
                           initial={{ opacity: 0, y: -8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -8 }}
                           transition={{ duration: 0.2, ease }}
-                          onMouseEnter={openServices}
+                          onMouseEnter={openLavorazioni}
                           onMouseLeave={scheduleClose}
                           className="absolute left-1/2 -translate-x-1/2 top-full"
                           style={{
                             marginTop: 12,
-                            width: 600,
+                            width: 560,
                             backgroundColor: "var(--color-surface)",
                             border: "1px solid var(--color-border-subtle)",
                             borderRadius: "var(--radius-lg)",
@@ -169,7 +166,7 @@ export default function Header() {
                               borderTop: "1px solid var(--color-border-subtle)",
                             }}
                           />
-                          <div className="grid grid-cols-2 gap-1">
+                          <div className="grid grid-cols-1 gap-1">
                             {t.nav.services.map((s, idx) => {
                               const active = isActive(s.href);
                               return (
@@ -181,8 +178,8 @@ export default function Header() {
                                 >
                                   <Link
                                     href={s.href}
-                                    onClick={() => setServicesOpen(false)}
-                                    className="group flex flex-col gap-1 rounded-lg p-3 transition-colors"
+                                    onClick={() => setLavorazioniOpen(false)}
+                                    className="group flex items-center justify-between gap-3 rounded-lg px-4 py-3 transition-colors"
                                     style={{
                                       backgroundColor: active ? "var(--color-accent-subtle)" : "transparent",
                                     }}
@@ -190,25 +187,19 @@ export default function Header() {
                                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = active ? "var(--color-accent-subtle)" : "transparent")}
                                   >
                                     <span
-                                      className="inline-flex items-center gap-1.5 text-body"
+                                      className="inline-flex items-center gap-2 text-body"
                                       style={{
                                         fontWeight: 500,
                                         color: active ? accent : "var(--color-text-primary)",
                                       }}
                                     >
                                       {t.nav.label[s.key as keyof typeof t.nav.label]}
-                                      <ArrowRight
-                                        size={12}
-                                        className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"
-                                        style={{ color: accent }}
-                                      />
                                     </span>
-                                    <span
-                                      className="text-body-sm"
-                                      style={{ color: "var(--color-text-muted)", lineHeight: 1.4 }}
-                                    >
-                                      {t.nav.label[s.descKey as keyof typeof t.nav.label]}
-                                    </span>
+                                    <ArrowRight
+                                      size={14}
+                                      className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"
+                                      style={{ color: accent }}
+                                    />
                                   </Link>
                                 </motion.div>
                               );
@@ -226,11 +217,11 @@ export default function Header() {
                             </span>
                             <Link
                               href="/lavorazioni"
-                              onClick={() => setServicesOpen(false)}
+                              onClick={() => setLavorazioniOpen(false)}
                               className="inline-flex items-center gap-1.5 text-body-sm"
                               style={{ color: accent, fontWeight: 500 }}
                             >
-                              {t.nav.label.viewAllServices} <ArrowRight size={14} />
+                              Tutte le lavorazioni <ArrowRight size={14} />
                             </Link>
                           </div>
                         </motion.div>
@@ -303,11 +294,8 @@ export default function Header() {
             }}
           >
             <div className="flex justify-between items-center" style={{ marginBottom: 40 }}>
-              <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-                <Image src={site.logo} alt={`${site.name} logo`} width={36} height={36} className="w-9 h-9" />
-                <span className="text-xl font-display" style={{ color: "var(--color-text-primary)", fontWeight: 500 }}>
-                  Euro<span style={{ color: accent }}>fabbro</span>
-                </span>
+              <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+                <Image src={site.logo} alt={`${site.name} logo`} width={140} height={70} className="w-[120px] h-auto" />
               </Link>
               <button
                 onClick={() => setOpen(false)}
@@ -319,26 +307,26 @@ export default function Header() {
             </div>
             <div className="flex flex-col items-center gap-5 flex-1">
               <button
-                onClick={() => setMobileServicesOpen((v) => !v)}
+                onClick={() => setMobileLavorazioniOpen((v) => !v)}
                 className="inline-flex items-center gap-2"
                 style={{
                   fontSize: "var(--text-h3)",
                   fontWeight: 500,
                   color: "var(--color-text-primary)",
                 }}
-                aria-expanded={mobileServicesOpen}
+                aria-expanded={mobileLavorazioniOpen}
               >
-                {t.nav.label.servizi}
+                {t.nav.label.lavorazioni}
                 <ChevronDown
                   size={20}
                   style={{
                     transition: "transform 300ms cubic-bezier(.25,.46,.45,.94)",
-                    transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transform: mobileLavorazioniOpen ? "rotate(180deg)" : "rotate(0deg)",
                   }}
                 />
               </button>
               <AnimatePresence>
-                {mobileServicesOpen && (
+                {mobileLavorazioniOpen && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -360,12 +348,6 @@ export default function Header() {
                           >
                             {t.nav.label[s.key as keyof typeof t.nav.label]}
                           </span>
-                          <span
-                            className="block text-sm mt-0.5"
-                            style={{ color: "var(--color-text-muted)" }}
-                          >
-                            {t.nav.label[s.descKey as keyof typeof t.nav.label]}
-                          </span>
                         </Link>
                       ))}
                     </div>
@@ -373,7 +355,7 @@ export default function Header() {
                 )}
               </AnimatePresence>
               {t.nav.items
-                .filter((i) => i.key !== "servizi")
+                .filter((i) => i.key !== "lavorazioni")
                 .map((item) => (
                   <Link
                     key={item.href}

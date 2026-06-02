@@ -135,7 +135,7 @@ export default function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              {t.nav.label.servizi}
+              {t.nav.label.lavorazioni}
             </h4>
             <ul className="space-y-2.5">
               {t.nav.services.map((s) => (
