@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { MainWrapper } from "@/components/MainWrapper";
+import { FloatingActions } from "@/components/FloatingActions";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -64,10 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <MainWrapper>{children}</MainWrapper>
           <Footer />
+          <FloatingActions />
         </LanguageProvider>
       </body>
     </html>
   );
 }
-
-import { MainWrapper } from "@/components/MainWrapper";
