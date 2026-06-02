@@ -5,6 +5,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Award,
+  ChevronDown,
   Shield,
   Clock,
   CheckCircle,
@@ -24,6 +25,7 @@ import {
   Settings,
   Sparkles,
 } from "lucide-react";
+import { useState } from "react";
 import { useT } from "@/components/LanguageProvider";
 import { ScrollReveal, ScrollRevealStagger } from "@/components/ScrollReveal";
 import { SectionEyebrow } from "@/components/ui";
@@ -38,12 +40,12 @@ const productIcons: Record<string, React.ComponentType<{ className?: string }>> 
 };
 
 const productImages: Record<string, string> = {
-  DoorOpen: "https://eurofabbro.com/wp-content/uploads/slider2/1.jpeg",
-  Grid3x3: "https://eurofabbro.com/wp-content/uploads/2023/04/Realizzazione-grate-in-ferro-bologna-480x360-1.jpg",
-  Fence: "https://eurofabbro.com/wp-content/uploads/2023/04/Cancelli-in-ferro-cento-1-300x225.jpg",
-  TrendingUp: "https://eurofabbro.com/wp-content/uploads/2023/04/Realizzazione-strutture-in-ferro-cento-480x360-1.jpg",
-  Car: "https://media.base44.com/images/public/69baf22d9cc002736b6b7248/28f664fa9_generated_image.png",
-  Settings: "https://media.base44.com/images/public/69baf22d9cc002736b6b7248/ff67b59d2_generated_image.png",
+  DoorOpen: "/images/1.jpeg",
+  Grid3x3: "/images/Realizzazione-grate-in-ferro-bologna-480x360-1.jpg",
+  Fence: "/images/Cancelli-in-ferro-cento-1-300x225.jpg",
+  TrendingUp: "/images/Realizzazione-strutture-in-ferro-cento-480x360-1.jpg",
+  CarFront: "/images/28f664fa9_generated_image.png",
+  Settings: "/images/ff67b59d2_generated_image.png",
 };
 
 const processIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -154,13 +156,12 @@ function Hero() {
                 textShadow: "0 2px 24px rgba(0,0,0,0.35)",
               }}
             >
-              {t.hero.headlineLine1}
+              {t.hero.headlinePre}
               <br />
-              {t.hero.headlineLine2Pre}
               <span style={{ color: "var(--color-accent)", fontStyle: "italic", fontWeight: 400 }}>
-                {t.hero.headlineLine2Accent}
+                {t.hero.headlineAccent}
               </span>
-              {t.hero.headlineLine2Post}
+              {t.hero.headlinePost}
             </h1>
             <p
               className="text-body-lg"
@@ -211,7 +212,7 @@ function Hero() {
           </div>
         </div>
         <div className="flex flex-wrap gap-3 mt-10 lg:mt-14">
-          {[t.hero.stat1, t.hero.stat2, t.hero.stat3].map((s, i) => (
+          {t.hero.stats.map((s, i) => (
             <span
               key={i}
               className="px-4 py-2 text-body-sm"
@@ -699,6 +700,120 @@ function TestimonialsSection() {
   );
 }
 
+function WorkWithUsSection() {
+  const { t } = useT();
+  return (
+    <Section bg="var(--color-surface)">
+      <div
+        className="rounded-2xl p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"
+        style={{
+          backgroundColor: "var(--color-surface-dark)",
+          color: "var(--color-text-on-dark)",
+        }}
+      >
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: "radial-gradient(circle at 30% 50%, rgba(184, 149, 106, 0.2), transparent 60%)",
+            pointerEvents: "none",
+          }}
+        />
+        <div className="relative max-w-2xl mx-auto">
+          <SectionEyebrow>{t.workWithUs.preLabel}</SectionEyebrow>
+          <h2
+            className="heading-2 mt-3"
+            style={{ color: "var(--color-text-on-dark)" }}
+          >
+            {t.workWithUs.headlinePre}
+            <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>
+              {t.workWithUs.headlineAccent}
+            </span>
+            {t.workWithUs.headlinePost}
+          </h2>
+          <p
+            className="lead mt-4"
+            style={{ color: "rgba(245, 240, 232, 0.8)" }}
+          >
+            {t.workWithUs.subheadline}
+          </p>
+          <Link
+            href="/lavora-con-noi"
+            className="btn btn-primary mt-8 group"
+          >
+            {t.workWithUs.cta}
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function FaqSection() {
+  const { t } = useT();
+  const [open, setOpen] = useState(0);
+  return (
+    <Section bg="var(--color-bg-secondary)">
+      <ScrollReveal>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="heading-2">{t.faq.title}</h2>
+        </div>
+      </ScrollReveal>
+      <div
+        className="max-w-3xl mx-auto"
+      >
+        {t.faq.items.map((item, i) => {
+          const isOpen = open === i;
+          return (
+            <div
+              key={i}
+              className="rounded-xl overflow-hidden mb-3 transition-all duration-300"
+              style={{
+                backgroundColor: "var(--color-surface)",
+                border: "1px solid var(--color-border-subtle)",
+              }}
+            >
+              <button
+                onClick={() => setOpen(isOpen ? -1 : i)}
+                className="w-full flex items-center justify-between gap-4 text-left p-5 sm:p-6"
+                style={{ color: "var(--color-text-primary)" }}
+              >
+                <span className="text-lg font-medium pr-4">{item.q}</span>
+                <ChevronDown
+                  size={20}
+                  className="transition-transform duration-300 shrink-0"
+                  style={{
+                    color: "var(--color-accent)",
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                />
+              </button>
+              <div
+                style={{
+                  maxHeight: isOpen ? 400 : 0,
+                  opacity: isOpen ? 1 : 0,
+                  overflow: "hidden",
+                  transition: "max-height 400ms ease, opacity 300ms ease",
+                }}
+              >
+                <p
+                  className="text-body px-5 sm:px-6 pb-5 sm:pb-6"
+                  style={{ color: "var(--color-text-secondary)" }}
+                >
+                  {item.a}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
 function CtaSection() {
   const { t, site } = useT();
   return (
@@ -793,6 +908,8 @@ export default function HomePage() {
       <FeaturedProjectsSection />
       <DeductionBannerSection />
       <TestimonialsSection />
+      <WorkWithUsSection />
+      <FaqSection />
       <CtaSection />
     </>
   );
