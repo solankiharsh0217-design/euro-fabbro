@@ -12,7 +12,7 @@ export default function RealizzazioniPage() {
     <>
       <SubpageHero
         preLabel={t.nav.label.realizzazioni}
-        headlinePre={c.hero.headline}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -48,7 +48,8 @@ export default function RealizzazioniPage() {
         </div>
       </section>
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

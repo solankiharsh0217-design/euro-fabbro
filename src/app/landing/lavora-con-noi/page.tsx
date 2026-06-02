@@ -4,7 +4,7 @@ import { useT } from "@/components/LanguageProvider";
 import { ContactForm } from "@/components/ContactForm";
 
 export default function LavoraConNoiLanding() {
-  const { t, site } = useT();
+  const { t } = useT();
   return (
     <>
       <section
@@ -17,7 +17,7 @@ export default function LavoraConNoiLanding() {
       >
         <div className="container-ef">
           <div className="max-w-3xl">
-            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.workWithUs.preLabel}</span>
+            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.workWithUs.preLabel} · {t.pageLabels.gutters[1]}</span>
             <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
               {t.workWithUs.headlinePre}
               <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{t.workWithUs.headlineAccent}</span>
@@ -55,9 +55,9 @@ export default function LavoraConNoiLanding() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <span className="label-eyebrow">Apply</span>
-              <h2 className="heading-2 mt-3">Get in touch</h2>
-              <p className="lead mt-4">Tell us about your background and we&apos;ll get back to you.</p>
+              <span className="label-eyebrow">{t.pageLabels.apply}</span>
+              <h2 className="heading-2 mt-3">{t.pageLabels.getInTouch}</h2>
+              <p className="lead mt-4">{t.pageLabels.partners}</p>
             </div>
             <ContactForm />
           </div>

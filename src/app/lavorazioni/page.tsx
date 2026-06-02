@@ -10,8 +10,8 @@ export default function LavorazioniPage() {
   return (
     <>
       <SubpageHero
-        preLabel={t.nav.label.lavorazioni}
-        headlinePre={c.hero.headline}
+        preLabel={`${t.nav.label.lavorazioni} · Bologna, Modena, Ferrara`}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -28,8 +28,7 @@ export default function LavorazioniPage() {
                   <Image src={s.image} alt={s.name} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
                 </div>
                 <div className="lg:col-span-3 order-1 lg:order-2">
-                  <span className="label-eyebrow">{s.name}</span>
-                  <h3 className="heading-3 mt-3 mb-4">{s.name}</h3>
+                  <h3 className="heading-3 mb-4">{s.name}</h3>
                   <p className="text-body-lg" style={{ color: "var(--color-text-secondary)" }}>{s.desc}</p>
                 </div>
               </div>
@@ -38,7 +37,8 @@ export default function LavorazioniPage() {
         </div>
       </section>
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

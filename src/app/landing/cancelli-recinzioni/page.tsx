@@ -18,7 +18,7 @@ export default function CancelliRecinzioniLanding() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Gates & Fencing · Bologna</span>
+              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.pageLabels.gutters[0]}</span>
               <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
                 Custom iron <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>gates & fencing</span>
               </h1>
@@ -77,8 +77,8 @@ export default function CancelliRecinzioniLanding() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
               <span className="label-eyebrow">Request</span>
-              <h2 className="heading-2 mt-3">Tell us about your project</h2>
-              <p className="lead mt-4">We respond within 24 hours with a no-obligation quote.</p>
+              <h2 className="heading-2 mt-3">{t.pageLabels.project}</h2>
+              <p className="lead mt-4">{t.pageLabels.quote24}</p>
             </div>
             <ContactForm />
           </div>

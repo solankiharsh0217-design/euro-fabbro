@@ -10,7 +10,7 @@ export default function AutomazionePage() {
     <>
       <SubpageHero
         preLabel={t.nav.label.automazione}
-        headlinePre={c.hero.headline}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
@@ -20,15 +20,16 @@ export default function AutomazionePage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
-              <span className="label-eyebrow">How it works</span>
+              <span className="label-eyebrow">{t.pageLabels.howItWorks}</span>
               <h2 className="heading-2 mt-3">
-                {c.howTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.howAccent}</span>
+                {c.howTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.howTitleAccent}</span>
+                {c.howTitlePost}
               </h2>
               <p className="lead mt-5">{c.howBody}</p>
             </div>
             <div>
-              <span className="label-eyebrow">Types</span>
+              <span className="label-eyebrow">{t.pageLabels.types}</span>
               <div className="mt-4 space-y-4">
                 {c.types.map((tp) => (
                   <div key={tp.name} className="card">
@@ -44,7 +45,7 @@ export default function AutomazionePage() {
       <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="label-eyebrow">Controls</span>
+            <span className="label-eyebrow">{t.pageLabels.controls}</span>
             <h2 className="heading-2 mt-3">Ways to control your gate</h2>
           </div>
           <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
@@ -57,17 +58,19 @@ export default function AutomazionePage() {
       <section style={{ backgroundColor: "var(--color-bg-secondary)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="label-eyebrow">Service</span>
+            <span className="label-eyebrow">{t.pageLabels.service}</span>
             <h2 className="heading-2 mt-3">
-              {c.serviceTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.serviceAccent}</span>
+              {c.serviceTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.serviceTitleAccent}</span>
+              {c.serviceTitlePost}
             </h2>
             <p className="lead mt-5">{c.serviceBody}</p>
           </div>
         </div>
       </section>
       <ContactCta
-        title={<>Request a <span style={{ color: "var(--color-accent)" }}>consultation</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

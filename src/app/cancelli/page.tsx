@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { CheckCircle, Award, Shield } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { FaqSection } from "@/components/FaqSection";
@@ -28,7 +29,7 @@ export default function CancelliPage() {
       >
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-            <SectionEyebrow>Tipologie</SectionEyebrow>
+            <SectionEyebrow>{t.pageLabels.tipologie}</SectionEyebrow>
             <h2 className="heading-2 mt-3">
               {c.variantsTitlePre}
               <span style={{ color: "var(--color-accent)" }}>{c.variantsTitleAccent}</span>
@@ -37,7 +38,7 @@ export default function CancelliPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.variants.map((v) => (
-              <div key={v.name} className="card">
+              <div key={v.name} className="card flex flex-col">
                 <div className="flex items-start gap-3 mb-3">
                   <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                   <h3 className="text-h4" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
@@ -59,7 +60,7 @@ export default function CancelliPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <SectionEyebrow>Vantaggi</SectionEyebrow>
+              <SectionEyebrow>{t.pageLabels.benefici}</SectionEyebrow>
               <h2 className="heading-2 mt-3">
                 {c.whyTitlePre}
                 <span style={{ color: "var(--color-accent)" }}>{c.whyTitleAccent}</span>
@@ -119,20 +120,20 @@ export default function CancelliPage() {
               <Shield size={28} style={{ color: "var(--color-accent)" }} />
             </div>
             <div className="flex-1">
-              <h3 className="text-h4" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>Certificati Istituto Giordano</h3>
+              <h3 className="text-h4" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>Istituto Giordano Certified</h3>
               <p className="text-body mt-1" style={{ color: "rgba(245, 240, 232, 0.7)" }}>
-                Marcatura CE · Testati 60.000 aperture
+                CE Marking · Tested for 60,000 openings
               </p>
             </div>
-            <a href={`tel:${site.phoneTel}`} className="btn btn-primary">Chiama {site.phone}</a>
+            <a href={`tel:${site.phoneTel}`} className="btn btn-primary">Call {site.phone}</a>
           </div>
         </div>
       </section>
 
       <FaqSection items={c.faq} />
       <ContactCta
-        title={<>Richiedi il tuo <span style={{ color: "var(--color-accent)" }}>preventivo</span></>}
-        subtitle="Sopralluogo gratuito, preventivo senza impegno. Rispondiamo entro 24 ore."
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

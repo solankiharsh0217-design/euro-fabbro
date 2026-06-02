@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { CheckCircle } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
@@ -11,8 +12,8 @@ export default function InferriatePage() {
   return (
     <>
       <SubpageHero
-        preLabel={t.nav.label.inferriate}
-        headlinePre={c.hero.headline}
+        preLabel={`${t.nav.label.inferriate} · Bologna, Modena, Ferrara`}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -21,15 +22,18 @@ export default function InferriatePage() {
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="label-eyebrow">Tipologie</span>
+            <span className="label-eyebrow">{t.pageLabels.tipologie}</span>
             <h2 className="heading-2 mt-3">
               <span style={{ color: "var(--color-accent)" }}>Every type</span> for every opening
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.variants.map((v) => (
-              <div key={v.name} className="card">
-                <h3 className="text-h4 mb-3" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
+              <div key={v.name} className="card flex flex-col">
+                <div className="flex items-start gap-3 mb-3">
+                  <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
+                  <h3 className="text-h4" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
+                </div>
                 <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{v.desc}</p>
               </div>
             ))}
@@ -40,11 +44,11 @@ export default function InferriatePage() {
       <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="label-eyebrow">Benefici</span>
+            <span className="label-eyebrow">{t.pageLabels.benefici}</span>
             <h2 className="heading-2 mt-3">
-              {c.benefitsTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.benefitsAccent}</span>
-              {c.benefitsPost}
+              {c.benefitsTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.benefitsTitleAccent}</span>
+              {c.benefitsTitlePost}
             </h2>
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-4xl mx-auto mt-10">
@@ -60,7 +64,8 @@ export default function InferriatePage() {
 
       <FaqSection items={c.faq} />
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

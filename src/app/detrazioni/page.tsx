@@ -4,6 +4,7 @@ import { Calculator, CheckCircle } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
 import { FaqSection } from "@/components/FaqSection";
+import { ContactCta } from "@/components/ContactCta";
 
 export default function DetrazioniPage() {
   const { t } = useT();
@@ -16,7 +17,7 @@ export default function DetrazioniPage() {
     <>
       <SubpageHero
         preLabel={t.nav.label.detrazioni}
-        headlinePre={c.hero.headline}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
@@ -26,17 +27,20 @@ export default function DetrazioniPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
-              <span className="label-eyebrow">Bonus</span>
+              <span className="label-eyebrow">{t.pageLabels.bonus}</span>
               <h2 className="heading-2 mt-3">
-                {c.bonusTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.bonusAccent}</span>
+                {c.bonusTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.bonusTitleAccent}</span>
+                {c.bonusTitlePost}
               </h2>
               <p className="lead mt-5">{c.bonusBody}</p>
             </div>
             <div>
-              <span className="label-eyebrow">Eligible</span>
+              <span className="label-eyebrow">{t.pageLabels.eligible}</span>
               <h2 className="heading-2 mt-3">
-                Which work may be <span style={{ color: "var(--color-accent)" }}>deductible</span>
+                {c.eligibleTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.eligibleTitleAccent}</span>
+                {c.eligibleTitlePost}
               </h2>
               <ul className="mt-6 space-y-3">
                 {c.eligible.map((b) => (
@@ -54,10 +58,11 @@ export default function DetrazioniPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="label-eyebrow">Financing</span>
+              <span className="label-eyebrow">{t.pageLabels.financing}</span>
               <h2 className="heading-2 mt-3">
-                {c.compassTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.compassAccent}</span>
+                {c.compassTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.compassTitleAccent}</span>
+                {c.compassTitlePost}
               </h2>
               <p className="lead mt-5">{c.compassBody}</p>
             </div>
@@ -68,8 +73,9 @@ export default function DetrazioniPage() {
               <div className="flex items-center gap-3 mb-5">
                 <Calculator size={28} style={{ color: "var(--color-accent)" }} />
                 <h3 className="heading-3" style={{ fontWeight: 500 }}>
-                  {c.calcTitle}
-                  <span style={{ color: "var(--color-accent)" }}>{c.calcAccent}</span>
+                  {c.calcTitlePre}
+                  <span style={{ color: "var(--color-accent)" }}>{c.calcTitleAccent}</span>
+                  {c.calcTitlePost}
                 </h3>
               </div>
               <label className="label-ef">{c.calcLabel}</label>
@@ -97,6 +103,10 @@ export default function DetrazioniPage() {
         </div>
       </section>
       <FaqSection items={c.faq} />
+      <ContactCta
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
+      />
     </>
   );
 }

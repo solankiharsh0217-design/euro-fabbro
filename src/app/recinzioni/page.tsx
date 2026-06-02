@@ -1,4 +1,5 @@
 "use client";
+import { CheckCircle, Hammer, Layers } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
 import { FaqSection } from "@/components/FaqSection";
@@ -10,8 +11,8 @@ export default function RecinzioniPage() {
   return (
     <>
       <SubpageHero
-        preLabel={t.nav.label.recinzioni}
-        headlinePre={c.hero.headline}
+        preLabel={`${t.nav.label.recinzioni} · Bologna, Modena, Ferrara`}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -20,18 +21,18 @@ export default function RecinzioniPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
-              <span className="label-eyebrow">Material</span>
+              <span className="label-eyebrow">{t.pageLabels.material}</span>
               <h2 className="heading-2 mt-3">
-                {c.ironTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.ironAccent}</span>
+                {c.ironTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.ironTitleAccent}</span>
               </h2>
               <p className="lead mt-5">{c.ironBody}</p>
             </div>
             <div>
-              <span className="label-eyebrow">Modular</span>
+              <span className="label-eyebrow">{t.pageLabels.modular}</span>
               <h2 className="heading-2 mt-3">
-                {c.modularTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.modularAccent}</span>
+                {c.modularTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.modularTitleAccent}</span>
               </h2>
               <p className="lead mt-5">{c.modularBody}</p>
             </div>
@@ -47,7 +48,8 @@ export default function RecinzioniPage() {
       </section>
       <FaqSection items={c.faq} />
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

@@ -11,7 +11,7 @@ export default function PercheNoiPage() {
     <>
       <SubpageHero
         preLabel={t.nav.label.percheNoi}
-        headlinePre={c.hero.headline}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
@@ -21,10 +21,11 @@ export default function PercheNoiPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div>
-              <span className="label-eyebrow">Heritage</span>
+              <span className="label-eyebrow">{t.pageLabels.heritage}</span>
               <h2 className="heading-2 mt-3">
-                {c.storyTitle}
-                <span style={{ color: "var(--color-accent)" }}>{c.storyAccent}</span>
+                {c.storyTitlePre}
+                <span style={{ color: "var(--color-accent)" }}>{c.storyTitleAccent}</span>
+                {c.storyTitlePost}
               </h2>
               <p className="lead mt-5">{c.storyBody}</p>
             </div>
@@ -35,8 +36,9 @@ export default function PercheNoiPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Award size={28} style={{ color: "var(--color-accent)" }} />
                 <h3 className="heading-3" style={{ fontWeight: 500 }}>
-                  {c.certTitle}
-                  <span style={{ color: "var(--color-accent)" }}>{c.certAccent}</span>
+                  {c.certTitlePre}
+                  <span style={{ color: "var(--color-accent)" }}>{c.certTitleAccent}</span>
+                  {c.certTitlePost}
                 </h3>
               </div>
               <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{c.certBody}</p>
@@ -51,8 +53,9 @@ export default function PercheNoiPage() {
               <div className="flex items-center gap-3 mb-4">
                 <ShieldCheck size={28} style={{ color: "var(--color-accent)" }} />
                 <h2 className="heading-2" style={{ color: "var(--color-text-on-dark)" }}>
-                  {c.guaranteeTitle}
-                  <span style={{ color: "var(--color-accent)" }}>{c.guaranteeAccent}</span>
+                  {c.guaranteeTitlePre}
+                  <span style={{ color: "var(--color-accent)" }}>{c.guaranteeTitleAccent}</span>
+                  {c.guaranteeTitlePost}
                 </h2>
               </div>
               <p className="text-body-lg" style={{ color: "rgba(245, 240, 232, 0.85)" }}>{c.guaranteeBody}</p>
@@ -75,7 +78,8 @@ export default function PercheNoiPage() {
         </div>
       </section>
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

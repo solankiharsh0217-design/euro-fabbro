@@ -12,8 +12,8 @@ export default function CarportPage() {
   return (
     <>
       <SubpageHero
-        preLabel={t.nav.label.carport}
-        headlinePre={c.hero.headline}
+        preLabel={`${t.nav.label.carport} · Bologna, Modena, Ferrara`}
+        headlinePre={c.hero.headlinePre}
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
@@ -22,10 +22,10 @@ export default function CarportPage() {
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="max-w-3xl">
-            <span className="label-eyebrow">Intro</span>
+            <span className="label-eyebrow">{t.pageLabels.intro}</span>
             <h2 className="heading-2 mt-3">
-              {c.introTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.introAccent}</span>
+              {c.introTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.introTitleAccent}</span>
             </h2>
             <p className="lead mt-5">{c.introBody}</p>
           </div>
@@ -35,10 +35,10 @@ export default function CarportPage() {
       <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="label-eyebrow">Why</span>
+            <span className="label-eyebrow">{t.pageLabels.why}</span>
             <h2 className="heading-2 mt-3">
-              {c.featuresTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.featuresAccent}</span>
+              {c.featuresTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.featuresTitleAccent}</span>
             </h2>
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -55,15 +55,15 @@ export default function CarportPage() {
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="label-eyebrow">Catalog</span>
+            <span className="label-eyebrow">{t.pageLabels.catalog}</span>
             <h2 className="heading-2 mt-3">
-              {c.typesTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.typesAccent}</span>
+              {c.typesTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.typesTitleAccent}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.types.map((tp) => (
-              <div key={tp.name} className="card p-0 overflow-hidden">
+              <div key={tp.name} className="card p-0 overflow-hidden h-full flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden" style={{ backgroundColor: "var(--color-bg-secondary)" }}>
                   <Image src={tp.image} alt={tp.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                 </div>
@@ -80,15 +80,15 @@ export default function CarportPage() {
       <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="label-eyebrow">Materials</span>
+            <span className="label-eyebrow">{t.pageLabels.materials}</span>
             <h2 className="heading-2 mt-3">
-              {c.materialsTitle}
-              <span style={{ color: "var(--color-accent)" }}>{c.materialsAccent}</span>
+              {c.materialsTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.materialsTitleAccent}</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.materials.map((m) => (
-              <div key={m.name} className="card">
+              <div key={m.name} className="card h-full flex flex-col">
                 <h3 className="text-h4 mb-2" style={{ fontWeight: 500 }}>{m.name}</h3>
                 <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{m.desc}</p>
               </div>
@@ -99,7 +99,8 @@ export default function CarportPage() {
 
       <FaqSection items={c.faq} />
       <ContactCta
-        title={<>Request your <span style={{ color: "var(--color-accent)" }}>free quote</span></>}
+        title={<>{t.cta.headlinePre}<span style={{ color: "var(--color-accent)" }}>{t.cta.headlineAccent}</span></>}
+        subtitle={t.cta.subheadline}
       />
     </>
   );

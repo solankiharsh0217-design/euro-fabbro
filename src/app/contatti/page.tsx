@@ -1,5 +1,5 @@
 "use client";
-import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight, CheckCircle } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { ContactForm } from "@/components/ContactForm";
 
@@ -18,11 +18,10 @@ export default function ContattiPage() {
       >
         <div className="container-ef">
           <div className="max-w-3xl">
-            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>Contact</span>
+            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.nav.label.contatti}</span>
             <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
               {c.headlinePre}
               <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{c.headlineAccent}</span>
-              {c.headlinePost}
             </h1>
           </div>
         </div>
@@ -31,7 +30,7 @@ export default function ContattiPage() {
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="label-eyebrow">Process</span>
+            <span className="label-eyebrow">{t.pageLabels.process}</span>
             <h2 className="heading-2 mt-3">{c.processTitle}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
@@ -54,7 +53,7 @@ export default function ContattiPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div>
-              <span className="label-eyebrow">Reach us</span>
+              <span className="label-eyebrow">{t.pageLabels.reach}</span>
               <h2 className="heading-2 mt-3">Our details</h2>
               <div className="mt-6 space-y-4">
                 <a href={`tel:${site.phoneTel}`} className="card flex items-center gap-3 hover:shadow-md">
@@ -95,7 +94,7 @@ export default function ContattiPage() {
               </div>
             </div>
             <div>
-              <span className="label-eyebrow">Write us</span>
+              <span className="label-eyebrow">{t.pageLabels.write}</span>
               <h2 className="heading-2 mt-3">Send a request</h2>
               <div className="mt-6">
                 <ContactForm />
