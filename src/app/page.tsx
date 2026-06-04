@@ -1139,12 +1139,41 @@ function AuthoritySection() {
           ))}
         </ScrollRevealStagger>
       </div>
+      <ScrollReveal delay={0.1}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12 lg:mt-16">
+          {[
+            { src: "/images/wp/Banchi-lavoro-officina-cento.jpg", alt: "Banchi di lavoro in officina" },
+            { src: "/images/wp/Scaffalature-industriali-bologna.jpg", alt: "Scaffalature industriali" },
+            { src: "/images/wp/Prodotti-in-ferro-palata-pepoli-di-crevalcore.jpg", alt: "Prodotti in ferro su misura" },
+            { src: "/images/wp/Ferioli-sergio-sas-palata-pepoli-di-crevalcore-bologna.jpg", alt: "Sede Ferioli Sergio, Bologna" },
+          ].map((img) => (
+            <div
+              key={img.alt}
+              className="relative aspect-[4/3] rounded-xl overflow-hidden"
+              style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
     </Section>
   );
 }
 
 function ProcessSection() {
   const { t } = useT();
+  const stepImages = [
+    "/images/wp/Installazione-cancelli-bologna.jpg",
+    "/images/wp/Svolgere-la-propria-attivita-in-una-officina.jpg",
+    "/images/wp/Installare-cancelli-pedonali-cento.jpg",
+  ];
   return (
     <Section bg="var(--color-bg)">
       <ScrollReveal>
@@ -1163,30 +1192,49 @@ function ProcessSection() {
           return (
             <div
               key={i}
-              className="card group transition-all duration-300 hover:shadow-md h-full flex flex-col"
+              className="card group transition-all duration-300 hover:shadow-md h-full flex flex-col p-0 overflow-hidden"
               style={{ position: "relative" }}
             >
               <div
-                className="inline-flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: "var(--radius-md)",
-                  backgroundColor: "var(--color-accent-subtle)",
-                }}
+                className="relative aspect-[16/10] overflow-hidden"
+                style={{ backgroundColor: "var(--color-bg-secondary)" }}
               >
-                <Icon size={28} style={{ color: "var(--color-accent)" }} />
+                <Image
+                  src={stepImages[i % stepImages.length]}
+                  alt={s.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(28,23,18,0.55), transparent 60%)" }}
+                />
+                <div
+                  className="absolute top-3 left-3 inline-flex items-center justify-center"
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: "var(--radius-md)",
+                    backgroundColor: "rgba(28,23,18,0.75)",
+                    backdropFilter: "blur(6px)",
+                  }}
+                >
+                  <Icon size={20} style={{ color: "var(--color-accent)" }} />
+                </div>
+                <div
+                  className="absolute top-3 right-4 font-display"
+                  style={{ color: "rgba(245,240,232,0.35)", fontWeight: 500, lineHeight: 1, fontSize: 44 }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </div>
               </div>
-              <div
-                className="absolute top-5 right-5 font-display text-5xl"
-                style={{ color: "var(--color-border-subtle)", fontWeight: 500, lineHeight: 1 }}
-              >
-                {String(i + 1).padStart(2, "0")}
+              <div style={{ padding: "22px 22px 24px" }}>
+                <h3 className="heading-3 mb-2">{s.title}</h3>
+                <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
+                  {s.desc}
+                </p>
               </div>
-              <h3 className="heading-3 mb-2">{s.title}</h3>
-              <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
-                {s.desc}
-              </p>
             </div>
           );
         })}
@@ -1271,7 +1319,7 @@ function DeductionBannerSection() {
   const { t } = useT();
   return (
     <Section bg="var(--color-bg-secondary)">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-center">
         <ScrollReveal>
           <div>
             <SectionEyebrow>2026 Bonus</SectionEyebrow>
@@ -1292,32 +1340,63 @@ function DeductionBannerSection() {
             </Link>
           </div>
         </ScrollReveal>
-        <ScrollRevealStagger className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4" stagger={0.1}>
-          {t.deductionBanner.badges.map((b) => (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <ScrollReveal className="sm:col-span-2 sm:row-span-2">
             <div
-              key={b}
-              className="rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-              style={{
-                backgroundColor: "var(--color-surface)",
-                border: "1px solid var(--color-border-subtle)",
-                padding: "24px 16px",
-              }}
+              className="relative w-full h-full rounded-2xl overflow-hidden"
+              style={{ aspectRatio: "4/3", backgroundColor: "var(--color-surface)" }}
             >
-              <p
-                className="font-display text-xl"
-                style={{ color: "var(--color-accent)", fontWeight: 500 }}
-              >
-                {b.split(" ")[0]}
-              </p>
-              <p
-                className="text-body-sm"
-                style={{ color: "var(--color-text-secondary)", marginTop: 4 }}
-              >
-                {b.split(" ").slice(1).join(" ")}
-              </p>
+              <Image
+                src="/images/wp/Bonus-sicurezza-bologna-centro.jpg"
+                alt="Bonus sicurezza — detrazioni fiscali per grate e inferriate"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(135deg, rgba(28,23,18,0.05), rgba(28,23,18,0.45))" }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-5" style={{ color: "#FFFFFF" }}>
+                <p
+                  className="text-[10px] uppercase"
+                  style={{ letterSpacing: "0.18em", opacity: 0.85, marginBottom: 4 }}
+                >
+                  2026
+                </p>
+                <p style={{ fontWeight: 600, fontSize: 18, lineHeight: 1.2 }}>
+                  Detrazioni fiscali
+                </p>
+              </div>
             </div>
-          ))}
-        </ScrollRevealStagger>
+          </ScrollReveal>
+          <ScrollRevealStagger className="contents" stagger={0.1}>
+            {t.deductionBanner.badges.map((b) => (
+              <div
+                key={b}
+                className="rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  border: "1px solid var(--color-border-subtle)",
+                  padding: "24px 16px",
+                }}
+              >
+                <p
+                  className="font-display text-xl"
+                  style={{ color: "var(--color-accent)", fontWeight: 500 }}
+                >
+                  {b.split(" ")[0]}
+                </p>
+                <p
+                  className="text-body-sm"
+                  style={{ color: "var(--color-text-secondary)", marginTop: 4 }}
+                >
+                  {b.split(" ").slice(1).join(" ")}
+                </p>
+              </div>
+            ))}
+          </ScrollRevealStagger>
+        </div>
       </div>
     </Section>
   );

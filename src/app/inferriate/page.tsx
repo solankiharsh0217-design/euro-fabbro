@@ -6,6 +6,7 @@ import { useT } from "@/components/LanguageProvider";
 import { SubpageHero } from "@/components/Subpage";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCta } from "@/components/ContactCta";
+import { SectionEyebrow } from "@/components/ui";
 
 export default function InferriatePage() {
   const { t } = useT();
@@ -18,6 +19,9 @@ export default function InferriatePage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/wp/Grate-apribili-decorate-bologna.jpg"
+        heroImageAlt="Inferriate apribili decorate — Ferioli Sergio, Bologna"
+        heroImagePosition="center 50%"
       />
 
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
@@ -53,7 +57,54 @@ export default function InferriatePage() {
         </div>
       </section>
 
-      <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
+      <section
+        style={{
+          backgroundColor: "var(--color-surface)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <SectionEyebrow>Tipologie in officina</SectionEyebrow>
+            <h2 className="heading-2 mt-3">
+              <span style={{ color: "var(--color-accent)" }}>Sicurezza</span> per ogni apertura
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              { src: "/images/wp/Inferriate-fisse-per-finestre-giovanni-in-persiceto.jpg", alt: "Inferriate fisse", label: "Fisse" },
+              { src: "/images/wp/Inferriate-apribili-a-due-ante-ferro-battuto-bologna.jpg", alt: "Inferriate apribili", label: "Apribili" },
+              { src: "/images/wp/Inferriate-snodabili-personalizzate-bologna-cento.jpg", alt: "Inferriate snodabili", label: "Snodabili" },
+              { src: "/images/wp/Inferriate-a-due-ante-bologna-san-giovanni-in-persiceto.jpg", alt: "Inferriate a due ante", label: "Due ante" },
+            ].map((img) => (
+              <Link
+                key={img.label}
+                href="/realizzazioni"
+                className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
+                style={{ backgroundColor: "var(--color-bg)" }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85), rgba(28,23,18,0.1) 55%, transparent)" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-4" style={{ color: "#FFFFFF" }}>
+                  <p className="text-sm font-semibold leading-tight">{img.label}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
           <div className="max-w-3xl mx-auto text-center">
             <span className="label-eyebrow">{t.pageLabels.benefici}</span>

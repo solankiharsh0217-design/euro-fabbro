@@ -19,6 +19,9 @@ export default function CancelliPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg"
+        heroImageAlt="Cancello scorrevole zincato di design — Ferioli Sergio, Bologna"
+        heroImagePosition="center 45%"
       />
 
       <section
@@ -56,6 +59,53 @@ export default function CancelliPage() {
                 >
                   Scopri di più <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          backgroundColor: "var(--color-surface)",
+          paddingTop: "var(--section-padding-y)",
+          paddingBottom: "var(--section-padding-y)",
+        }}
+      >
+        <div className="container-ef">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <SectionEyebrow>Tipologie in officina</SectionEyebrow>
+            <h2 className="heading-2 mt-3">
+              Ogni <span style={{ color: "var(--color-accent)" }}>apertura</span>, una soluzione
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {[
+              { src: "/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg", alt: "Cancelli scorrevoli zincati", label: "Scorrevoli" },
+              { src: "/images/wp/Cancelli-a-battente-bologna-san-giovanni-in-persiceto.jpg", alt: "Cancelli a battente", label: "Battente" },
+              { src: "/images/wp/Cancelli-pedonali-per-ingresso-bologna.jpg", alt: "Cancelli pedonali", label: "Pedonali" },
+              { src: "/images/wp/Cancelli-basamenti-autoportanti-per-privati-crevalcore.jpg", alt: "Cancelli autoportanti", label: "Autoportanti" },
+            ].map((img) => (
+              <Link
+                key={img.label}
+                href="/realizzazioni"
+                className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
+                style={{ backgroundColor: "var(--color-bg)" }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85), rgba(28,23,18,0.1) 55%, transparent)" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-4" style={{ color: "#FFFFFF" }}>
+                  <p className="text-sm font-semibold leading-tight">{img.label}</p>
+                </div>
               </Link>
             ))}
           </div>

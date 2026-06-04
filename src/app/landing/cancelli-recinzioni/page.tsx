@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ArrowRight, CheckCircle, Award } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { ContactForm } from "@/components/ContactForm";
@@ -13,16 +14,38 @@ export default function CancelliRecinzioniLanding() {
           color: "var(--color-text-on-dark)",
           paddingTop: "calc(var(--section-padding-y) / 1.5)",
           paddingBottom: "calc(var(--section-padding-y) / 1.5)",
+          position: "relative",
+          overflow: "hidden",
+          minHeight: "min(480px, 55vh)",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <div className="container-ef">
+        <Image
+          src="/images/wp/Installazione-cancelli-bologna.jpg"
+          alt="Installazione cancelli in ferro su misura — Bologna"
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover"
+          style={{ objectPosition: "center 50%" }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(110deg, rgba(28,23,18,0.92) 0%, rgba(28,23,18,0.72) 45%, rgba(62,40,18,0.40) 100%)",
+          }}
+        />
+        <div className="container-ef relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.pageLabels.gutters[0]}</span>
-              <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
+              <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}>
                 Custom iron <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>gates & fencing</span>
               </h1>
-              <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.82)", maxWidth: 520 }}>
+              <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 520, textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
                 Production and installation of custom iron gates and fencing. 49 years of experience, CE marked, free site visit in Bologna and Modena.
               </p>
               <div className="flex flex-wrap gap-3 mt-7">
@@ -37,13 +60,13 @@ export default function CancelliRecinzioniLanding() {
             <div className="hidden lg:flex justify-end">
               <div
                 className="rounded-2xl"
-                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", padding: 24, maxWidth: 320 }}
+                style={{ backgroundColor: "rgba(28,23,18,0.7)", border: "1px solid rgba(255,255,255,0.15)", padding: 24, maxWidth: 320, backdropFilter: "blur(8px)" }}
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Award size={20} style={{ color: "var(--color-accent)" }} />
                   <span className="font-semibold" style={{ color: "var(--color-text-on-dark)" }}>Certified First in Italy</span>
                 </div>
-                <p className="text-body-sm" style={{ color: "rgba(245, 240, 232, 0.7)" }}>
+                <p className="text-body-sm" style={{ color: "rgba(245, 240, 232, 0.85)" }}>
                   Istituto Giordano certification, CE marking on every installation.
                 </p>
               </div>

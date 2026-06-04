@@ -56,7 +56,8 @@ function renderSection(
   const headingId = `wp-section-${idx}`;
   const HeadingTag = (s.level === 1 ? "h2" : s.level === 2 ? "h2" : "h3") as "h2" | "h3";
   const headingClass = s.level === 3 ? "heading-3" : "heading-2";
-  const hasImage = idx < images.length;
+  const image = images.length > 0 ? images[idx % images.length] : null;
+  const hasImage = image != null;
   const sectionBg = bg === "bg" ? "var(--color-bg)" : "var(--color-bg-secondary)";
   return (
     <section
@@ -83,11 +84,11 @@ function renderSection(
               {s.blocks.map((b, i) => renderBlock(b, i))}
             </div>
           </div>
-          {hasImage && (
+          {hasImage && image && (
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden order-first lg:order-last">
               <Image
-                src={images[idx].local}
-                alt={images[idx].src.split("/").pop() || ""}
+                src={image.local}
+                alt={image.src.split("/").pop() || ""}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -117,7 +118,7 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
   const heroImage = page.pageImages.find((i) => i.local) ?? null;
   const sections = page.sections;
   const galleryImages = page.pageImages.filter((i) => i.local);
-  const showCertStrip = page.slug === "manutenzione" || page.slug === "cancelli";
+  const spareImages = galleryImages.slice(sections.length);
   return (
     <>
       <SubpageHero
@@ -126,25 +127,43 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
         headlineAccent={titleAccent}
         subheadline={sections[0]?.blocks[0]?.type === "p" ? (sections[0].blocks[0] as { type: "p"; text: string }).text : ""}
         cta={t.cta.headlineAccent}
+        {...(heroImage && {
+          heroImage: heroImage.local,
+          heroImageAlt: page.title,
+          heroImagePosition: "center 45%",
+        })}
       />
-      {heroImage && (
-        <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "calc(var(--section-padding-y) / 2)" }}>
+      {sections.map((s, idx) =>
+        renderSection(s, idx, galleryImages, idx % 2 === 0 ? "bg" : "bg-secondary")
+      )}
+      {spareImages.length > 0 && (
+        <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
           <div className="container-ef">
-            <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden">
-              <Image
-                src={heroImage.local}
-                alt={page.title}
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority
-              />
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="label-eyebrow">Realizzazioni</span>
+              <h2 className="heading-2 mt-3">
+                Altre <span style={{ color: "var(--color-accent)" }}>lavorazioni</span> su misura
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+              {spareImages.slice(0, 8).map((img) => (
+                <div
+                  key={img.local}
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden"
+                  style={{ backgroundColor: "var(--color-bg)" }}
+                >
+                  <Image
+                    src={img.local}
+                    alt={page.title}
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover transition-transform duration-slow ease-ease-out hover:scale-110"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
-      )}
-      {sections.map((s, idx) =>
-        renderSection(s, idx, galleryImages, idx % 2 === 0 ? "bg" : "bg-secondary")
       )}
       {related && related.length > 0 && (
         <section style={{ backgroundColor: "var(--color-bg-secondary)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>

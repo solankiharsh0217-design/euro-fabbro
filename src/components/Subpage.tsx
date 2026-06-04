@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { useT } from "./LanguageProvider";
 
@@ -10,6 +11,9 @@ export function SubpageHero({
   headlinePost,
   subheadline,
   cta,
+  heroImage,
+  heroImageAlt,
+  heroImagePosition,
 }: {
   preLabel: string;
   headlinePre: string;
@@ -17,6 +21,9 @@ export function SubpageHero({
   headlinePost?: string;
   subheadline: string;
   cta: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroImagePosition?: string;
 }) {
   const { site } = useT();
   return (
@@ -28,16 +35,48 @@ export function SubpageHero({
         paddingBottom: "var(--section-padding-y)",
         position: "relative",
         overflow: "hidden",
+        minHeight: heroImage ? "min(560px, 60vh)" : undefined,
+        display: heroImage ? "flex" : undefined,
+        alignItems: heroImage ? "center" : undefined,
       }}
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 20% 30%, rgba(184,149,106,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(184,149,106,0.12) 0%, transparent 50%)",
-          pointerEvents: "none",
-        }}
-      />
+      {heroImage ? (
+        <>
+          <Image
+            src={heroImage}
+            alt={heroImageAlt ?? ""}
+            fill
+            priority
+            sizes="100vw"
+            quality={80}
+            className="object-cover"
+            style={{ objectPosition: heroImagePosition ?? "center 50%" }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(110deg, rgba(28,23,18,0.92) 0%, rgba(28,23,18,0.78) 45%, rgba(62,40,18,0.45) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(28,23,18,0.25) 0%, transparent 30%, transparent 65%, rgba(28,23,18,0.7) 100%)",
+            }}
+          />
+        </>
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 20% 30%, rgba(184,149,106,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(184,149,106,0.12) 0%, transparent 50%)",
+            pointerEvents: "none",
+          }}
+        />
+      )}
       <div className="container-ef relative">
         <div className="max-w-3xl">
           <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>
@@ -45,7 +84,7 @@ export function SubpageHero({
           </span>
           <h1
             className="text-hero mt-4"
-            style={{ color: "#FFFFFF", fontWeight: 300 }}
+            style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
           >
             {headlinePre}
             <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{headlineAccent}</span>
@@ -53,7 +92,7 @@ export function SubpageHero({
           </h1>
           <p
             className="text-body-lg mt-6"
-            style={{ color: "rgba(245, 240, 232, 0.82)", maxWidth: 560 }}
+            style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 560, textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
           >
             {subheadline}
           </p>

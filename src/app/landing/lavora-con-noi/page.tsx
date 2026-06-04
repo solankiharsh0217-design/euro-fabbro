@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { ContactForm } from "@/components/ContactForm";
@@ -13,17 +14,39 @@ export default function LavoraConNoiLanding() {
           color: "var(--color-text-on-dark)",
           paddingTop: "calc(var(--section-padding-y) / 1.5)",
           paddingBottom: "calc(var(--section-padding-y) / 1.5)",
+          position: "relative",
+          overflow: "hidden",
+          minHeight: "min(440px, 55vh)",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <div className="container-ef">
+        <Image
+          src="/images/wp/Banchi-lavoro-officina-cento.jpg"
+          alt="Officina Ferioli Sergio — banchi di lavoro"
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover"
+          style={{ objectPosition: "center 55%" }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(110deg, rgba(28,23,18,0.92) 0%, rgba(28,23,18,0.78) 45%, rgba(62,40,18,0.45) 100%)",
+          }}
+        />
+        <div className="container-ef relative">
           <div className="max-w-3xl">
             <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.workWithUs.preLabel} · {t.pageLabels.gutters[1]}</span>
-            <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
+            <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}>
               {t.workWithUs.headlinePre}
               <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{t.workWithUs.headlineAccent}</span>
               {t.workWithUs.headlinePost}
             </h1>
-            <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.82)", maxWidth: 560 }}>
+            <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 560, textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
               {t.workWithUs.subheadline}
             </p>
             <a href="#form" className="btn btn-primary mt-7">
