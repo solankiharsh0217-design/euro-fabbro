@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { CheckCircle, Award, Shield } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle, Award, Shield, ArrowRight } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCta } from "@/components/ContactCta";
@@ -38,13 +39,24 @@ export default function CancelliPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {c.variants.map((v) => (
-              <div key={v.name} className="card flex flex-col">
+              <Link
+                key={v.name}
+                href={v.href ?? "#"}
+                className="card flex flex-col group"
+                style={{ textDecoration: "none" }}
+              >
                 <div className="flex items-start gap-3 mb-3">
                   <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                   <h3 className="text-h4" style={{ fontWeight: 500, color: "var(--color-text-primary)" }}>{v.name}</h3>
                 </div>
                 <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>{v.desc}</p>
-              </div>
+                <span
+                  className="inline-flex items-center gap-1.5 mt-4 text-body-sm"
+                  style={{ color: "var(--color-accent)", fontWeight: 500 }}
+                >
+                  Scopri di più <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

@@ -359,6 +359,155 @@ function ProductsSection() {
   );
 }
 
+function IstitutoGiordanoSeal({ size = 96 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      role="img"
+      aria-label="Istituto Giordano seal"
+      style={{ display: "block" }}
+    >
+      <defs>
+        <linearGradient id="ig-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D4B384" />
+          <stop offset="50%" stopColor="#B8956A" />
+          <stop offset="100%" stopColor="#8E6F4E" />
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="60" r="56" fill="none" stroke="url(#ig-gold)" strokeWidth="2" />
+      <circle cx="60" cy="60" r="48" fill="none" stroke="url(#ig-gold)" strokeWidth="0.7" />
+      <circle cx="60" cy="60" r="36" fill="none" stroke="url(#ig-gold)" strokeWidth="0.5" strokeDasharray="1 2" />
+      <path
+        id="ig-arc-top"
+        d="M 18 60 A 42 42 0 0 1 102 60"
+        fill="none"
+      />
+      <text fontSize="8.5" fontWeight="600" letterSpacing="2.2" fill="#B8956A">
+        <textPath href="#ig-arc-top" startOffset="50%" textAnchor="middle">
+          ISTITUTO GIORDANO
+        </textPath>
+      </text>
+      <path
+        id="ig-arc-bot"
+        d="M 22 60 A 38 38 0 0 0 98 60"
+        fill="none"
+      />
+      <text fontSize="6" fontWeight="500" letterSpacing="2.5" fill="#B8956A">
+        <textPath href="#ig-arc-bot" startOffset="50%" textAnchor="middle">
+          · CERTIFIED · 1977 ·
+        </textPath>
+      </text>
+      <g transform="translate(60 60)">
+        <polygon
+          points="0,-18 4.2,-5.6 17.6,-5.6 6.7,2.1 10.9,14.5 0,6.7 -10.9,14.5 -6.7,2.1 -17.6,-5.6 -4.2,-5.6"
+          fill="url(#ig-gold)"
+        />
+        <text
+          textAnchor="middle"
+          y="3.4"
+          fontSize="6"
+          fontWeight="700"
+          letterSpacing="0.5"
+          fill="#1C1712"
+        >
+          IG
+        </text>
+      </g>
+    </svg>
+  );
+}
+
+function CEMark({ size = 80 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size * 0.75}
+      viewBox="0 0 100 75"
+      role="img"
+      aria-label="CE Marking"
+      style={{ display: "block" }}
+    >
+      <text
+        x="50"
+        y="58"
+        textAnchor="middle"
+        fontFamily="Arial Black, Helvetica, sans-serif"
+        fontWeight="900"
+        fontSize="68"
+        fill="#1C1712"
+        style={{ letterSpacing: "-2px" }}
+      >
+        CE
+      </text>
+      <line x1="14" y1="68" x2="86" y2="68" stroke="#B8956A" strokeWidth="2.2" />
+    </svg>
+  );
+}
+
+function QualitySeal({ label, sub, size = 96 }: { label: string; sub: string; size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      role="img"
+      aria-label={`${label} seal`}
+      style={{ display: "block" }}
+    >
+      <defs>
+        <linearGradient id={`qs-${label.replace(/\s/g, "")}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D4B384" />
+          <stop offset="100%" stopColor="#8E6F4E" />
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="60" r="55" fill="none" stroke={`url(#qs-${label.replace(/\s/g, "")})`} strokeWidth="1.5" />
+      <circle cx="60" cy="60" r="46" fill="none" stroke={`url(#qs-${label.replace(/\s/g, "")})`} strokeWidth="0.5" strokeDasharray="2 3" />
+      <text
+        x="60"
+        y="60"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="22"
+        fontWeight="700"
+        fill="#1C1712"
+        style={{ letterSpacing: "-0.5px" }}
+      >
+        {label}
+      </text>
+      <text
+        x="60"
+        y="80"
+        textAnchor="middle"
+        fontSize="6.5"
+        fontWeight="600"
+        letterSpacing="2"
+        fill="#B8956A"
+      >
+        {sub.toUpperCase()}
+      </text>
+    </svg>
+  );
+}
+
+function ItalianFlagChip() {
+  return (
+    <svg
+      width="44"
+      height="30"
+      viewBox="0 0 44 30"
+      role="img"
+      aria-label="Made in Italy"
+      style={{ display: "block", borderRadius: 4, overflow: "hidden" }}
+    >
+      <rect x="0" y="0" width="14.67" height="30" fill="#009246" />
+      <rect x="14.67" y="0" width="14.67" height="30" fill="#FFFFFF" />
+      <rect x="29.33" y="0" width="14.67" height="30" fill="#CE2B37" />
+    </svg>
+  );
+}
+
 function CertificationsStrip() {
   const { t } = useT();
   return (
@@ -368,8 +517,8 @@ function CertificationsStrip() {
         backgroundColor: "var(--color-surface)",
         borderTop: "1px solid var(--color-border-subtle)",
         borderBottom: "1px solid var(--color-border-subtle)",
-        paddingTop: 48,
-        paddingBottom: 48,
+        paddingTop: "calc(var(--section-padding-y) * 0.85)",
+        paddingBottom: "calc(var(--section-padding-y) * 0.85)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -379,35 +528,213 @@ function CertificationsStrip() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 15% 50%, rgba(184,149,106,0.07), transparent 55%), radial-gradient(ellipse at 85% 50%, rgba(184,149,106,0.06), transparent 55%)",
+            "radial-gradient(ellipse at 12% 30%, rgba(184,149,106,0.10), transparent 55%), radial-gradient(ellipse at 88% 70%, rgba(184,149,106,0.08), transparent 55%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.32  0 0 0 0 0.22  0 0 0 0.18 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>\")",
         }}
       />
       <div className="container-ef relative">
         <ScrollReveal>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 mb-8 md:mb-10">
-            <div>
-              <SectionEyebrow>{t.certifications.eyebrow}</SectionEyebrow>
-              <h2
-                id="certifications-heading"
-                className="heading-3"
-                style={{ fontWeight: 500, marginTop: 4 }}
-              >
-                {t.certifications.headline}
-              </h2>
-            </div>
-            <p
-              className="text-body-sm"
-              style={{ color: "var(--color-text-muted)", maxWidth: 320 }}
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+            <SectionEyebrow>{t.certifications.eyebrow}</SectionEyebrow>
+            <h2
+              id="certifications-heading"
+              className="heading-2 mt-3"
+              style={{ fontWeight: 500 }}
             >
-              Ferioli Sergio SRL · since 1977
-            </p>
+              {t.certifications.headline}
+            </h2>
+            <div
+              className="mx-auto mt-5"
+              style={{
+                width: 56,
+                height: 2,
+                background: "linear-gradient(90deg, transparent, var(--color-accent), transparent)",
+              }}
+            />
           </div>
         </ScrollReveal>
+
+        <ScrollReveal>
+          <div
+            className="mb-10 lg:mb-12 mx-auto grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 lg:gap-10 items-stretch"
+            style={{
+              maxWidth: 1080,
+              backgroundColor: "var(--color-surface)",
+              border: "1px solid var(--color-border-subtle)",
+              borderRadius: "var(--radius-lg)",
+              padding: 20,
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <div
+              className="relative mx-auto md:mx-0"
+              style={{
+                width: "100%",
+                maxWidth: 360,
+                aspectRatio: "3 / 4",
+                borderRadius: "var(--radius-md)",
+                overflow: "hidden",
+                backgroundColor: "var(--color-bg)",
+                boxShadow: "inset 0 0 0 1px rgba(184,149,106,0.18)",
+                flexShrink: 0,
+              }}
+            >
+              <Image
+                src="/images/Carpenteria-metallica-certificata-bologna-crevalcore.jpg"
+                alt="Tutto su Misura — brochure — Ferioli Sergio & C. S.n.c."
+                fill
+                sizes="(min-width: 768px) 360px, 100vw"
+                className="object-contain transition-transform duration-700 hover:scale-[1.02]"
+                priority
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  left: 10,
+                  backgroundColor: "rgba(28, 23, 18, 0.88)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  color: "var(--color-text-on-dark)",
+                  padding: "5px 10px",
+                  borderRadius: "var(--radius-full)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 5,
+                  fontSize: 9,
+                  fontWeight: 600,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  border: "1px solid rgba(184,149,106,0.4)",
+                }}
+              >
+                <BadgeCheck size={11} style={{ color: "var(--color-accent)" }} />
+                {t.certifications.verified}
+              </div>
+            </div>
+            <div className="flex flex-col justify-center gap-5">
+              <div>
+                <p
+                  className="text-[10px] uppercase"
+                  style={{
+                    color: "var(--color-accent)",
+                    letterSpacing: "0.18em",
+                    fontWeight: 600,
+                    marginBottom: 8,
+                  }}
+                >
+                  {t.certifications.eyebrow}
+                </p>
+                <h3
+                  className="font-display"
+                  style={{
+                    fontStyle: "italic",
+                    fontWeight: 400,
+                    color: "var(--color-text-primary)",
+                    fontSize: "clamp(28px, 3.6vw, 40px)",
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.01em",
+                    marginBottom: 10,
+                  }}
+                >
+                  {t.certifications.certLabel}
+                </h3>
+                <p
+                  className="text-body"
+                  style={{ color: "var(--color-text-secondary)", lineHeight: 1.5 }}
+                >
+                  {t.certifications.certCaption}
+                </p>
+              </div>
+              <div
+                className="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4"
+                style={{
+                  padding: "16px 12px",
+                  borderRadius: "var(--radius-md)",
+                  backgroundColor: "var(--color-bg-secondary)",
+                  border: "1px solid var(--color-border-subtle)",
+                }}
+              >
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <IstitutoGiordanoSeal size={64} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    Istituto Giordano
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <CEMark size={56} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    CE Marking
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <QualitySeal label="60K" sub="Tested" size={64} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    60,000 Aperture
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <QualitySeal label="1977" sub="Est." size={64} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    Dal 1977
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <QualitySeal label="100%" sub="Italian" size={64} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    Made in Italy
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <QualitySeal label="100%" sub="In-house" size={64} />
+                  <p
+                    className="text-[8px] uppercase text-center"
+                    style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
+                  >
+                    Produzione interna
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 flex-wrap">
+                <ItalianFlagChip />
+                <p
+                  className="text-[10px] uppercase"
+                  style={{ color: "var(--color-text-muted)", letterSpacing: "0.16em", fontWeight: 500 }}
+                >
+                  Ferioli Sergio &amp; C. S.n.c. · Bologna · 1977
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <ScrollRevealStagger
-          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
           stagger={0.08}
         >
-          {t.certifications.items.map((item) => {
+          {t.certifications.items.map((item, idx) => {
             const Icon = certificationIcons[item.icon] ?? BadgeCheck;
             return (
               <div
@@ -417,35 +744,52 @@ function CertificationsStrip() {
                   backgroundColor: "var(--color-surface)",
                   border: "1px solid var(--color-border-subtle)",
                   borderRadius: "var(--radius-lg)",
-                  padding: "20px 18px",
+                  padding: "22px 20px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 12,
+                  gap: 14,
                   boxShadow: "var(--shadow-sm)",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
                 <span
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    top: 14,
+                    right: 18,
+                    fontSize: 38,
+                    lineHeight: 1,
+                    fontWeight: 300,
+                    fontStyle: "italic",
+                    color: "var(--color-accent)",
+                    opacity: 0.18,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  0{idx + 1}
+                </span>
+                <span
                   className="inline-flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: 48,
+                    height: 48,
                     borderRadius: "var(--radius-md)",
                     backgroundColor: "var(--color-accent-subtle)",
                     color: "var(--color-accent)",
                   }}
                 >
-                  <Icon size={22} />
+                  <Icon size={24} />
                 </span>
                 <div>
                   <p
-                    className="text-body"
+                    className="text-body-lg"
                     style={{
                       color: "var(--color-text-primary)",
                       fontWeight: 600,
                       lineHeight: 1.3,
-                      marginBottom: 4,
+                      marginBottom: 6,
                     }}
                   >
                     {item.title}
@@ -454,7 +798,7 @@ function CertificationsStrip() {
                     className="text-body-sm"
                     style={{
                       color: "var(--color-text-secondary)",
-                      lineHeight: 1.45,
+                      lineHeight: 1.5,
                     }}
                   >
                     {item.sub}
@@ -478,6 +822,50 @@ function CertificationsStrip() {
             );
           })}
         </ScrollRevealStagger>
+
+        <ScrollReveal>
+          <div
+            className="mt-10 lg:mt-14 grid grid-cols-2 md:grid-cols-4 overflow-hidden"
+            style={{
+              borderRadius: "var(--radius-lg)",
+              border: "1px solid var(--color-border-subtle)",
+              backgroundColor: "var(--color-surface-dark)",
+              boxShadow: "var(--shadow-md)",
+            }}
+          >
+            {t.certifications.stats.map((stat, i) => (
+              <div
+                key={i}
+                className="relative text-center px-4 py-7 sm:py-9"
+                style={{
+                  borderRight: i < t.certifications.stats.length - 1 ? "1px solid rgba(184,149,106,0.18)" : "none",
+                }}
+              >
+                <p
+                  className="leading-none"
+                  style={{
+                    fontSize: "clamp(36px, 5vw, 52px)",
+                    color: "var(--color-accent)",
+                    fontWeight: 300,
+                    fontStyle: "italic",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {stat.value}
+                </p>
+                <p
+                  className="mt-3 text-[10px] sm:text-xs uppercase"
+                  style={{
+                    color: "rgba(245, 240, 232, 0.7)",
+                    letterSpacing: "0.18em",
+                  }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

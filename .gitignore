@@ -8,3 +8,7 @@ out
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Build / WP extraction artifacts
+tmp/
+public/images/wp/
