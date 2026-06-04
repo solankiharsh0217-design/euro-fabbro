@@ -110,6 +110,32 @@ export const translations = {
         "Free quote within 24h",
       ],
     },
+    certifications: {
+      eyebrow: "Certifications & Guarantees",
+      headline: "Certified ironwork you can trust",
+      items: [
+        {
+          icon: "BadgeCheck",
+          title: "Istituto Giordano Certified",
+          sub: "First in Italy for manual and automatic gates",
+        },
+        {
+          icon: "Shield",
+          title: "CE Marking",
+          sub: "On every gate, fence and security bar",
+        },
+        {
+          icon: "Award",
+          title: "60,000 openings tested",
+          sub: "Verified durability over decades of use",
+        },
+        {
+          icon: "Calendar",
+          title: "Active since 1977",
+          sub: "49 years of guaranteed in-house production",
+        },
+      ],
+    },
     turnkey: {
       preLabel: "Valore Plus by Ferioli",
       headlinePre: "Valore Plus — Ferioli's ",
@@ -533,6 +559,32 @@ export const translations = {
         "1977–2026 · 49 Anni di esperienza",
         "Certificati Istituto Giordano",
         "Preventivo gratuito in 24h",
+      ],
+    },
+    certifications: {
+      eyebrow: "Certificazioni e garanzie",
+      headline: "Carpenteria certificata di cui ti puoi fidare",
+      items: [
+        {
+          icon: "BadgeCheck",
+          title: "Certificati Istituto Giordano",
+          sub: "Primi in Italia per cancelli manuali e automatici",
+        },
+        {
+          icon: "Shield",
+          title: "Marcatura CE",
+          sub: "Su ogni cancello, recinzione e inferriata",
+        },
+        {
+          icon: "Award",
+          title: "60.000 aperture testate",
+          sub: "Durata verificata per decenni di utilizzo",
+        },
+        {
+          icon: "Calendar",
+          title: "Attivi dal 1977",
+          sub: "49 anni di produzione interna garantita",
+        },
       ],
     },
     turnkey: {

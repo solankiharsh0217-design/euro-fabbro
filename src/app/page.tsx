@@ -5,6 +5,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   Award,
+  BadgeCheck,
+  Calendar,
   ChevronDown,
   Shield,
   Clock,
@@ -52,6 +54,13 @@ const processIcons: Record<string, React.ComponentType<{ className?: string }>> 
   MessageCircle,
   Ruler,
   CheckCircle,
+};
+
+const certificationIcons: Record<string, React.ComponentType<{ size?: number; className?: string; style?: React.CSSProperties }>> = {
+  BadgeCheck,
+  Shield,
+  Award,
+  Calendar,
 };
 
 function Section({
@@ -350,66 +359,340 @@ function ProductsSection() {
   );
 }
 
+function CertificationsStrip() {
+  const { t } = useT();
+  return (
+    <section
+      aria-labelledby="certifications-heading"
+      style={{
+        backgroundColor: "var(--color-surface)",
+        borderTop: "1px solid var(--color-border-subtle)",
+        borderBottom: "1px solid var(--color-border-subtle)",
+        paddingTop: 48,
+        paddingBottom: 48,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 15% 50%, rgba(184,149,106,0.07), transparent 55%), radial-gradient(ellipse at 85% 50%, rgba(184,149,106,0.06), transparent 55%)",
+        }}
+      />
+      <div className="container-ef relative">
+        <ScrollReveal>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 mb-8 md:mb-10">
+            <div>
+              <SectionEyebrow>{t.certifications.eyebrow}</SectionEyebrow>
+              <h2
+                id="certifications-heading"
+                className="heading-3"
+                style={{ fontWeight: 500, marginTop: 4 }}
+              >
+                {t.certifications.headline}
+              </h2>
+            </div>
+            <p
+              className="text-body-sm"
+              style={{ color: "var(--color-text-muted)", maxWidth: 320 }}
+            >
+              Ferioli Sergio SRL · since 1977
+            </p>
+          </div>
+        </ScrollReveal>
+        <ScrollRevealStagger
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+          stagger={0.08}
+        >
+          {t.certifications.items.map((item) => {
+            const Icon = certificationIcons[item.icon] ?? BadgeCheck;
+            return (
+              <div
+                key={item.title}
+                className="group transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  border: "1px solid var(--color-border-subtle)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "20px 18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  boxShadow: "var(--shadow-sm)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <span
+                  className="inline-flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: "var(--radius-md)",
+                    backgroundColor: "var(--color-accent-subtle)",
+                    color: "var(--color-accent)",
+                  }}
+                >
+                  <Icon size={22} />
+                </span>
+                <div>
+                  <p
+                    className="text-body"
+                    style={{
+                      color: "var(--color-text-primary)",
+                      fontWeight: 600,
+                      lineHeight: 1.3,
+                      marginBottom: 4,
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    className="text-body-sm"
+                    style={{
+                      color: "var(--color-text-secondary)",
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {item.sub}
+                  </p>
+                </div>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 3,
+                    background: "linear-gradient(90deg, transparent, var(--color-accent), transparent)",
+                    opacity: 0,
+                    transition: "opacity 300ms var(--ease-out)",
+                  }}
+                  className="group-hover:opacity-100"
+                />
+              </div>
+            );
+          })}
+        </ScrollRevealStagger>
+      </div>
+    </section>
+  );
+}
+
 function TurnkeySection() {
   const { t } = useT();
   return (
-    <Section bg="var(--color-bg)">
-      <ScrollReveal>
-        <div className="text-center mb-12 sm:mb-16" style={{ maxWidth: 720, margin: "0 auto 64px" }}>
-          <SectionEyebrow>{t.turnkey.preLabel}</SectionEyebrow>
-          <h2 className="heading-2">
-            {t.turnkey.headlinePre}
-            <span style={{ color: "var(--color-accent)" }}>{t.turnkey.headlineAccent}</span>
-            {t.turnkey.headlinePost}
-          </h2>
-          <p className="lead mt-4">{t.turnkey.subheadline}</p>
-        </div>
-      </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch" stagger={0.12}>
-        {t.turnkey.cards.map((c, idx) => (
-          <div key={c.title} className="card-hover p-0 overflow-hidden group h-full flex flex-col">
-            <div
-              className="relative aspect-[4/3] overflow-hidden"
-              style={{ backgroundColor: "var(--color-bg-secondary)" }}
+    <section
+      style={{
+        backgroundColor: "var(--color-surface-dark)",
+        color: "var(--color-text-on-dark)",
+        paddingTop: "var(--section-padding-y)",
+        paddingBottom: "var(--section-padding-y)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 80% 10%, rgba(184,149,106,0.10), transparent 55%), radial-gradient(ellipse at 20% 95%, rgba(184,149,106,0.08), transparent 55%)",
+        }}
+      />
+      <div className="container-ef relative">
+        <ScrollReveal>
+          <div
+            className="text-center"
+            style={{ maxWidth: 720, margin: "0 auto 64px" }}
+          >
+            <SectionEyebrow onDark>{t.turnkey.preLabel}</SectionEyebrow>
+            <h2
+              className="heading-2"
+              style={{ color: "var(--color-text-on-dark)" }}
             >
-              <Image
-                src={c.image}
-                alt={c.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-105"
-              />
-              <div
-                className="absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center font-display"
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  color: "var(--color-accent)",
-                  fontSize: 18,
-                  fontWeight: 600,
-                  boxShadow: "0 4px 12px rgba(28, 23, 18, 0.15)",
-                }}
-              >
-                {idx + 1}
-              </div>
-            </div>
-            <div style={{ padding: "var(--component-padding)" }}>
-              <h3 className="heading-3 mb-3">{c.title}</h3>
-              <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
-                {c.text}
-              </p>
-            </div>
+              {t.turnkey.headlinePre}
+              <span style={{ color: "var(--color-accent)" }}>
+                {t.turnkey.headlineAccent}
+              </span>
+              {t.turnkey.headlinePost}
+            </h2>
+            <p
+              className="lead mt-4"
+              style={{ color: "rgba(245, 240, 232, 0.8)" }}
+            >
+              {t.turnkey.subheadline}
+            </p>
           </div>
-        ))}
-      </ScrollRevealStagger>
-      <ScrollReveal delay={0.15}>
-        <p
-          className="text-body-lg text-center mt-12 italic"
-          style={{ color: "var(--color-text-secondary)", maxWidth: 640, margin: "48px auto 0" }}
-        >
-          {t.turnkey.closing}
-        </p>
-      </ScrollReveal>
-    </Section>
+        </ScrollReveal>
+
+        <div className="relative max-w-5xl mx-auto py-4 md:py-8">
+          {/* Vertical timeline line — left-aligned on sm/mobile */}
+          <div
+            aria-hidden="true"
+            className="absolute top-0 bottom-0 hidden sm:block md:hidden"
+            style={{
+              left: 32,
+              width: 2,
+              backgroundColor: "rgba(245, 240, 232, 0.12)",
+              borderRadius: 999,
+            }}
+          />
+          {/* Vertical timeline line — centered on md+ */}
+          <div
+            aria-hidden="true"
+            className="absolute top-0 bottom-0 hidden md:block"
+            style={{
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 2,
+              backgroundColor: "rgba(245, 240, 232, 0.12)",
+              borderRadius: 999,
+            }}
+          />
+
+          {t.turnkey.cards.map((c, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <div
+                key={c.title}
+                className="relative flex flex-col md:flex-row items-center justify-between mb-16 md:mb-28 last:mb-0 gap-8 md:gap-0"
+              >
+                {/* Timeline dot — left-aligned on sm/mobile */}
+                <span
+                  aria-hidden="true"
+                  className="absolute hidden sm:block md:hidden z-10"
+                  style={{
+                    left: 32,
+                    top: 12,
+                    transform: "translateX(-50%)",
+                    width: 20,
+                    height: 20,
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent)",
+                    border: "4px solid #2C2419",
+                    boxShadow: "0 0 0 1px rgba(184,149,106,0.5)",
+                  }}
+                />
+                {/* Timeline dot — centered on md+ */}
+                <span
+                  aria-hidden="true"
+                  className="absolute hidden md:block z-10"
+                  style={{
+                    left: "50%",
+                    top: 12,
+                    transform: "translateX(-50%)",
+                    width: 20,
+                    height: 20,
+                    borderRadius: "50%",
+                    backgroundColor: "var(--color-accent)",
+                    border: "4px solid #2C2419",
+                    boxShadow: "0 0 0 1px rgba(184,149,106,0.5)",
+                  }}
+                />
+
+                {/* Text column */}
+                <ScrollReveal
+                  as="div"
+                  className={`w-full md:w-[45%] flex flex-col pl-16 sm:pl-20 md:pl-0 ${
+                    isEven
+                      ? "md:items-end md:text-right md:pr-12"
+                      : "md:items-start md:text-left md:pl-12 md:order-2"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      fontSize: 80,
+                      fontWeight: 800,
+                      color: "rgba(245, 240, 232, 0.06)",
+                      lineHeight: 0.8,
+                      marginBottom: -8,
+                      fontFamily: "var(--font-display)",
+                      letterSpacing: "-0.04em",
+                    }}
+                  >
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h3
+                    className="heading-3"
+                    style={{
+                      color: "var(--color-text-on-dark)",
+                      marginBottom: 12,
+                    }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p
+                    className="text-body-lg"
+                    style={{
+                      color: "rgba(245, 240, 232, 0.78)",
+                      lineHeight: "var(--leading-body)",
+                      maxWidth: 420,
+                    }}
+                  >
+                    {c.text}
+                  </p>
+                </ScrollReveal>
+
+                {/* Image column */}
+                <ScrollReveal
+                  as="div"
+                  className={`w-full md:w-[45%] pl-16 sm:pl-20 md:pl-0 ${
+                    isEven ? "md:pl-12" : "md:pr-12 md:order-1"
+                  }`}
+                  delay={0.1}
+                >
+                  <div
+                    className="relative overflow-hidden group"
+                    style={{
+                      borderRadius: "var(--radius-xl)",
+                      aspectRatio: "4 / 3",
+                      boxShadow:
+                        "0 20px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(245,240,232,0.05)",
+                    }}
+                  >
+                    <Image
+                      src={c.image}
+                      alt={c.title}
+                      fill
+                      sizes="(max-width: 768px) 90vw, 45vw"
+                      className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-105"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(to top right, rgba(0,0,0,0.55), transparent 55%)",
+                      }}
+                    />
+                  </div>
+                </ScrollReveal>
+              </div>
+            );
+          })}
+        </div>
+
+        <ScrollReveal delay={0.15}>
+          <p
+            className="text-body-lg text-center italic"
+            style={{
+              color: "var(--color-accent)",
+              maxWidth: 640,
+              margin: "64px auto 0",
+              fontWeight: 500,
+            }}
+          >
+            {t.turnkey.closing}
+          </p>
+        </ScrollReveal>
+      </div>
+    </section>
   );
 }
 
@@ -901,6 +1184,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <CertificationsStrip />
       <ProductsSection />
       <TurnkeySection />
       <AuthoritySection />
