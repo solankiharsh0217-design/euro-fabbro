@@ -65,7 +65,9 @@ export default function AutomazionePage() {
           <div className="text-center max-w-3xl mx-auto mb-10">
             <SectionEyebrow>{t.pageLabels.types}</SectionEyebrow>
             <h2 className="heading-2 mt-3">
-              <span style={{ color: "var(--color-accent)" }}>Tipologie</span> di automazione
+              {c.typesTitlePre}
+              <span style={{ color: "var(--color-accent)" }}>{c.typesTitleAccent}</span>
+              {c.typesTitlePost ? ` ${c.typesTitlePost}` : ""}
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
@@ -118,11 +120,11 @@ export default function AutomazionePage() {
         <div className="container-ef">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="label-eyebrow">{t.pageLabels.controls}</span>
-            <h2 className="heading-2 mt-3">Ways to control your gate</h2>
+            <h2 className="heading-2 mt-3">{c.controlsTitle}</h2>
           </div>
           <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
-            {c.controls.map((c2) => (
-              <li key={c2} className="card text-center" style={{ padding: 20 }}>{c2}</li>
+            {c.controls.map((ctrl) => (
+              <li key={ctrl} className="card text-center" style={{ padding: 20 }}>{ctrl}</li>
             ))}
           </ul>
         </div>

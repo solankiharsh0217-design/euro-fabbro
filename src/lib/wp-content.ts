@@ -439,7 +439,7 @@ export const wpPages: WpPage[] = [
       { src: 'https://eurofabbro.com/wp-content/uploads/2023/04/Pensiline-autoportanti-per-parcheggio-auto-400x284.jpg', local: '/images/wp/Pensiline-autoportanti-per-parcheggio-auto.jpg' },
       { src: 'https://eurofabbro.com/wp-content/uploads/2023/04/carpenteria-metallica-bologna-1-400x284.jpg', local: '/images/wp/carpenteria-metallica-bologna-1.jpg' },
     ], sections: [
-    { level: 0, heading: '', blocks: [
+    { level: 1, heading: '', blocks: [
         { type: 'p', text: 'Molto pù di una semplice carpenteria' },
         { type: 'p', text: 'Molto pù di una semplice carpenteria' },
         { type: 'p', text: 'Molto pù di una semplice carpenteria' },

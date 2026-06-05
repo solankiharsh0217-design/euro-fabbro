@@ -18,7 +18,7 @@ export default function LanguageToggle({ transparent = false }: { transparent?: 
         transition: "background-color 300ms cubic-bezier(.25,.46,.45,.94), border-color 300ms cubic-bezier(.25,.46,.45,.94)",
       }}
     >
-      {(["en", "it"] as Lang[]).map((code) => {
+      {(["it", "en"] as Lang[]).map((code) => {
         const active = lang === code;
         return (
           <button

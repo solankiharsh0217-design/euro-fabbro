@@ -32,7 +32,7 @@ import { useT } from "@/components/LanguageProvider";
 import { ScrollReveal, ScrollRevealStagger } from "@/components/ScrollReveal";
 import { SectionEyebrow } from "@/components/ui";
 
-const productIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const productIcons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number; className?: string }>> = {
   DoorOpen,
   Grid3x3,
   Fence,
@@ -50,7 +50,7 @@ const productImages: Record<string, string> = {
   Settings: "/images/ff67b59d2_generated_image.png",
 };
 
-const processIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const processIcons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number; className?: string; style?: React.CSSProperties }>> = {
   MessageCircle,
   Ruler,
   CheckCircle,
