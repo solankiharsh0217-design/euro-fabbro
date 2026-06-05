@@ -101,7 +101,7 @@ export default function Footer() {
                   backgroundColor: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.1)",
                 }}
-                aria-label="Facebook"
+                aria-label={t.footer.socialAria.facebook}
               >
                 <Facebook size={16} />
               </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                   backgroundColor: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.1)",
                 }}
-                aria-label="Instagram"
+                aria-label={t.footer.socialAria.instagram}
               >
                 <Instagram size={16} />
               </a>

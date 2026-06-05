@@ -85,6 +85,10 @@ export const translations = {
       items: navItems,
       services: navServices,
       cta: { key: "cta", href: "/contatti" },
+      signature: "Ferioli Sergio · since 1977",
+      viewAllLavorazioni: "See all works",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
       label: {
         lavorazioni: "Products",
         automazione: "Automation",
@@ -241,6 +245,7 @@ export const translations = {
       ],
     },
     deductionBanner: {
+      eyebrow: "2026 Bonus",
       headlinePre: "Save up to ",
       headlineAccent: "50%",
       headlinePost: " with tax deductions",
@@ -425,6 +430,10 @@ export const translations = {
       privacy: "Privacy Policy",
       cookie: "Cookie preferences",
       piva: "VAT IT02128491202",
+      socialAria: { facebook: "Facebook", instagram: "Instagram" },
+      hours: "Mon–Fri 8:00–18:00 · Sat by appointment",
+      certChip: "CE Marked",
+      signature: "Ferioli Sergio · since 1977",
     },
     form: {
       name: "Full name",
@@ -723,6 +732,10 @@ export const translations = {
       items: navItems,
       services: navServices,
       cta: { key: "cta", href: "/contatti" },
+      signature: "Ferioli Sergio · dal 1977",
+      viewAllLavorazioni: "Tutte le lavorazioni",
+      openMenu: "Apri menu",
+      closeMenu: "Chiudi menu",
       label: {
         lavorazioni: "Lavorazioni",
         automazione: "Automazione",
@@ -879,6 +892,7 @@ export const translations = {
       ],
     },
     deductionBanner: {
+      eyebrow: "Bonus 2026",
       headlinePre: "Risparmia fino al ",
       headlineAccent: "50%",
       headlinePost: " con le detrazioni fiscali",
@@ -1063,6 +1077,10 @@ export const translations = {
       privacy: "Privacy Policy",
       cookie: "Preferenze cookie",
       piva: "P.IVA 02128491202",
+      socialAria: { facebook: "Facebook", instagram: "Instagram" },
+      hours: "Lun–Ven 8:00–18:00 · Sab su appuntamento",
+      certChip: "Marcato CE",
+      signature: "Ferioli Sergio · dal 1977",
     },
     form: {
       name: "Nome completo",

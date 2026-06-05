@@ -77,40 +77,40 @@ export default function ContattiPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div>
               <span className="label-eyebrow">{t.pageLabels.reach}</span>
-              <h2 className="heading-2 mt-3">Our details</h2>
+              <h2 className="heading-2 mt-3">{c.detailsTitle}</h2>
               <div className="mt-6 space-y-4">
                 <a href={`tel:${site.phoneTel}`} className="card flex items-center gap-3 hover:shadow-md">
                   <Phone size={20} style={{ color: "var(--color-accent)" }} />
                   <div>
-                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Phone</p>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>{c.contactLabels.phone}</p>
                     <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.phone}</p>
                   </div>
                 </a>
                 <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="card flex items-center gap-3 hover:shadow-md">
                   <MessageCircle size={20} style={{ color: "var(--color-accent)" }} />
                   <div>
-                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>WhatsApp</p>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>{c.contactLabels.whatsapp}</p>
                     <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.whatsappDisplay}</p>
                   </div>
                 </a>
                 <a href={`mailto:${site.email}`} className="card flex items-center gap-3 hover:shadow-md">
                   <Mail size={20} style={{ color: "var(--color-accent)" }} />
                   <div>
-                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Email</p>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>{c.contactLabels.email}</p>
                     <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.email}</p>
                   </div>
                 </a>
                 <div className="card flex items-start gap-3">
                   <MapPin size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                   <div>
-                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Address</p>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>{c.contactLabels.address}</p>
                     <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.address}</p>
                   </div>
                 </div>
                 <div className="card flex items-center gap-3">
                   <Clock size={20} style={{ color: "var(--color-accent)" }} />
                   <div>
-                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>Hours</p>
+                    <p className="text-body-sm" style={{ color: "var(--color-text-muted)" }}>{c.contactLabels.hours}</p>
                     <p className="font-medium" style={{ color: "var(--color-text-primary)" }}>{site.hours}</p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ export default function ContattiPage() {
             </div>
             <div>
               <span className="label-eyebrow">{t.pageLabels.write}</span>
-              <h2 className="heading-2 mt-3">Send a request</h2>
+              <h2 className="heading-2 mt-3">{c.requestTitle}</h2>
               <div className="mt-6">
                 <ContactForm />
               </div>

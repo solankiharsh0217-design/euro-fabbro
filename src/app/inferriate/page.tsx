@@ -29,7 +29,7 @@ export default function InferriatePage() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="label-eyebrow">{t.pageLabels.tipologie}</span>
             <h2 className="heading-2 mt-3">
-              <span style={{ color: "var(--color-accent)" }}>Every type</span> for every opening
+              {c.variantsTitlePre}<span style={{ color: "var(--color-accent)" }}>{c.variantsTitleAccent}</span>{c.variantsTitlePost}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
@@ -49,7 +49,7 @@ export default function InferriatePage() {
                   className="inline-flex items-center gap-1.5 mt-4 text-body-sm"
                   style={{ color: "var(--color-accent)", fontWeight: 500 }}
                 >
-                  Scopri di più <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  {t.common.learnMore} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             ))}
@@ -66,20 +66,22 @@ export default function InferriatePage() {
       >
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <SectionEyebrow>Tipologie in officina</SectionEyebrow>
+            <SectionEyebrow>{c.galleryEyebrow}</SectionEyebrow>
             <h2 className="heading-2 mt-3">
-              <span style={{ color: "var(--color-accent)" }}>Sicurezza</span> per ogni apertura
+              {c.galleryTitlePre}<span style={{ color: "var(--color-accent)" }}>{c.galleryTitleAccent}</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { src: "/images/wp/Inferriate-fisse-per-finestre-giovanni-in-persiceto.jpg", alt: "Inferriate fisse", label: "Fisse" },
-              { src: "/images/wp/Inferriate-apribili-a-due-ante-ferro-battuto-bologna.jpg", alt: "Inferriate apribili", label: "Apribili" },
-              { src: "/images/wp/Inferriate-snodabili-personalizzate-bologna-cento.jpg", alt: "Inferriate snodabili", label: "Snodabili" },
-              { src: "/images/wp/Inferriate-a-due-ante-bologna-san-giovanni-in-persiceto.jpg", alt: "Inferriate a due ante", label: "Due ante" },
-            ].map((img) => (
+              { src: "/images/wp/Inferriate-fisse-per-finestre-giovanni-in-persiceto.jpg", alt: "Inferriate fisse" },
+              { src: "/images/wp/Inferriate-apribili-a-due-ante-ferro-battuto-bologna.jpg", alt: "Inferriate apribili" },
+              { src: "/images/wp/Inferriate-snodabili-personalizzate-bologna-cento.jpg", alt: "Inferriate snodabili" },
+              { src: "/images/wp/Inferriate-a-due-ante-bologna-san-giovanni-in-persiceto.jpg", alt: "Inferriate a due ante" },
+            ].map((img, i) => {
+              const item = c.galleryItems[i] ?? { label: img.alt };
+              return (
               <Link
-                key={img.label}
+                key={item.label}
                 href="/realizzazioni"
                 className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
                 style={{ backgroundColor: "var(--color-bg)" }}
@@ -96,10 +98,11 @@ export default function InferriatePage() {
                   style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85), rgba(28,23,18,0.1) 55%, transparent)" }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4" style={{ color: "#FFFFFF" }}>
-                  <p className="text-sm font-semibold leading-tight">{img.label}</p>
+                  <p className="text-sm font-semibold leading-tight">{item.label}</p>
                 </div>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

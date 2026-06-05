@@ -1,7 +1,9 @@
 "use client";
+import { useT } from "./LanguageProvider";
 import { ContactForm } from "./ContactForm";
 
 export function ContactCta({ title, subtitle }: { title: React.ReactNode; subtitle?: string }) {
+  const { t } = useT();
   return (
     <section
       style={{
@@ -38,7 +40,7 @@ export function ContactCta({ title, subtitle }: { title: React.ReactNode; subtit
                 border: "1px solid rgba(184, 149, 106, 0.3)",
               }}
             >
-              Contact
+              {t.cta.chip}
             </span>
             <h2 className="heading-2 mt-2" style={{ color: "var(--color-text-on-dark)" }}>
               {title}

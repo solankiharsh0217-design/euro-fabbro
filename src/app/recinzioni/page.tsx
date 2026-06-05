@@ -71,20 +71,22 @@ export default function RecinzioniPage() {
       >
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <SectionEyebrow>Tipologie in officina</SectionEyebrow>
+            <SectionEyebrow>{c.galleryEyebrow}</SectionEyebrow>
             <h2 className="heading-2 mt-3">
-              <span style={{ color: "var(--color-accent)" }}>Doghe, reti</span> e moduli su misura
+              {c.galleryTitlePre}<span style={{ color: "var(--color-accent)" }}>{c.galleryTitleAccent}</span>
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { src: "/images/wp/Recinzioni-in-ferro-bologna-cento.jpg", alt: "Recinzioni in ferro", label: "Ferro modulare" },
-              { src: "/images/wp/Reti-metalliche-bologna-crevalcore.jpg", alt: "Reti metalliche", label: "Reti metalliche" },
-              { src: "/images/wp/Recinzioni-in-rete-metallica.jpg", alt: "Rete metallica decorativa", label: "Rete decorativa" },
-              { src: "/images/wp/Reti-metalliche-decorative-crevalcore.jpg", alt: "Reti decorative", label: "Decorativa" },
-            ].map((img) => (
+              { src: "/images/wp/Recinzioni-in-ferro-bologna-cento.jpg", alt: "Recinzioni in ferro" },
+              { src: "/images/wp/Reti-metalliche-bologna-crevalcore.jpg", alt: "Reti metalliche" },
+              { src: "/images/wp/Recinzioni-in-rete-metallica.jpg", alt: "Rete metallica decorativa" },
+              { src: "/images/wp/Reti-metalliche-decorative-crevalcore.jpg", alt: "Reti decorative" },
+            ].map((img, i) => {
+              const item = c.galleryItems[i] ?? { label: img.alt };
+              return (
               <Link
-                key={img.label}
+                key={item.label}
                 href="/recinzioni/reti-metalliche"
                 className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
                 style={{ backgroundColor: "var(--color-bg)" }}
@@ -101,10 +103,11 @@ export default function RecinzioniPage() {
                   style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85), rgba(28,23,18,0.1) 55%, transparent)" }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4" style={{ color: "#FFFFFF" }}>
-                  <p className="text-sm font-semibold leading-tight">{img.label}</p>
+                  <p className="text-sm font-semibold leading-tight">{item.label}</p>
                 </div>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

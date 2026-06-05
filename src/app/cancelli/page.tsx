@@ -57,7 +57,7 @@ export default function CancelliPage() {
                   className="inline-flex items-center gap-1.5 mt-4 text-body-sm"
                   style={{ color: "var(--color-accent)", fontWeight: 500 }}
                 >
-                  Scopri di più <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  {t.common.learnMore} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             ))}
@@ -74,20 +74,22 @@ export default function CancelliPage() {
       >
         <div className="container-ef">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <SectionEyebrow>Tipologie in officina</SectionEyebrow>
+            <SectionEyebrow>{c.galleryEyebrow}</SectionEyebrow>
             <h2 className="heading-2 mt-3">
-              Ogni <span style={{ color: "var(--color-accent)" }}>apertura</span>, una soluzione
+              {c.galleryTitlePre}<span style={{ color: "var(--color-accent)" }}>{c.galleryTitleAccent}</span>{c.galleryTitlePost}
             </h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { src: "/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg", alt: "Cancelli scorrevoli zincati", label: "Scorrevoli" },
-              { src: "/images/wp/Cancelli-a-battente-bologna-san-giovanni-in-persiceto.jpg", alt: "Cancelli a battente", label: "Battente" },
-              { src: "/images/wp/Cancelli-pedonali-per-ingresso-bologna.jpg", alt: "Cancelli pedonali", label: "Pedonali" },
-              { src: "/images/wp/Cancelli-basamenti-autoportanti-per-privati-crevalcore.jpg", alt: "Cancelli autoportanti", label: "Autoportanti" },
-            ].map((img) => (
+              { src: "/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg", alt: "Cancelli scorrevoli zincati" },
+              { src: "/images/wp/Cancelli-a-battente-bologna-san-giovanni-in-persiceto.jpg", alt: "Cancelli a battente" },
+              { src: "/images/wp/Cancelli-pedonali-per-ingresso-bologna.jpg", alt: "Cancelli pedonali" },
+              { src: "/images/wp/Cancelli-basamenti-autoportanti-per-privati-crevalcore.jpg", alt: "Cancelli autoportanti" },
+            ].map((img, i) => {
+              const item = c.galleryItems[i] ?? { label: img.alt };
+              return (
               <Link
-                key={img.label}
+                key={item.label}
                 href="/realizzazioni"
                 className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
                 style={{ backgroundColor: "var(--color-bg)" }}
@@ -104,10 +106,11 @@ export default function CancelliPage() {
                   style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85), rgba(28,23,18,0.1) 55%, transparent)" }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-4" style={{ color: "#FFFFFF" }}>
-                  <p className="text-sm font-semibold leading-tight">{img.label}</p>
+                  <p className="text-sm font-semibold leading-tight">{item.label}</p>
                 </div>
               </Link>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -182,12 +185,12 @@ export default function CancelliPage() {
               <Shield size={28} style={{ color: "var(--color-accent)" }} />
             </div>
             <div className="flex-1">
-              <h3 className="text-h4" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>Istituto Giordano Certified</h3>
+              <h3 className="text-h4" style={{ color: "var(--color-text-on-dark)", fontWeight: 500 }}>{c.certStripTitle}</h3>
               <p className="text-body mt-1" style={{ color: "rgba(245, 240, 232, 0.7)" }}>
-                CE Marking · Tested for 60,000 openings
+                {c.certStripSub}
               </p>
             </div>
-            <a href={`tel:${site.phoneTel}`} className="btn btn-primary">Call {site.phone}</a>
+            <a href={`tel:${site.phoneTel}`} className="btn btn-primary">{t.common.callUs.replace("{phone}", site.phone)}</a>
           </div>
         </div>
       </section>

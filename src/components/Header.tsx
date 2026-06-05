@@ -213,7 +213,7 @@ export default function Header() {
                               className="text-[11px] uppercase"
                               style={{ color: "var(--color-text-muted)", letterSpacing: "0.18em" }}
                             >
-                              Ferioli Sergio · dal 1977
+                              {t.nav.signature}
                             </span>
                             <Link
                               href="/lavorazioni"
@@ -221,7 +221,7 @@ export default function Header() {
                               className="inline-flex items-center gap-1.5 text-body-sm"
                               style={{ color: accent, fontWeight: 500 }}
                             >
-                              Tutte le lavorazioni <ArrowRight size={14} />
+                              {t.nav.viewAllLavorazioni} <ArrowRight size={14} />
                             </Link>
                           </div>
                         </motion.div>
@@ -270,7 +270,7 @@ export default function Header() {
               className="lg:hidden p-2"
               onClick={() => setOpen(true)}
               style={{ color: headerText, transition: "color 300ms cubic-bezier(.25,.46,.45,.94)" }}
-              aria-label="Open menu"
+              aria-label={t.nav.openMenu}
             >
               <Menu size={24} />
             </button>
@@ -300,7 +300,7 @@ export default function Header() {
               <button
                 onClick={() => setOpen(false)}
                 style={{ color: "var(--color-text-primary)" }}
-                aria-label="Close menu"
+                aria-label={t.nav.closeMenu}
               >
                 <X size={24} />
               </button>

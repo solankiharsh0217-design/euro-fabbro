@@ -141,7 +141,7 @@ export function ContactSection({ contextKey }: { contextKey: "cancelli" | "infer
               </a>
               <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:opacity-80">
                 <MessageCircle size={18} style={{ color: "var(--color-accent)" }} />
-                <span>WhatsApp: {site.whatsappDisplay}</span>
+                <span>{t.common.whatsappLabel.replace("{display}", site.whatsappDisplay)}</span>
               </a>
               <a href={`mailto:${site.email}`} className="flex items-center gap-3 hover:opacity-80">
                 <Mail size={18} style={{ color: "var(--color-accent)" }} />

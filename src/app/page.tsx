@@ -134,7 +134,7 @@ function Hero() {
         className="hidden md:block absolute top-1/2 -translate-y-1/2 right-12 z-10"
         style={{ writingMode: "vertical-rl", color: "var(--color-accent)", fontSize: 11, letterSpacing: "0.4em", fontWeight: 500, textTransform: "uppercase", opacity: 0.6 }}
       >
-        Ferioli Sergio · Bologna · 1977
+        {t.hero.cornerMark}
       </div>
 
       <div
@@ -212,10 +212,10 @@ function Hero() {
                   marginBottom: 12,
                 }}
               >
-                Ferioli Sergio · since 1977
+                {t.hero.cardEyebrow}
               </p>
               <p className="text-body" style={{ color: "rgba(245, 240, 232, 0.9)" }}>
-                Every gate, bar and fence is handcrafted in our workshop near Bologna and installed by our own team — from the first spark to the final bolt.
+                {t.hero.cardBody}
               </p>
             </div>
           </div>
@@ -244,7 +244,7 @@ function Hero() {
         className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 z-10"
         style={{ color: "rgba(245, 240, 232, 0.5)" }}
       >
-        <span style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase" }}>Scroll</span>
+        <span style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase" }}>{t.hero.scroll}</span>
         <div
           style={{
             width: 1,
@@ -588,7 +588,7 @@ function CertificationsStrip() {
             >
               <Image
                 src="/images/Carpenteria-metallica-certificata-bologna-crevalcore.jpg"
-                alt="Tutto su Misura — brochure — Ferioli Sergio & C. S.n.c."
+                alt={t.certifications.brochureAlt}
                 fill
                 sizes="(min-width: 768px) 360px, 100vw"
                 className="object-contain transition-transform duration-700 hover:scale-[1.02]"
@@ -668,7 +668,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    Istituto Giordano
+                    {t.certifications.sealCaptions[0]}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -677,7 +677,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    CE Marking
+                    {t.certifications.sealCaptions[1]}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -686,7 +686,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    60,000 Aperture
+                    {t.certifications.sealCaptions[2]}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -695,7 +695,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    Dal 1977
+                    {t.certifications.sealCaptions[3]}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -704,7 +704,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    Made in Italy
+                    {t.certifications.sealCaptions[4]}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1">
@@ -713,7 +713,7 @@ function CertificationsStrip() {
                     className="text-[8px] uppercase text-center"
                     style={{ color: "var(--color-text-muted)", letterSpacing: "0.12em", marginTop: 2 }}
                   >
-                    Produzione interna
+                    {t.certifications.sealCaptions[5]}
                   </p>
                 </div>
               </div>
@@ -723,7 +723,7 @@ function CertificationsStrip() {
                   className="text-[10px] uppercase"
                   style={{ color: "var(--color-text-muted)", letterSpacing: "0.16em", fontWeight: 500 }}
                 >
-                  Ferioli Sergio &amp; C. S.n.c. · Bologna · 1977
+                  {t.certifications.footerLine}
                 </p>
               </div>
             </div>
@@ -1322,7 +1322,7 @@ function DeductionBannerSection() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-center">
         <ScrollReveal>
           <div>
-            <SectionEyebrow>2026 Bonus</SectionEyebrow>
+            <SectionEyebrow>{t.deductionBanner.eyebrow}</SectionEyebrow>
             <h2 className="heading-2">
               {t.deductionBanner.headlinePre}
               <span style={{ color: "var(--color-accent)" }}>{t.deductionBanner.headlineAccent}</span>
@@ -1487,7 +1487,7 @@ function WorkWithUsSection() {
             {t.workWithUs.subheadline}
           </p>
           <Link
-            href="/lavora-con-noi"
+            href={t.workWithUs.ctaHref}
             className="btn btn-primary mt-8 group"
           >
             {t.workWithUs.cta}

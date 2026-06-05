@@ -64,18 +64,20 @@ export default function PercheNoiPage() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
             {[
-              { src: "/images/wp/Banchi-lavoro-officina-cento.jpg", alt: "Banchi di lavoro in officina", label: "Officina" },
-              { src: "/images/wp/Scaffalature-industriali-bologna.jpg", alt: "Scaffalature industriali", label: "Magazzino" },
-              { src: "/images/wp/Prodotti-in-ferro-palata-pepoli-di-crevalcore.jpg", alt: "Prodotti in ferro su misura", label: "Produzione" },
-            ].map((img) => (
+              { src: "/images/wp/Banchi-lavoro-officina-cento.jpg", alt: "Banchi di lavoro in officina" },
+              { src: "/images/wp/Scaffalature-industriali-bologna.jpg", alt: "Scaffalature industriali" },
+              { src: "/images/wp/Prodotti-in-ferro-palata-pepoli-di-crevalcore.jpg", alt: "Prodotti in ferro su misura" },
+            ].map((img, i) => {
+              const card = c.workshopCards[i] ?? { label: img.alt, alt: img.alt };
+              return (
               <div
-                key={img.label}
+                key={card.label}
                 className="relative aspect-[4/3] rounded-2xl overflow-hidden group"
                 style={{ backgroundColor: "var(--color-bg)" }}
               >
                 <Image
                   src={img.src}
-                  alt={img.alt}
+                  alt={card.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
@@ -85,10 +87,11 @@ export default function PercheNoiPage() {
                   style={{ background: "linear-gradient(to top, rgba(28,23,18,0.75), rgba(28,23,18,0.1) 55%, transparent)" }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-5" style={{ color: "#FFFFFF" }}>
-                  <p className="text-base font-semibold leading-tight">{img.label}</p>
+                  <p className="text-base font-semibold leading-tight">{card.label}</p>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -114,27 +117,20 @@ export default function PercheNoiPage() {
               <p className="text-body-lg" style={{ color: "rgba(245, 240, 232, 0.85)" }}>{c.guaranteeBody}</p>
             </div>
             <ul className="space-y-3">
-              <li
-                className="card flex items-center gap-3"
-                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-              >
-                <Sparkles size={20} style={{ color: "var(--color-accent)" }} />
-                <span style={{ color: "var(--color-text-on-dark)" }}>49 years of artisan experience</span>
-              </li>
-              <li
-                className="card flex items-center gap-3"
-                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-              >
-                <Award size={20} style={{ color: "var(--color-accent)" }} />
-                <span style={{ color: "var(--color-text-on-dark)" }}>First in Italy CE certified (Istituto Giordano)</span>
-              </li>
-              <li
-                className="card flex items-center gap-3"
-                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-              >
-                <ShieldCheck size={20} style={{ color: "var(--color-accent)" }} />
-                <span style={{ color: "var(--color-text-on-dark)" }}>In-house production, direct installation</span>
-              </li>
+              {c.highlights.map((h, i) => {
+                const icons = [Sparkles, Award, ShieldCheck];
+                const Icon = icons[i] ?? ShieldCheck;
+                return (
+                  <li
+                    key={h}
+                    className="card flex items-center gap-3"
+                    style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
+                  >
+                    <Icon size={20} style={{ color: "var(--color-accent)" }} />
+                    <span style={{ color: "var(--color-text-on-dark)" }}>{h}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

@@ -1,13 +1,12 @@
+"use client";
 import Link from "next/link";
-import { CheckCircle, Phone, Mail } from "lucide-react";
+import { CheckCircle, Phone } from "lucide-react";
 import { ArrowRight } from "lucide-react";
-
-export const metadata = {
-  title: "Grazie — Ferioli Sergio",
-  description: "Grazie per averci contattato. Ti ricontatteremo al più presto.",
-};
+import { useT } from "@/components/LanguageProvider";
 
 export default function Page() {
+  const { t, site } = useT();
+  const g = t.grazie;
   return (
     <section
       style={{
@@ -34,27 +33,27 @@ export default function Page() {
             <CheckCircle size={40} style={{ color: "var(--color-accent)" }} />
           </div>
           <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>
-            Messaggio ricevuto
+            {g.eyebrow}
           </span>
           <h1
             className="text-hero mt-4"
             style={{ color: "#FFFFFF", fontWeight: 300 }}
           >
-            Grazie per averci
-            <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}> contattato</span>
+            {g.titlePre}
+            <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}> {g.titleAccent}</span>
           </h1>
           <p
             className="text-body-lg mt-6"
             style={{ color: "rgba(245, 240, 232, 0.82)" }}
           >
-            Abbiamo ricevuto la tua richiesta. Il nostro staff ti ricontatterà al più presto per fornirti tutte le informazioni di cui hai bisogno.
+            {g.body}
           </p>
           <div className="flex flex-wrap gap-3 justify-center mt-8">
             <Link href="/" className="btn btn-primary">
-              Torna alla home <ArrowRight size={16} />
+              {g.ctaHome} <ArrowRight size={16} />
             </Link>
-            <a href="tel:+39051985300" className="btn btn-secondary-dark">
-              <Phone size={16} /> 051 985300
+            <a href={`tel:${site.phoneTel}`} className="btn btn-secondary-dark">
+              <Phone size={16} /> {site.phone}
             </a>
           </div>
         </div>

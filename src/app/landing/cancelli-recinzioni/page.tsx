@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 
 export default function CancelliRecinzioniLanding() {
   const { t, site } = useT();
+  const c = t.landings.cancelliRecinzioni;
   return (
     <>
       <section
@@ -41,16 +42,16 @@ export default function CancelliRecinzioniLanding() {
         <div className="container-ef relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.pageLabels.gutters[0]}</span>
+              <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{c.heroEyebrow}</span>
               <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}>
-                Custom iron <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>gates & fencing</span>
+                {c.heroTitlePre}<span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{c.heroTitleAccent}</span>
               </h1>
               <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 520, textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
-                Production and installation of custom iron gates and fencing. 49 years of experience, CE marked, free site visit in Bologna and Modena.
+                {c.heroSub}
               </p>
               <div className="flex flex-wrap gap-3 mt-7">
                 <a href="#form" className="btn btn-primary">
-                  Request quote <ArrowRight size={16} />
+                  {c.heroCta} <ArrowRight size={16} />
                 </a>
                 <a href={`tel:${site.phoneTel}`} className="btn btn-secondary-dark">
                   {site.phone}
@@ -64,10 +65,10 @@ export default function CancelliRecinzioniLanding() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Award size={20} style={{ color: "var(--color-accent)" }} />
-                  <span className="font-semibold" style={{ color: "var(--color-text-on-dark)" }}>Certified First in Italy</span>
+                  <span className="font-semibold" style={{ color: "var(--color-text-on-dark)" }}>{c.certTitle}</span>
                 </div>
                 <p className="text-body-sm" style={{ color: "rgba(245, 240, 232, 0.85)" }}>
-                  Istituto Giordano certification, CE marking on every installation.
+                  {c.certBody}
                 </p>
               </div>
             </div>
@@ -77,15 +78,11 @@ export default function CancelliRecinzioniLanding() {
 
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="label-eyebrow">{c.benefitsTitle}</span>
+          </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto">
-            {[
-              "Free site visit within 24h",
-              "Custom design, in-house production",
-              "Galvanised and paintable on request",
-              "CE marking and technical documentation",
-              "Direct installation by our team",
-              "Tax deductible under Security Bonus",
-            ].map((b) => (
+            {c.benefits.map((b) => (
               <li key={b} className="card flex items-start gap-3">
                 <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                 <span className="text-body" style={{ color: "var(--color-text-primary)" }}>{b}</span>
@@ -99,7 +96,7 @@ export default function CancelliRecinzioniLanding() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <span className="label-eyebrow">Request</span>
+              <span className="label-eyebrow">{c.requestEyebrow}</span>
               <h2 className="heading-2 mt-3">{t.pageLabels.project}</h2>
               <p className="lead mt-4">{t.pageLabels.quote24}</p>
             </div>

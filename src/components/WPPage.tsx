@@ -140,9 +140,9 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
         <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
           <div className="container-ef">
             <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="label-eyebrow">Realizzazioni</span>
+              <span className="label-eyebrow">{t.wppage.galleryEyebrow}</span>
               <h2 className="heading-2 mt-3">
-                Altre <span style={{ color: "var(--color-accent)" }}>lavorazioni</span> su misura
+                {t.wppage.galleryTitlePre}<span style={{ color: "var(--color-accent)" }}>{t.wppage.galleryTitleAccent}</span>
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -169,7 +169,7 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
         <section style={{ backgroundColor: "var(--color-bg-secondary)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
           <div className="container-ef">
             <h2 className="heading-2 mb-6" style={{ fontWeight: 500 }}>
-              Approfondimenti
+              {t.wppage.relatedTitle}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {related.map((r) => (

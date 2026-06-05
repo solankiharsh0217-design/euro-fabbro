@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 
 export default function LavoraConNoiLanding() {
   const { t } = useT();
+  const c = t.landings.lavoraConNoi;
   return (
     <>
       <section
@@ -40,17 +41,16 @@ export default function LavoraConNoiLanding() {
         />
         <div className="container-ef relative">
           <div className="max-w-3xl">
-            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.workWithUs.preLabel} · {t.pageLabels.gutters[1]}</span>
+            <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{c.heroEyebrow}</span>
             <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}>
-              {t.workWithUs.headlinePre}
-              <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{t.workWithUs.headlineAccent}</span>
-              {t.workWithUs.headlinePost}
+              {c.heroTitlePre}
+              <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{c.heroTitleAccent}</span>
             </h1>
             <p className="text-body-lg mt-5" style={{ color: "rgba(245, 240, 232, 0.88)", maxWidth: 560, textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}>
-              {t.workWithUs.subheadline}
+              {c.heroSub}
             </p>
             <a href="#form" className="btn btn-primary mt-7">
-              {t.workWithUs.cta} <ArrowRight size={16} />
+              {c.heroCta} <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -58,13 +58,11 @@ export default function LavoraConNoiLanding() {
 
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="label-eyebrow">{c.benefitsTitle}</span>
+          </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
-            {[
-              "Installers and fitters",
-              "Resellers and showrooms",
-              "Architects and engineers",
-              "Construction companies",
-            ].map((b) => (
+            {c.benefits.map((b) => (
               <li key={b} className="card flex items-start gap-3">
                 <CheckCircle size={20} style={{ color: "var(--color-accent)", flexShrink: 0, marginTop: 2 }} />
                 <span className="text-body-lg" style={{ color: "var(--color-text-primary)" }}>{b}</span>
@@ -78,7 +76,7 @@ export default function LavoraConNoiLanding() {
         <div className="container-ef">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <span className="label-eyebrow">{t.pageLabels.apply}</span>
+              <span className="label-eyebrow">{c.requestEyebrow}</span>
               <h2 className="heading-2 mt-3">{t.pageLabels.getInTouch}</h2>
               <p className="lead mt-4">{t.pageLabels.partners}</p>
             </div>
