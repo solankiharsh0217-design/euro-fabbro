@@ -1050,10 +1050,20 @@ function AuthoritySection() {
   const { t } = useT();
   return (
     <Section bg="var(--color-surface-dark)">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-0 pointer-events-none hidden lg:block"
+        style={{
+          width: 480,
+          height: 480,
+          background: "radial-gradient(circle, rgba(184, 149, 106, 0.16) 0%, transparent 65%)",
+          filter: "blur(40px)",
+        }}
+      />
+      <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <ScrollReveal>
           <div>
-            <SectionEyebrow>{t.authority.preLabel}</SectionEyebrow>
+            <SectionEyebrow onDark>{t.authority.preLabel}</SectionEyebrow>
             <h2 className="heading-2" style={{ color: "var(--color-text-on-dark)" }}>
               {t.authority.headlinePre}
               <span style={{ color: "var(--color-accent)" }}>{t.authority.headlineAccent}</span>
@@ -1083,7 +1093,7 @@ function AuthoritySection() {
               key={s.label}
               className="rounded-xl text-center transition-transform duration-300 hover:-translate-y-1"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
+                backgroundColor: "rgba(255, 255, 255, 0.06)",
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 padding: "28px 20px",
               }}
@@ -1101,30 +1111,6 @@ function AuthoritySection() {
           ))}
         </ScrollRevealStagger>
       </div>
-      <ScrollReveal delay={0.1}>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12 lg:mt-16">
-          {[
-            { src: "/images/wp/Banchi-lavoro-officina-cento.jpg", alt: "Banchi di lavoro in officina" },
-            { src: "/images/wp/Scaffalature-industriali-bologna.jpg", alt: "Scaffalature industriali" },
-            { src: "/images/wp/Prodotti-in-ferro-palata-pepoli-di-crevalcore.jpg", alt: "Prodotti in ferro su misura" },
-            { src: "/images/wp/Ferioli-sergio-sas-palata-pepoli-di-crevalcore-bologna.jpg", alt: "Sede Ferioli Sergio, Bologna" },
-          ].map((img) => (
-            <div
-              key={img.alt}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden"
-              style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </ScrollReveal>
     </Section>
   );
 }
