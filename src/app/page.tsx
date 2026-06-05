@@ -1131,11 +1131,6 @@ function AuthoritySection() {
 
 function ProcessSection() {
   const { t } = useT();
-  const stepImages = [
-    "/images/wp/Installazione-cancelli-bologna.jpg",
-    "/images/wp/Svolgere-la-propria-attivita-in-una-officina.jpg",
-    "/images/wp/Installare-cancelli-pedonali-cento.jpg",
-  ];
   return (
     <Section bg="var(--color-bg)">
       <ScrollReveal>
@@ -1148,55 +1143,44 @@ function ProcessSection() {
           </h2>
         </div>
       </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch" stagger={0.12}>
+      <ScrollRevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch" stagger={0.1}>
         {t.process.steps.map((s, i) => {
           const Icon = processIcons[s.icon] ?? CheckCircle;
           return (
             <div
               key={i}
-              className="card group transition-all duration-300 hover:shadow-md h-full flex flex-col p-0 overflow-hidden"
+              className="text-center group h-full flex flex-col items-center"
               style={{ position: "relative" }}
             >
               <div
-                className="relative aspect-[16/10] overflow-hidden"
-                style={{ backgroundColor: "var(--color-bg-secondary)" }}
+                className="inline-flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: "var(--radius-full)",
+                  backgroundColor: "var(--color-accent-subtle)",
+                }}
               >
-                <Image
-                  src={stepImages[i % stepImages.length]}
-                  alt={s.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to top, rgba(28,23,18,0.55), transparent 60%)" }}
-                />
-                <div
-                  className="absolute top-3 left-3 inline-flex items-center justify-center"
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: "var(--radius-md)",
-                    backgroundColor: "rgba(28,23,18,0.75)",
-                    backdropFilter: "blur(6px)",
-                  }}
-                >
-                  <Icon size={20} style={{ color: "var(--color-accent)" }} />
-                </div>
-                <div
-                  className="absolute top-3 right-4 font-display"
-                  style={{ color: "rgba(245,240,232,0.35)", fontWeight: 500, lineHeight: 1, fontSize: 44 }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </div>
+                <Icon size={28} style={{ color: "var(--color-accent)" }} />
               </div>
-              <div style={{ padding: "22px 22px 24px" }}>
-                <h3 className="heading-3 mb-2">{s.title}</h3>
-                <p className="text-body" style={{ color: "var(--color-text-secondary)" }}>
-                  {s.desc}
-                </p>
+              <div
+                className="font-display absolute"
+                style={{
+                  top: -8,
+                  color: "var(--color-border-subtle)",
+                  fontWeight: 500,
+                  lineHeight: 1,
+                  fontSize: 80,
+                  zIndex: -1,
+                  opacity: 0.6,
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
               </div>
+              <h3 className="heading-3 mb-3">{s.title}</h3>
+              <p className="text-body" style={{ color: "var(--color-text-secondary)", maxWidth: 320 }}>
+                {s.desc}
+              </p>
             </div>
           );
         })}

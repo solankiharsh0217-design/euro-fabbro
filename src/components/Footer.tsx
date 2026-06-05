@@ -27,52 +27,6 @@ export default function Footer() {
         }}
       />
       <div className="container-ef relative" style={{ paddingTop: 80, paddingBottom: 40 }}>
-        <div
-          className="rounded-2xl p-8 sm:p-10 mb-14"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(184, 149, 106, 0.16) 0%, rgba(184, 149, 106, 0.05) 100%)",
-            border: "1px solid rgba(184, 149, 106, 0.25)",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 24,
-          }}
-        >
-          <div style={{ maxWidth: 520 }}>
-            <p
-              className="text-body-sm"
-              style={{
-                color: "var(--color-accent)",
-                fontWeight: 500,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: 8,
-              }}
-            >
-              {t.cta.preLabel}
-            </p>
-            <h3 className="text-h3" style={{ color: "var(--color-text-on-dark)", fontWeight: 400 }}>
-              {t.cta.headlinePre}
-              <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{t.cta.headlineAccent}</span>
-            </h3>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link href="/contatti" className="btn btn-primary">
-              {t.cta.btnForm} <ArrowUpRight size={16} />
-            </Link>
-            <a
-              href={`https://wa.me/${site.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary-dark"
-            >
-              <MessageCircle size={16} /> {t.cta.btnWhatsapp}
-            </a>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center mb-5">
