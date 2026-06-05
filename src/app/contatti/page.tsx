@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { ContactForm } from "@/components/ContactForm";
@@ -15,34 +14,23 @@ export default function ContattiPage() {
           color: "var(--color-text-on-dark)",
           paddingTop: "var(--section-padding-y)",
           paddingBottom: "var(--section-padding-y)",
-          position: "relative",
-          overflow: "hidden",
-          minHeight: "min(440px, 50vh)",
+          minHeight: "min(560px, 60vh)",
           display: "flex",
           alignItems: "center",
         }}
       >
-        <Image
-          src="/images/wp/Ferioli-sergio-sas-palata-pepoli-di-crevalcore-bologna.jpg"
-          alt="Sede Ferioli Sergio & C. S.n.c., Bologna"
-          fill
-          priority
-          sizes="100vw"
-          quality={80}
-          className="object-cover"
-          style={{ objectPosition: "center 50%" }}
-        />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(110deg, rgba(28,23,18,0.92) 0%, rgba(28,23,18,0.78) 45%, rgba(62,40,18,0.45) 100%)",
+              "radial-gradient(ellipse at 20% 30%, rgba(184,149,106,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(184,149,106,0.12) 0%, transparent 50%)",
+            pointerEvents: "none",
           }}
         />
-        <div className="container-ef relative">
+        <div className="container-ef relative w-full">
           <div className="max-w-3xl">
             <span className="label-eyebrow" style={{ color: "var(--color-accent)" }}>{t.nav.label.contatti}</span>
-            <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300, textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}>
+            <h1 className="text-hero mt-3" style={{ color: "#FFFFFF", fontWeight: 300 }}>
               {c.headlinePre}
               <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>{c.headlineAccent}</span>
             </h1>

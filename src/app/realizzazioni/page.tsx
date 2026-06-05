@@ -16,6 +16,8 @@ export default function RealizzazioniPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/196b11333_generated_image.png"
+        heroImageAlt="Ferioli Sergio project portfolio"
       />
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">

@@ -17,9 +17,8 @@ export default function AutomazionePage() {
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
-        heroImage="/images/wp/Motorizzazione-cancelli-bologna.jpg"
-        heroImageAlt="Motorizzazione cancelli — Ferioli Sergio, Bologna"
-        heroImagePosition="center 50%"
+        heroImage="/images/1fd69a4bb_generated_image.png"
+        heroImageAlt="Gate automation by Ferioli Sergio"
       />
       <section
         style={{

@@ -17,6 +17,8 @@ export default function LavorazioniPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/37ae1598f_generated_image.png"
+        heroImageAlt="Custom iron works by Ferioli Sergio"
       />
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">

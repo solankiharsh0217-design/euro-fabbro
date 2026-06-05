@@ -19,9 +19,8 @@ export default function CancelliPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
-        heroImage="/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg"
-        heroImageAlt="Cancello scorrevole zincato di design — Ferioli Sergio, Bologna"
-        heroImagePosition="center 45%"
+        heroImage="/images/eb6ff68c0_generated_image.png"
+        heroImageAlt="Custom iron gates in the Ferioli Sergio workshop"
       />
 
       <section

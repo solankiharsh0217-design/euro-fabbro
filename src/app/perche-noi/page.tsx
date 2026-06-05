@@ -17,9 +17,8 @@ export default function PercheNoiPage() {
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
-        heroImage="/images/wp/Banchi-lavoro-officina-cento.jpg"
-        heroImageAlt="Officina Ferioli Sergio — banchi di lavoro, Bologna"
-        heroImagePosition="center 50%"
+        heroImage="/images/8b20c47b2_generated_image.png"
+        heroImageAlt="Why Ferioli Sergio"
       />
       <section
         style={{

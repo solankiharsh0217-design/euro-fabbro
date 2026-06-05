@@ -22,6 +22,8 @@ export default function DetrazioniPage() {
         headlinePost={c.hero.headlinePost}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/3ea644617_generated_image.png"
+        heroImageAlt="Tax deductions for ironwork in Italy"
       />
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
         <div className="container-ef">

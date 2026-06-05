@@ -19,9 +19,8 @@ export default function InferriatePage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
-        heroImage="/images/wp/Grate-apribili-decorate-bologna.jpg"
-        heroImageAlt="Inferriate apribili decorate — Ferioli Sergio, Bologna"
-        heroImagePosition="center 50%"
+        heroImage="/images/cfd8c4396_generated_image.png"
+        heroImageAlt="Custom security bars by Ferioli Sergio"
       />
 
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>

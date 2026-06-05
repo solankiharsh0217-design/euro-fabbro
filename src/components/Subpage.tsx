@@ -35,7 +35,7 @@ export function SubpageHero({
         paddingBottom: "var(--section-padding-y)",
         position: "relative",
         overflow: "hidden",
-        minHeight: heroImage ? "min(560px, 60vh)" : undefined,
+        minHeight: heroImage ? "min(630px, 70vh)" : undefined,
         display: heroImage ? "flex" : undefined,
         alignItems: heroImage ? "center" : undefined,
       }}

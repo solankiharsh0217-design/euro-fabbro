@@ -18,9 +18,8 @@ export default function RecinzioniPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
-        heroImage="/images/wp/Recinzioni-in-ferro-bologna-cento.jpg"
-        heroImageAlt="Recinzioni in ferro modulari — Ferioli Sergio, Bologna"
-        heroImagePosition="center 50%"
+        heroImage="/images/3cc2a0950_generated_image.png"
+        heroImageAlt="Iron fencing in the Ferioli Sergio workshop"
       />
       <section
         style={{

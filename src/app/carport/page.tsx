@@ -17,6 +17,8 @@ export default function CarportPage() {
         headlineAccent={c.hero.headlineAccent}
         subheadline={c.hero.subheadline}
         cta={c.hero.cta}
+        heroImage="/images/ff67b59d2_generated_image.png"
+        heroImageAlt="Iron carport by Ferioli Sergio"
       />
 
       <section style={{ backgroundColor: "var(--color-bg)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
