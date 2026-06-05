@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { useT } from "./LanguageProvider";
 
@@ -76,9 +77,9 @@ export function ContactForm() {
       </div>
       <p className="text-body-sm mt-4" style={{ color: "var(--color-text-muted)" }}>
         {labels.privacy}{" "}
-        <a href="/privacy" className="underline" style={{ color: "var(--color-accent)" }}>
+        <Link href="/privacy-policy" className="underline" style={{ color: "var(--color-accent)" }}>
           {labels.privacyLink}
-        </a>
+        </Link>
         .
       </p>
       <button

@@ -98,127 +98,89 @@ function Hero() {
       style={{
         backgroundColor: "var(--color-surface-dark)",
         color: "var(--color-text-on-dark)",
-        minHeight: "min(820px, 95vh)",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
       }}
     >
       <Image
-        src="/images/hero-welding.jpg"
-        alt="Artisan welder crafting custom ironwork in the Ferioli Sergio workshop"
+        src="/images/053701002_generated_image.png"
+        alt="Custom ironwork in the Ferioli Sergio workshop"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
         quality={85}
         className="object-cover"
-        style={{ objectPosition: "center 30%" }}
+        style={{ objectPosition: "center 50%" }}
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(110deg, rgba(28,23,18,0.95) 0%, rgba(28,23,18,0.82) 40%, rgba(62,40,18,0.55) 70%, rgba(184,149,106,0.20) 100%)",
+            "linear-gradient(110deg, rgba(28,23,18,0.92) 0%, rgba(28,23,18,0.75) 45%, rgba(28,23,18,0.35) 100%)",
         }}
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(28,23,18,0.35) 0%, transparent 25%, transparent 65%, rgba(28,23,18,0.85) 100%)",
+            "linear-gradient(to bottom, rgba(28,23,18,0.45) 0%, transparent 30%, transparent 60%, rgba(28,23,18,0.85) 100%)",
         }}
       />
-
-      {/* Decorative corner mark */}
-      <div
-        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-12 z-10"
-        style={{ writingMode: "vertical-rl", color: "var(--color-accent)", fontSize: 11, letterSpacing: "0.4em", fontWeight: 500, textTransform: "uppercase", opacity: 0.6 }}
-      >
-        {t.hero.cornerMark}
-      </div>
 
       <div
         className="container-ef relative w-full"
         style={{ paddingTop: "calc(var(--section-padding-y) + 24px)", paddingBottom: "var(--section-padding-y)" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-body-sm"
-              style={{
-                backgroundColor: "rgba(184, 149, 106, 0.18)",
-                color: "var(--color-accent)",
-                fontWeight: 500,
-                border: "1px solid rgba(184, 149, 106, 0.35)",
-                marginBottom: 24,
-                backdropFilter: "blur(6px)",
-              }}
-            >
-              <Award size={14} /> {t.hero.badge}
-            </div>
-            <h1
-              className="text-hero"
-              style={{
-                color: "#FFFFFF",
-                fontWeight: 300,
-                marginBottom: 24,
-                textShadow: "0 2px 24px rgba(0,0,0,0.35)",
-              }}
-            >
-              {t.hero.headlinePre}
-              <br />
-              <span style={{ color: "var(--color-accent)", fontStyle: "italic", fontWeight: 400 }}>
-                {t.hero.headlineAccent}
-              </span>
-              {t.hero.headlinePost}
-            </h1>
-            <p
-              className="text-body-lg"
-              style={{
-                color: "rgba(245, 240, 232, 0.88)",
-                maxWidth: 520,
-                marginBottom: 36,
-                textShadow: "0 1px 8px rgba(0,0,0,0.4)",
-              }}
-            >
-              {t.hero.subheadline}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/contatti" className="btn btn-primary">
-                {t.hero.ctaPrimary} <ArrowRight size={16} />
-              </Link>
-              <Link href="#lavorazioni" className="btn btn-secondary-dark">
-                {t.hero.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-          <div className="lg:col-span-4">
-            <div
-              className="rounded-2xl p-5 sm:p-6"
-              style={{
-                backgroundColor: "rgba(245, 240, 232, 0.08)",
-                border: "1px solid rgba(245, 240, 232, 0.18)",
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.25)",
-              }}
-            >
-              <p
-                className="text-body-sm"
-                style={{
-                  color: "var(--color-accent)",
-                  fontWeight: 500,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  marginBottom: 12,
-                }}
-              >
-                {t.hero.cardEyebrow}
-              </p>
-              <p className="text-body" style={{ color: "rgba(245, 240, 232, 0.9)" }}>
-                {t.hero.cardBody}
-              </p>
-            </div>
-          </div>
+        <div
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-body-sm"
+          style={{
+            backgroundColor: "rgba(184, 149, 106, 0.18)",
+            color: "var(--color-accent)",
+            fontWeight: 500,
+            border: "1px solid rgba(184, 149, 106, 0.35)",
+            marginBottom: 24,
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          <Award size={14} /> {t.hero.badge}
+        </div>
+        <h1
+          className="text-hero"
+          style={{
+            color: "#FFFFFF",
+            fontWeight: 300,
+            marginBottom: 24,
+            textShadow: "0 2px 24px rgba(0,0,0,0.35)",
+            maxWidth: 880,
+          }}
+        >
+          {t.hero.headlinePre}
+          <br />
+          <span style={{ color: "var(--color-accent)", fontStyle: "italic", fontWeight: 400 }}>
+            {t.hero.headlineAccent}
+          </span>
+          {t.hero.headlinePost}
+        </h1>
+        <p
+          className="text-body-lg"
+          style={{
+            color: "rgba(245, 240, 232, 0.88)",
+            maxWidth: 560,
+            marginBottom: 36,
+            textShadow: "0 1px 8px rgba(0,0,0,0.4)",
+          }}
+        >
+          {t.hero.subheadline}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/contatti" className="btn btn-primary">
+            {t.hero.ctaPrimary} <ArrowRight size={16} />
+          </Link>
+          <Link href="#lavorazioni" className="btn btn-secondary-dark">
+            {t.hero.ctaSecondary}
+          </Link>
         </div>
         <div className="flex flex-wrap gap-3 mt-10 lg:mt-14">
           {t.hero.stats.map((s, i) => (
@@ -1267,34 +1229,30 @@ function FeaturedProjectsSection() {
           </Link>
         </div>
       </ScrollReveal>
-      <ScrollRevealStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" stagger={0.08}>
-        {t.featuredProjects.projects.map((p) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 auto-rows-[228px]">
+        {t.featuredProjects.projects.map((p, idx) => (
           <Link
             key={p.name}
             href={p.link}
-            className="group block relative aspect-[4/3] rounded-xl overflow-hidden"
-            style={{ backgroundColor: "var(--color-bg-secondary)" }}
+            className={`group block relative rounded-xl overflow-hidden ${
+              idx === 0 ? "sm:row-span-2 sm:h-full" : ""
+            }`}
+            style={{
+              backgroundColor: "var(--color-bg-secondary)",
+              height: idx === 0 ? 480 : 228,
+            }}
           >
             <Image
               src={p.image}
               alt={p.name}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-110"
+              className="object-cover transition-transform duration-slow ease-ease-out group-hover:scale-105"
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(28,23,18,0.92), rgba(28,23,18,0.15) 55%, transparent)" }}
+              style={{ background: "linear-gradient(to top, rgba(28,23,18,0.85) 0%, rgba(28,23,18,0.15) 50%, transparent)" }}
             />
-            <div
-              className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-45"
-              style={{
-                backgroundColor: "var(--color-accent)",
-                color: "#FFFFFF",
-              }}
-            >
-              <ArrowUpRight size={16} />
-            </div>
             <div className="absolute bottom-0 left-0 right-0 p-5" style={{ color: "#FFFFFF" }}>
               <p className="text-lg font-semibold leading-tight">{p.name}</p>
               <p className="text-sm mt-0.5" style={{ color: "rgba(255, 255, 255, 0.8)" }}>
@@ -1303,7 +1261,7 @@ function FeaturedProjectsSection() {
             </div>
           </Link>
         ))}
-      </ScrollRevealStagger>
+      </div>
       <ScrollReveal delay={0.1}>
         <div className="sm:hidden text-center mt-8">
           <Link href="/realizzazioni" className="btn btn-secondary">
@@ -1651,15 +1609,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <CertificationsStrip />
-      <ProductsSection />
       <TurnkeySection />
+      <ProductsSection />
       <AuthoritySection />
       <ProcessSection />
       <FeaturedProjectsSection />
       <DeductionBannerSection />
-      <TestimonialsSection />
       <WorkWithUsSection />
+      <TestimonialsSection />
       <FaqSection />
       <CtaSection />
     </>

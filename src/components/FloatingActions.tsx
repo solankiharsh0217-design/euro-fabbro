@@ -4,7 +4,7 @@ import { MessageCircle, ArrowUp } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 
 export function FloatingActions() {
-  const { site } = useT();
+  const { t, site } = useT();
   const [show, setShow] = useState(false);
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 400);
@@ -22,7 +22,7 @@ export function FloatingActions() {
         href={`https://wa.me/${site.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="WhatsApp us"
+        aria-label={t.common.whatsappAria}
         className="inline-flex items-center justify-center transition-all duration-300 hover:scale-110"
         style={{
           width: 52,
@@ -37,7 +37,7 @@ export function FloatingActions() {
       </a>
       <button
         onClick={scrollTop}
-        aria-label="Scroll to top"
+        aria-label={t.common.scrollTopAria}
         className="inline-flex items-center justify-center transition-all duration-300 hover:scale-110"
         style={{
           width: 48,

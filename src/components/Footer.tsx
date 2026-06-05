@@ -221,7 +221,7 @@ export default function Footer() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              CE Marked
+              {t.footer.certChip}
             </div>
             <p className="text-body-sm" style={{ color: "rgba(245, 240, 232, 0.7)", marginTop: 8, lineHeight: 1.6 }}>
               {t.footer.compassText}
@@ -240,12 +240,15 @@ export default function Footer() {
             className="flex items-center gap-5 text-body-sm"
             style={{ color: "rgba(245, 240, 232, 0.5)" }}
           >
-            <a href="/privacy" style={{ textDecoration: "none" }} className="hover:text-ef-accent transition-colors">
+            <Link href="/privacy-policy" style={{ textDecoration: "none" }} className="hover:text-ef-accent transition-colors">
               {t.footer.privacy}
-            </a>
-            <a href="/cookie" style={{ textDecoration: "none" }} className="hover:text-ef-accent transition-colors">
-              {t.footer.cookie}
-            </a>
+            </Link>
+            <span style={{ color: "rgba(245, 240, 232, 0.3)" }}>·</span>
+            <span>{site.hours}</span>
+            <span style={{ color: "rgba(245, 240, 232, 0.3)" }}>·</span>
+            <span style={{ color: "var(--color-accent)", letterSpacing: "0.08em", textTransform: "uppercase", fontSize: 11, fontWeight: 600 }}>
+              {t.footer.certChip}
+            </span>
           </div>
         </div>
       </div>

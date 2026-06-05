@@ -454,6 +454,8 @@ export const translations = {
       viewAll: "View all",
       callUs: "Call {phone}",
       whatsappLabel: "WhatsApp: {display}",
+      whatsappAria: "Chat on WhatsApp",
+      scrollTopAria: "Scroll to top",
     },
     pageLabels: {
       tipologie: "Types",
