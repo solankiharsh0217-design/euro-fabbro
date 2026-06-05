@@ -1396,26 +1396,10 @@ function WorkWithUsSection() {
   const { t } = useT();
   return (
     <Section bg="var(--color-surface)">
-      <div
-        className="rounded-2xl p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"
-        style={{
-          backgroundColor: "var(--color-surface-dark)",
-          color: "var(--color-text-on-dark)",
-        }}
-      >
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: "radial-gradient(circle at 30% 50%, rgba(184, 149, 106, 0.2), transparent 60%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div className="relative max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div>
           <SectionEyebrow>{t.workWithUs.preLabel}</SectionEyebrow>
-          <h2
-            className="heading-2 mt-3"
-            style={{ color: "var(--color-text-on-dark)" }}
-          >
+          <h2 className="heading-2 mt-3">
             {t.workWithUs.headlinePre}
             <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>
               {t.workWithUs.headlineAccent}
@@ -1424,13 +1408,13 @@ function WorkWithUsSection() {
           </h2>
           <p
             className="lead mt-4"
-            style={{ color: "rgba(245, 240, 232, 0.8)" }}
+            style={{ color: "var(--color-text-secondary)", maxWidth: 520 }}
           >
             {t.workWithUs.subheadline}
           </p>
           <Link
             href={t.workWithUs.ctaHref}
-            className="btn btn-primary mt-8 group"
+            className="btn btn-primary mt-6 group"
           >
             {t.workWithUs.cta}
             <ArrowRight
@@ -1438,6 +1422,56 @@ function WorkWithUsSection() {
               className="transition-transform duration-200 group-hover:translate-x-1"
             />
           </Link>
+        </div>
+        <div
+          className="rounded-2xl p-8 sm:p-10"
+          style={{
+            backgroundColor: "var(--color-surface-dark)",
+            color: "var(--color-text-on-dark)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-25"
+            style={{
+              background: "radial-gradient(circle at 80% 20%, rgba(184, 149, 106, 0.3), transparent 60%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div className="relative flex items-start gap-4">
+            <div
+              className="shrink-0 inline-flex items-center justify-center"
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: "var(--radius-md)",
+                backgroundColor: "var(--color-accent-subtle)",
+              }}
+            >
+              <Sparkles size={26} style={{ color: "var(--color-accent)" }} />
+            </div>
+            <div>
+              <p
+                className="text-body-sm"
+                style={{
+                  color: "var(--color-accent)",
+                  fontWeight: 500,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  marginBottom: 8,
+                }}
+              >
+                Installers · Resellers · Architects
+              </p>
+              <p
+                className="text-body-lg"
+                style={{ color: "rgba(245, 240, 232, 0.85)" }}
+              >
+                We&apos;re always looking for qualified partners. Join our network and grow with the Ferioli brand.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </Section>
