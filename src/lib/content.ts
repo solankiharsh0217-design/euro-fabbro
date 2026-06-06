@@ -199,7 +199,7 @@ export const translations = {
         { name: "Gates & Access", desc: "Custom protected access for your property. Sliding, swing, pedestrian and automated gates.", icon: "DoorOpen", link: "/cancelli" },
         { name: "Security Bars", desc: "Protection for windows and doors without sacrificing aesthetics or natural light.", icon: "Grid3x3", link: "/inferriate" },
         { name: "Fencing", desc: "Secure and decorative perimeter in wrought iron or modular slats for every need.", icon: "Fence", link: "/recinzioni" },
-        { name: "Iron Stairs", desc: "Custom stairs for indoors and outdoors, residential and industrial, built to last.", icon: "TrendingUp", link: "/lavorazioni#scale" },
+        { name: "Iron Stairs", desc: "Custom stairs for indoors and outdoors, residential and industrial, built to last.", icon: "TrendingUp", link: "/scale" },
         { name: "Carports & Canopies", desc: "Custom self-supporting iron structures to protect vehicles from the elements.", icon: "CarFront", link: "/carport" },
         { name: "Automation", desc: "Comfort and security with automation systems for gates and shutters.", icon: "Settings", link: "/automazione" },
       ],

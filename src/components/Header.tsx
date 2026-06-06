@@ -167,7 +167,7 @@ export default function Header() {
                             }}
                           />
                           <div className="grid grid-cols-1 gap-1">
-                            {t.nav.services.map((s, idx) => {
+                            {t.nav.services.slice(0, 5).map((s, idx) => {
                               const active = isActive(s.href);
                               return (
                                 <motion.div
@@ -335,7 +335,7 @@ export default function Header() {
                     className="w-full max-w-sm overflow-hidden"
                   >
                     <div className="flex flex-col items-center gap-3 pb-2">
-                      {t.nav.services.map((s) => (
+                      {t.nav.services.slice(0, 5).map((s) => (
                         <Link
                           key={s.href}
                           href={s.href}
