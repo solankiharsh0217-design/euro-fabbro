@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://euro-fabbro.vercel.app/sitemap.xml

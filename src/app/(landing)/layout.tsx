@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description:
     "Carpenteria metallica certificata nella provincia di Bologna. Produzione interna, marcatura CE, qualità garantita su ogni installazione.",
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
   icons: { icon: site.logo },
 };
 

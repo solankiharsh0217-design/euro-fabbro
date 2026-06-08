@@ -8,7 +8,7 @@ import { FloatingActions } from "@/components/FloatingActions";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://eurofabbro-v1.base44.app"),
+  metadataBase: new URL("https://euro-fabbro.vercel.app"),
   title: {
     default: `${site.name} — Carpenteria metallica certificata dal 1977`,
     template: `%s | ${site.name}`,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     images: [site.logo],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  alternates: { canonical: "https://euro-fabbro.vercel.app" },
   icons: { icon: site.logo },
 };
 
