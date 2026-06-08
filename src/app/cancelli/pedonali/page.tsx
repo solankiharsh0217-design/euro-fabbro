@@ -14,7 +14,6 @@ export default function Page() {
       heroAccent="pedonali"
       related={[
         { href: "/cancelli/scorrevoli", label: "Cancelli scorrevoli" },
-        { href: "/cancelli/autoportanti", label: "Cancelli autoportanti" },
         { href: "/cancelli/battente", label: "Cancelli a battente" },
       ]}
     />

@@ -490,7 +490,7 @@ export const translations = {
       hero: {
         headlinePre: "Custom iron ",
         headlineAccent: "gates",
-        subheadline: "Sliding, swing, pedestrian and self-supporting gates. Designed, built and installed in-house. Istituto Giordano certified, CE marked.",
+        subheadline: "Sliding, swing and pedestrian gates. Designed, built and installed in-house. Istituto Giordano certified, CE marked.",
         cta: "Request a free quote",
       },
       variantsTitlePre: "Every type, ",
@@ -500,7 +500,7 @@ export const translations = {
         { name: "Sliding gates", desc: "Ideal for narrow driveways and limited space. Quiet, reliable, tested for over 60,000 openings.", href: "/cancelli/scorrevole" },
         { name: "Swing gates", desc: "Single or double leaf, traditional or designer. Manual or automated, hot-dip galvanised on request.", href: "/cancelli/battente" },
         { name: "Pedestrian gates", desc: "Matching the main gate in style, material and finish. Perfect for daily access.", href: "/cancelli/pedonali" },
-        { name: "Self-supporting gates", desc: "No ground rail: ideal for uneven driveways, snow and gravel. Clean, silent, robust.", href: "/cancelli/autoportanti" },
+
       ],
       galleryEyebrow: "Types in our workshop",
       galleryTitlePre: "Every ",
@@ -510,7 +510,6 @@ export const translations = {
         { label: "Sliding" },
         { label: "Swing" },
         { label: "Pedestrian" },
-        { label: "Self-supporting" },
       ],
       certStripTitle: "Istituto Giordano Certified",
       certStripSub: "CE Marking · Tested for 60,000 openings",
@@ -1181,7 +1180,7 @@ export const translations = {
       hero: {
         headlinePre: "Cancelli in ferro ",
         headlineAccent: "su misura",
-        subheadline: "Cancelli scorrevoli, a battente, pedonali e autoportanti. Progettati, costruiti e installati internamente. Certificati Istituto Giordano, marcati CE.",
+        subheadline: "Cancelli scorrevoli, a battente e pedonali. Progettati, costruiti e installati internamente. Certificati Istituto Giordano, marcati CE.",
         cta: "Richiedi preventivo gratuito",
       },
       variantsTitlePre: "Ogni tipologia, ",
@@ -1191,7 +1190,7 @@ export const translations = {
         { name: "Cancelli scorrevoli", desc: "Ideali per passaggi stretti e spazi limitati. Silenziosi, affidabili, testati per oltre 60.000 aperture.", href: "/cancelli/scorrevole" },
         { name: "Cancelli a battente", desc: "Una o due ante, classici o di design. Manuali o automatizzati, zincati a caldo a richiesta.", href: "/cancelli/battente" },
         { name: "Cancelli pedonali", desc: "Coordinati al cancello principale per stile, materiale e finitura. Perfetti per l'accesso quotidiano.", href: "/cancelli/pedonali" },
-        { name: "Cancelli autoportanti", desc: "Senza guida a terra: ideali per passaggi sconnessi, neve e ghiaia. Puliti, silenziosi, robusti.", href: "/cancelli/autoportanti" },
+
       ],
       galleryEyebrow: "Tipologie in officina",
       galleryTitlePre: "Ogni ",
@@ -1201,7 +1200,6 @@ export const translations = {
         { label: "Scorrevoli" },
         { label: "Battente" },
         { label: "Pedonali" },
-        { label: "Autoportanti" },
       ],
       certStripTitle: "Certificati Istituto Giordano",
       certStripSub: "Marcatura CE · Testato per 60.000 aperture",

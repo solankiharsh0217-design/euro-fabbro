@@ -39,7 +39,7 @@ export default function CancelliPage() {
               {c.variantsTitlePost}
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {c.variants.map((v) => (
               <Link
                 key={v.name}
@@ -83,7 +83,6 @@ export default function CancelliPage() {
               { src: "/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg", alt: "Cancelli scorrevoli zincati" },
               { src: "/images/wp/Cancelli-a-battente-bologna-san-giovanni-in-persiceto.jpg", alt: "Cancelli a battente" },
               { src: "/images/wp/Cancelli-pedonali-per-ingresso-bologna.jpg", alt: "Cancelli pedonali" },
-              { src: "/images/wp/Cancelli-basamenti-autoportanti-per-privati-crevalcore.jpg", alt: "Cancelli autoportanti" },
             ].map((img, i) => {
               const item = c.galleryItems[i] ?? { label: img.alt };
               return (

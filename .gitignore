@@ -11,3 +11,14 @@ next-env.d.ts
 
 # Build / WP extraction artifacts
 tmp/
+
+# Extraction and analysis scripts
+analyze.js
+*-extracted.js
+extract-*.js
+*-content.txt
+*-block.txt
+original-bundle.*
+ANALYSIS.md
+DESIGN_TOKENS.md
+prompt.txt

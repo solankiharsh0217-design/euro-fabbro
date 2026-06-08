@@ -13,7 +13,6 @@ export default function Page() {
       preLabel="Cancelli · Bologna, Modena, Ferrara"
       heroAccent="su misura"
       related={[
-        { href: "/cancelli/autoportanti", label: "Cancelli autoportanti" },
         { href: "/cancelli/pedonali", label: "Cancelli pedonali" },
         { href: "/cancelli/battente", label: "Cancelli a battente" },
       ]}
